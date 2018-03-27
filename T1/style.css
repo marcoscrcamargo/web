@@ -1,0 +1,106 @@
+/* Style do header. */
+.header {
+    background-color: #ffc107;
+    color: #1976d2;
+    text-align: left;
+    padding: 20px;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 0px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+	background-color:#1976d2;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+.login {
+	float:right;
+}
+/* Style do footer. */
+.footer {
+    background-color: #ffc107;
+    color: #1976d2;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Style da barra de navegação. */
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1976d2;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+/* Style de cada item da navbar */
+.navbar-item {
+	float: left;
+}
+
+/* Style de cada link da navbar */
+.navbar-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Trocar a cor quando o mouse estiver em cima.*/
+.navbar-link:hover {
+    background-color: #FFFFFF;
+    color: #1976d2;
+}
+
+/* Trocar a cor quando link ativo. */
+.active {
+	background-color: #03A9F4;
+	color: #1976d2;
+}
+
+.main-content {
+    background-color: white;
+    padding: 5px;
+    margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.logo {
+	margin: 0;
+	width: 40px;
+	height: 40px;
+}
+
+body {
+    background-color: #E4E4E4;
+    font-size: 28px;
+}
+
+.products-list {
+	list-style-type: none;
+    overflow: hidden;
+    display: flex;
+    justify-content:space-around;
+	/* margin: 0; */
+	/* padding: 0; */
+}
+.products-list .product-price{
+}
