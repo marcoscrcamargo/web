@@ -2,8 +2,12 @@
 .header {
     background-color: #ffc107;
     color: #1976d2;
-    text-align: left;
     padding: 20px;
+}
+
+.logo-text {
+	text-decoration: none;
+    color: #1976d2;
 }
 
 input[type=text], input[type=password] {
@@ -27,9 +31,10 @@ button:hover {
 	opacity: 0.8;
 }
 
-.login {
-	float:right;
+.under-login {
+	font-size: 1vw;
 }
+
 /* Style do footer. */
 .footer {
     background-color: #ffc107;
@@ -103,4 +108,26 @@ body {
 	/* padding: 0; */
 }
 .products-list .product-price{
+}
+
+.container {
+	display: flex;
+	border: 2px solid goldenrod;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	border: 2px solid black;
+}
+
+.column {
+	width: 100%;
+	display: flex;
+	border: 2px solid blue;
+	flex-direction: column;
+}
+
+.justify {
+	justify-content: space-between;
 }
