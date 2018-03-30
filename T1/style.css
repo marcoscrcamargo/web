@@ -163,6 +163,8 @@ body {
 	font-size: 3vh;
 	margin: 5px;
 	padding: 5px;
+	/*border: 2px solid #2980b9;*/
+	background-color: #ffc107;
 }
 .service h4{
 	padding: 0px;
