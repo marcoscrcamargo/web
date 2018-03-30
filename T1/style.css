@@ -39,8 +39,10 @@ button:hover {
 .footer {
     background-color: #ffc107;
     color: #1976d2;
-    text-align: center;
-    padding: 10px;
+    text-align: left;
+    padding: 20px;
+    font-size: 1vw;
+    line-height: 80%;
 }
 
 /* Style da barra de navegação. */
