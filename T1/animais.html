@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Charset utilizado. -->
+	<meta charset="utf-8">
+	<!-- Descrição do site. -->
+	<meta name="description" content="Pet shop website.">
+	<!-- Palavras chave. -->
+	<meta name="keywords" content="Pet, Shop, Products, Services">
+	<!-- Autores. -->
+	<meta name="author" content="Marcos, Victor and Gabriel">
+	<!-- Viewport - instruções para dimensão e escala. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Referencia para o stylesheet. -->
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+	<!-- Título do site. -->
+	<title>Petshop</title>
+
+</head>
+<body>
+	<!-- Header. -->
+	<div class="row header justify">
+		<div class="row">
+			<a class="logo-text" href="#">
+				<img src="img/paw.png" class="logo" alt="logo">
+			Petshop
+			</a>
+		</div>
+		<div class="row">
+			<form class="row" action="#" method="get" accept-charset="utf-8">
+				<div class="column">
+					<input type="text" name="username" placeholder="Usuário" required>
+					<a class="under-login" href="#">Cadastrar</a>
+				</div>
+				<div class="column">
+					<input type="password" name="password" placeholder="Senha" required>
+					<a class="under-login" href="#">Esqueceu sua senha?</a>
+				</div>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+	<!-- Barra de navegação. -->
+		<ul class="navbar">
+			<li class="navbar-item"><a class="navbar-link" href="#">Página inicial</a></li>
+ 			<li class="navbar-item"><a class="navbar-link" href="#Products">Produtos</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#Services">Serviços</a></li>
+			<li class="navbar-item active"><a class="navbar-link" href="#Animais">Animais</a></li>
+		</ul>
+
+	<!-- Conteúdo -->
+
+    <div class="container main-content column">
+		<div class="column">
+			<h3>Animais cadastrados</h3>
+			<div class="column">
+				<div class="row products-list" >
+					<div class="column products-item">
+						<a href="#" class="product-photo"><img src="img/prod.jpg" height="130" alt=""/></a>
+			            <a href="#"> Teste </a>
+           				<button type="button">Detalhes</button>
+					</div>
+					<div class="column products-item">
+						<a href="#" class="product-photo"><img src="img/prod.jpg" height="130" alt=""/></a>
+			            <a href="#"> Teste </a>
+           				<button type="button">Detalhes</button>
+					</div>
+					<div class="column products-item">
+						<a href="#" class="product-photo"><img src="img/prod.jpg" height="130" alt=""/></a>
+			            <a href="#"> Teste </a>
+           				<button type="button">Detalhes</button>
+					</div>
+					<div class="column products-item">
+						<a href="#" class="product-photo"><img src="img/prod.jpg" height="130" alt=""/></a>
+			            <a href="#"> Teste </a>
+           				<button type="button">Detalhes</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <!-- Rodapé -->
+  	<div class="footer">
+		<h3>Equipe</h3>
+		<p>Gabriel Camargo (gabrielcamargo@usp.br)</p>
+		<p>Marcos Camargo (marcoscrcamargo@gmail.com)</p>
+		<p>Victor Forbes (victor.forbes@usp.br)</p>
+		<h1></h1>
+	</div>
+</body>
+</html>
