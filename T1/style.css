@@ -159,6 +159,14 @@ body {
 	cursor: pointer;
 }
 
+.service-list {
+	list-style-type: none;
+    overflow: hidden;
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+}
+
 .service {
 	font-size: 3vh;
 	margin: 5px;
