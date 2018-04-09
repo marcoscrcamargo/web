@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Título da página. -->
+		<title>Petshop</title>
+		<!-- Descrição da página. -->
+		<meta name="description" content="Pet shop home page.">
+		<!-- Charset utilizado. -->
+		<meta charset="utf-8">
+		<!-- Palavras chave. -->
+		<meta name="keywords" content="Pet, Shop, Products, Services">
+		<!-- Autores. -->
+		<meta name="author" content="Marcos, Victor and Gabriel">
+		<!-- Viewport. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- External CSS -->
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/home.css">
+	</head>
+	<body>
+		<!-- Header. -->
+		<div class="row header justify">
+			<!-- Logo. -->
+			<div class="row">
+				<a class="logo-text" href="#">
+				<img src="../images/paw.png" class="logo-image" alt="Logo">
+				Petshop
+				</a>
+			</div>
+
+			<!-- Campo de Login -->
+			<!-- Campo que mostra que você está logado. -->
+			<div class="row">
+				<img src="../images/avatar.png" alt="avatar" style="width:15%;height:100%;margin:0;">
+				<a class="under-login" href="#">Profile</a>
+			</div>
+		</div>
+
+		<!-- Barra de navegação. -->
+		<ul class="navbar">
+			<!-- Links para as páginas -->
+			<li class="navbar-item active"><a class="navbar-link" href="#">Home</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#">Products</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#">Services</a></li>
+		</ul>
+
+	<div class="container main-content column">
+		<div class="column">
+			<h3>Edit Service</h3>
+			<div class="column">
+				<form class="form-global" style="text-align: center">
+					<div class="">
+						<a href="#"><img src="../images/banho.jpg"  alt=""/></a>
+					</div>
+					<div>
+			            <button class="login-button" type="submit">Change photo</button>
+					</div>
+					<div>
+						<h6 style="margin:0"> Service Name </h6>
+						<input type="text" name="name" value="Bath" required>
+					</div>
+
+					<div>
+						<h6 style="margin:0"> Price ($) </h6>
+						<input type="text" name="price" value="50,00" required>
+					</div>
+					<button class="button-global">Save changes</button>
+				</div>
+			</div>
+		</div>
+    </div>
+
+		<!-- Rodapé -->
+		<div class="footer">
+			<h3>Our Team</h3>
+			<p>Gabriel Camargo (gabrielcamargo@usp.br)</p>
+			<p>Marcos Camargo (marcoscrcamargo@gmail.com)</p>
+			<p>Victor Forbes (victor.forbes@usp.br)</p>
+		</div>
+
+		<!-- Script para os slides. -->
+		<script src="../js/home.js"></script>
+	</body>
+</html>
