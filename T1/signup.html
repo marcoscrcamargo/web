@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- Título da página. -->
+		<!-- Título do site. -->
 		<title>Petshop</title>
-		<!-- Descrição da página. -->
-		<meta name="description" content="Pet shop home page.">
+		<!-- Descrição do site. -->
+		<meta name="description" content="Pet shop website.">
 		<!-- Charset utilizado. -->
 		<meta charset="utf-8">
 		<!-- Palavras chave. -->
@@ -57,35 +57,24 @@
 			<li class="navbar-item"><a class="navbar-link" href="#">Services</a></li>
 			<li class="navbar-item"><a class="navbar-link" href="#">Contact</a></li>
 		</ul>
+		<br>
 
-		<!-- Container dos slides. -->
-		<div class="slideshow-container">
-			<!-- Slide 0 -->
-			<div class="mySlides fade">
-				<img src="https://raw.githubusercontent.com/marcoscrcamargo/web/master/T1/img/auau.jpg" style="width:100%;height:100%;">
+		<form style="text-align: center">
+			<div>
+				<input type="text" name="username" placeholder="Username" required>
 			</div>
 
-			<!-- Slide 1 -->
-			<div class="mySlides fade">
-				<img src="https://raw.githubusercontent.com/marcoscrcamargo/web/master/T1/img/miau.jpg" style="width:100%;height:100%;">
+			<div>
+				<input type="text" name="email" placeholder="E-mail" required>
 			</div>
 
-			<!-- Slide 2 -->
-			<div class="mySlides fade">
-				<img src="https://raw.githubusercontent.com/marcoscrcamargo/web/master/T1/img/auau_miau.jpg" style="width:100%;height:100%;">
+			<div>
+				<input type="password" name="password" placeholder="Password" required>
 			</div>
 
-			<!-- Botões de navegação. -->
-			<a class="prev" onclick="prevSlide()">&#10094;</a>
-			<a class="next" onclick="nextSlide()">&#10095;</a>
-		</div>
-
-		<!-- Os pontos. -->
-		<div style="text-align:center">
-			<span class="dot" onclick="setSlide(0)"></span> 
-			<span class="dot" onclick="setSlide(1)"></span> 
-			<span class="dot" onclick="setSlide(2)"></span> 
-		</div>
+			<button>Sign Up</button>
+		</form>
+		<br>
 
 		<!-- Rodapé -->
 		<div class="footer">
@@ -96,6 +85,49 @@
 		</div>
 
 		<!-- Script para os slides. -->
-		<script src="slideshow.js"></script>
+		<script>
+			var slides, dots, curSlide;
+			
+			// Inicializando.
+			curSlide = 0;
+			slides = document.getElementsByClassName("mySlides");
+			dots = document.getElementsByClassName("dot");
+
+			// Mostrando o primeiro slide.
+			showSlide()
+
+			// Slide anterior.
+			function prevSlide() {
+				unshowSlide()
+				curSlide = (curSlide + 2) % 3
+				showSlide()
+			}
+
+			// Slide seguinte.
+			function nextSlide() {
+				unshowSlide()
+				curSlide = (curSlide + 1) % 3
+				showSlide()
+			}
+
+			// Seta o slide para o slide x.
+			function setSlide(x){
+				unshowSlide()
+				curSlide = x
+				showSlide()
+			}
+
+			// Desativa o slide atual.
+			function unshowSlide() {
+				slides[curSlide].style.display = "none";
+				dots[curSlide].className = dots[curSlide].className.replace(" active", "");
+			}
+
+			// Ativa o slide atual.
+			function showSlide() {
+				slides[curSlide].style.display = "block"; 
+				dots[curSlide].className += " active";
+			}
+		</script>
 	</body>
 </html>
