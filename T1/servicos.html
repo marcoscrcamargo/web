@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Charset utilizado. -->
+	<meta charset="utf-8">
+	<!-- Descrição do site. -->
+	<meta name="description" content="Pet shop website.">
+	<!-- Palavras chave. -->
+	<meta name="keywords" content="Pet, Shop, Products, Services">
+	<!-- Autores. -->
+	<meta name="author" content="Marcos, Victor and Gabriel">
+	<!-- Viewport - instruções para dimensão e escala. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Referencia para o stylesheet. -->
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+	<!-- Título do site. -->
+	<title>Petshop</title>
+
+</head>
+<body>
+	<!-- Header. -->
+	<div class="row header justify">
+		<div class="row">
+			<a class="logo-text" href="#">
+				<img src="img/paw.png" class="logo" alt="logo">
+			Petshop
+			</a>
+		</div>
+		<div class="row">
+			<form class="row" action="#" method="get" accept-charset="utf-8">
+				<div class="column">
+					<input type="text" name="username" placeholder="Usuário" required>
+					<a class="under-login" href="#">Cadastrar</a>
+				</div>
+				<div class="column">
+					<input type="password" name="password" placeholder="Senha" required>
+					<a class="under-login" href="#">Esqueceu sua senha?</a>
+				</div>
+				<button type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+	<!-- Barra de navegação. -->
+		<ul class="navbar">
+			<li class="navbar-item"><a class="navbar-link" href="#">Página inicial</a></li>
+ 			<li class="navbar-item"><a class="navbar-link" href="#Products">Produtos</a></li>
+			<li class="navbar-item active"><a class="navbar-link" href="#Services">Serviços</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#Animais">Animais</a></li>
+		</ul>
+
+	<!-- Conteúdo -->
+	<div class="container main-content column">
+    	<div class="column">
+			<h3>Serviços</h3>
+		    <div class="row service-list">
+				<div class="service">
+					<div class="column service-item">
+						<h4>Tosa</h4>
+			            <p href="#"> Temos profissionais qualificados para cuidar da beleza do seu bichinho! </p>
+						<img src="img/tosa.jpg" alt=""/>
+						<button type="submit">Agendar</button>
+					</div>
+				</div>
+				<div class="service">
+					<div class="column service-item">
+						<h4>Castração</h4>
+			            <p href="#"> Realizamos o procedimento de forma segura no seu bichinho! </p>
+						<img src="img/castracao.jpg" alt=""/>
+						<button type="submit">Agendar</button>
+					</div>
+				</div>
+				<div class="service">
+					<div class="column service-item">
+						<h4>Banho</h4>
+			            <p href="#"> Deixamos o seu bichinho limpinho e cheiroso por um preço justo! </p>
+						<img src="img/banho.jpg" alt=""/>
+						<button type="submit">Agendar</button>
+					</div>
+				</div>
+				<div class="service">
+					<div class="column service-item">
+						<h4>Vacinação</h4>
+			            <p href="#"> Aplicamos vacinas para deixar seu bichinho sempre protegido e saudável! </p>
+						<img src="img/vacinacao.jpg" alt=""/>
+						<button type="submit">Agendar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- Rodapé -->
+  	<div class="footer">
+		<h3>Equipe</h3>
+		<p>Gabriel Camargo (gabrielcamargo@usp.br)</p>
+		<p>Marcos Camargo (marcoscrcamargo@gmail.com)</p>
+		<p>Victor Forbes (victor.forbes@usp.br)</p>
+		<h1></h1>
+	</div>
+</body>
+</html>
