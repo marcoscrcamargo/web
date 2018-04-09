@@ -126,6 +126,10 @@ body {
 	margin-bottom: 5px;
 }
 
+.main-content img{
+	width: 25%;
+}
+
 .main-content h3{
 	color: #1976d2;
 	text-align: center

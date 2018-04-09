@@ -6,6 +6,7 @@ Gabriel Camargo - 9293456
 (User) cart: Para realizar o pagamento dos produtos selecionados na página "products" (ao clicar "Go to Cart" na página "products").
 (Admin) edit_product: Para editar um produto.
 (Admin) edit_service: Para editar um serviço.
+(Admin) gains: Dados sobre as vendas do Pet Shop (ao clicar em "Sales data" da página "management").
 (Any) home: Página inicial.
 (Admin) home_admin: Página inicial logado como Admin.
 (User) home_user: Página inicial logado como Usuário.
