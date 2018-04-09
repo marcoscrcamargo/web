@@ -6,27 +6,27 @@ slides = document.getElementsByClassName("mySlides");
 dots = document.getElementsByClassName("dot");
 
 // Mostrando o primeiro slide.
-showSlide()
+showSlide();
 
 // Slide anterior.
 function prevSlide() {
-	unshowSlide()
-	curSlide = (curSlide + 2) % 3
-	showSlide()
+	unshowSlide();
+	curSlide = (curSlide + 2) % 3;
+	showSlide();
 }
 
 // Slide seguinte.
 function nextSlide() {
-	unshowSlide()
-	curSlide = (curSlide + 1) % 3
-	showSlide()
+	unshowSlide();
+	curSlide = (curSlide + 1) % 3;
+	showSlide();
 }
 
 // Seta o slide para o slide x.
 function setSlide(x){
-	unshowSlide()
-	curSlide = x
-	showSlide()
+	unshowSlide();
+	curSlide = x;
+	showSlide();
 }
 
 // Desativa o slide atual.
