@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Título do site. -->
+		<title>Petshop</title>
+		<!-- Descrição do site. -->
+		<meta name="description" content="Pet shop website.">
+		<!-- Charset utilizado. -->
+		<meta charset="utf-8">
+		<!-- Palavras chave. -->
+		<meta name="keywords" content="Pet, Shop, Products, Services">
+		<!-- Autores. -->
+		<meta name="author" content="Marcos, Victor and Gabriel">
+		<!-- Viewport - instruções para dimensão e escala. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- External CSS -->
+		<link rel="stylesheet" href="../css/style.css">
+	</head>
+	<body>
+		<!-- Header. -->
+		<div class="row header justify">
+			<!-- Logo. -->
+			<div class="row">
+				<a class="logo-text" href="#">
+				<img src="../images/paw.png" class="logo-image" alt="Logo">
+				Petshop
+				</a>
+			</div>
+
+			<!-- Campo de Login -->
+			<div class="row">
+				<!-- Informações que são enviadas para o server -->
+				<form class="row" action="#" method="get" accept-charset="utf-8">
+					<!-- Usuário -->
+					<div class="column">
+						<input class="header-login" type="text" name="username" placeholder="Username" required>
+						<a class="under-login" href="#">Sign Up</a>
+					</div>
+
+					<!-- Senha -->
+					<div class="column">
+						<input class="header-login" type="password" name="password" placeholder="Password" required>
+						<a class="under-login" href="#">Forgot Password?</a>
+					</div>
+
+					<!-- Botão de Login -->
+					<button class="login-button" type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- Barra de navegação. -->
+		<ul class="navbar">
+			<!-- Links para as páginas -->
+			<li class="navbar-item active"><a class="navbar-link" href="#">Home</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#">Products</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#">Services</a></li>
+		</ul>
+
+		<form class="form-global" style="text-align: center">
+			<div>
+				<input type="text" name="name" placeholder="Name" required>
+			</div>
+
+			<div>
+				<input type="text" name="description" placeholder="Description">
+			</div>
+
+			<div>
+				<input type="text" name="price" placeholder="Price" required>
+			</div>
+
+			<div>
+				<button class="button-global">Upload a photo</button>
+			</div>
+
+			<button class="button-global">Sign Up</button>
+		</form>
+		<br>
+
+		<!-- Rodapé -->
+		<div class="footer">
+			<h3>Our Team</h3>
+			<p>Gabriel Camargo (gabrielcamargo@usp.br)</p>
+			<p>Marcos Camargo (marcoscrcamargo@gmail.com)</p>
+			<p>Victor Forbes (victor.forbes@usp.br)</p>
+		</div>
+	</body>
+</html>

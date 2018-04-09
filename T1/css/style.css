@@ -1,0 +1,177 @@
+/* Corpo do HTML. */
+body {
+	background-color: #DDDDDD;
+	font-size: 4vmin;
+	margin: 0vh 0vw;
+}
+
+/* Linha. */
+.row {
+	display: flex;
+	flex-direction: row;]
+}
+
+/* Coluna. */
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Justificação. */
+.justify {
+	justify-content: space-between;
+}
+
+/* Cabeçalho da página. */
+.header {
+	background-color: #ffc107;
+	color: #1976d2;
+	padding: 3vh 3vw;
+}
+
+/* Imagem do logo. */
+.logo-image {
+	width: 7vmin;
+	height: 7vmin;
+}
+
+/* Texto do logo. */
+.logo-text {
+	text-decoration: none;
+	color: #1976d2;
+}
+
+/* Campo de login do cabeçalho. */
+.header-login {
+	padding: 1.5vh 2.5vw;
+	display: inline-block;
+	height: 3vh;
+	width: 10vw;
+	font-size: 2vmin;
+}
+
+/* Botão de login. */
+.login-button {
+	background-color:#1976d2;
+	color: white;
+	padding: 0vh 2vw;
+	border: none;
+	cursor: pointer;
+	height: 6vh;
+	width: 10vw;
+	font-size: 2vmin;
+}
+
+/* Ao passar o mouse por cima do botão de login. */
+.login-button:hover {
+	opacity: 0.8;
+}
+
+/* Texto em baixo do login. */
+.under-login {
+	font-size: 2vmin;
+}
+
+/* Barra de navegação. */
+.navbar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #1976d2;
+	top: 0;
+}
+
+/* Item da barra de navegação. */
+.navbar-item {
+	float: left;
+}
+
+/* Link da barra de navegação. */
+.navbar-link {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 2vh 1vw;
+	text-decoration: none;
+}
+
+/* Quando o mouse estiver em cima de algum link da barra de navegação.*/
+.navbar-link:hover {
+	background-color: #FFFFFF;
+	color: #1976d2;
+}
+
+/* Quando um item da barra de navegação estiver ativo. */
+.navbar .active {
+	background-color: #03A9F4;
+	color: #1976d2;
+}
+
+/* Rodapé da página. */
+.footer {
+	background-color: #ffc107;
+	color: #1976d2;
+	text-align: left;
+	padding: 3vh 3vw;
+	font-size: 2vmin;
+	line-height: 80%;
+}
+
+/* Para produtos. */
+.main-content {
+	background-color: white;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.main-content h3{
+	color: #1976d2;
+	text-align: center
+}
+
+.button-global {
+	background-color:#1976d2;
+	color: white;
+	padding: 0vh 2vw;
+	border: none;
+	cursor: pointer;
+	height: 6vh;
+	width: 10vw;
+	font-size: 2vmin;
+}
+
+.button-global:hover{
+	opacity: 0.8;
+}
+
+.form-global input[type="text"], .form-global input[type="password"] {
+	width: 70%;
+	width: 30%;
+	padding: 3vh 1.5vw;
+	margin: 0px 0;
+	display: inline-block;
+	box-sizing: border-box;
+	font-size: 2vmin;
+}
+
+.form-global button {
+	width: 70%;
+	width: 30%;
+	background-color:#1976d2;
+	color: white;
+	padding: 1.5vh 2vh;
+	margin: 2vh 0vw;
+	border: none;
+	cursor: pointer;
+	font-size: 2vmin;
+}
+
+.form-global button:hover {
+	opacity: 0.8;
+}
+
+.container {
+	display: flex;
+}

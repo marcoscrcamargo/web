@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+	<!-- Charset utilizado. -->
+	<meta charset="utf-8">
+	<!-- Descrição do site. -->
+	<meta name="description" content="Pet shop website.">
+	<!-- Palavras chave. -->
+	<meta name="keywords" content="Pet, Shop, Products, Services">
+	<!-- Autores. -->
+	<meta name="author" content="Marcos, Victor and Gabriel">
+	<!-- Viewport - instruções para dimensão e escala. -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Referencia para o stylesheet. -->
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/services.css">
+
+	<!-- Título do site. -->
+	<title>Petshop</title>
+</head>
+<body>
+	<!-- Header. -->
+	<div class="row header justify">
+		<!-- Logo. -->
+		<div class="row">
+			<a class="logo-text" href="#">
+			<img src="../images/paw.png" class="logo-image" alt="Logo">
+			Petshop
+			</a>
+		</div>
+
+		<!-- Campo de Login -->
+		<div class="row">
+			<!-- Informações que são enviadas para o server -->
+			<form class="row" action="#" method="get" accept-charset="utf-8">
+				<!-- Usuário -->
+				<div class="column">
+					<input class="header-login" type="text" name="username" placeholder="Username" required>
+					<a class="under-login" href="#">Sign Up</a>
+				</div>
+
+				<!-- Senha -->
+				<div class="column">
+					<input class="header-login" type="password" name="password" placeholder="Password" required>
+					<a class="under-login" href="#">Forgot Password?</a>
+				</div>
+
+				<!-- Botão de Login -->
+				<button class="login-button" type="submit">Login</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Barra de navegação. -->
+	<ul class="navbar">
+		<!-- Links para as páginas -->
+		<li class="navbar-item active"><a class="navbar-link" href="#">Home</a></li>
+		<li class="navbar-item"><a class="navbar-link" href="#">Products</a></li>
+		<li class="navbar-item"><a class="navbar-link" href="#">Services</a></li>
+	</ul>
+
+	<!-- Conteúdo -->
+	<div class="container main-content column">
+		<div class="column">
+			<h3>Services</h3>
+			<div class="row service-list">
+				<div class="service">
+					<div class="column service-item">
+						<h4>Grooming</h4>
+						<p href="#"> We have the best professionals to take care of your pet's hair! </p>
+						<img src="../images/tosa.jpg" alt=""/>
+						<button type="submit">Schedule</button>
+					</div>
+				</div>
+				<div class="service">
+					<div class="column service-item">
+						<h4>Castration</h4>
+						<p href="#"> We have the best doctors to make the procedure safely! </p>
+						<img src="../images/castracao.jpg" alt=""/>
+						<button type="submit">Schedule</button>
+					</div>
+				</div>
+				<div class="service">
+					<div class="column service-item">
+						<h4>Bath</h4>
+						<p href="#"> We leave your pet clean and smelling good for a fair price! </p>
+						<img src="../images/banho.jpg" alt=""/>
+						<button type="submit">Schedule</button>
+					</div>
+				</div>
+				<div class="service">
+					<div class="column service-item">
+						<h4>Vaccination</h4>
+						<p href="#"> We apply vaccines to keep your pet always protected and healthy! </p>
+						<img src="../images/vacinacao.jpg" alt=""/>
+						<button type="submit">Schedule</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Rodapé -->
+	<div class="footer">
+		<h3>Our Team</h3>
+		<p>Gabriel Camargo (gabrielcamargo@usp.br)</p>
+		<p>Marcos Camargo (marcoscrcamargo@gmail.com)</p>
+		<p>Victor Forbes (victor.forbes@usp.br)</p>
+	</div>
+</body>
+</html>
