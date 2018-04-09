@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Título do site. -->
+		<title>Petshop</title>
+		<!-- Descrição do site. -->
+		<meta name="description" content="Pet shop website.">
+		<!-- Charset utilizado. -->
+		<meta charset="utf-8">
+		<!-- Palavras chave. -->
+		<meta name="keywords" content="Pet, Shop, Products, Services">
+		<!-- Autores. -->
+		<meta name="author" content="Marcos, Victor and Gabriel">
+		<!-- Viewport - instruções para dimensão e escala. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- External CSS -->
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/calendar.css">
+	</head>
+	<body>
+		<!-- Header. -->
+		<div class="row header justify">
+			<!-- Logo. -->
+			<div class="row">
+				<a class="logo-text" href="#">
+				<img src="../images/paw.png" class="logo-image" alt="Logo">
+				Petshop
+				</a>
+			</div>
+
+			<!-- Campo de Login -->
+			<div class="row">
+				<!-- Informações que são enviadas para o server -->
+				<form class="row" action="#" method="get" accept-charset="utf-8">
+					<!-- Usuário -->
+					<div class="column">
+						<input class="header-login" type="text" name="username" placeholder="Username" required>
+						<a class="under-login" href="#">Sign Up</a>
+					</div>
+
+					<!-- Senha -->
+					<div class="column">
+						<input class="header-login" type="password" name="password" placeholder="Password" required>
+						<a class="under-login" href="#">Forgot Password?</a>
+					</div>
+
+					<!-- Botão de Login -->
+					<button class="login-button" type="submit">Login</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- Barra de navegação. -->
+		<ul class="navbar">
+			<!-- Links para as páginas -->
+			<li class="navbar-item active"><a class="navbar-link" href="#">Home</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#">Products</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="#">Services</a></li>
+		</ul>
+
+		<div class="container main-content column">
+			<div class="column">
+				<h3>Bath Calendar</h3>
+			</div>
+		</div>
+
+		<div class="month">      
+		  <ul>
+		    <li class="prev">&#10094;</li>
+		    <li class="next">&#10095;</li>
+		    <li>
+		      April<br>
+		      <span style="font-size:18px">2018</span>
+		    </li>
+		  </ul>
+		</div>
+
+		<ul class="weekdays">
+		  <li>Mo</li>
+		  <li>Tu</li>
+		  <li>We</li>
+		  <li>Th</li>
+		  <li>Fr</li>
+		  <li>Sa</li>
+		  <li>Su</li>
+		</ul>
+
+		<ul class="days">  
+		  <li>26</li>
+		  <li>27</li>
+		  <li>28</li>
+		  <li>29</li>
+		  <li>30</li>
+		  <li>31</li>
+		  <li style="background-color: #cccccc;">1</li>
+		  <li style="background-color: #cccccc;">2</li>
+		  <li style="background-color: #cccccc;">3</li>
+		  <li style="background-color: #cccccc;">4</li>
+		  <li style="background-color: #cccccc;">5</li>
+		  <li style="background-color: #cccccc;">6</li>
+		  <li style="background-color: #cccccc;">7</li>
+		  <li style="background-color: #cccccc;">8</li>
+		  <li style="background-color: #cccccc;"><span class="active">9</span></li>
+		  <li style="background-color: #cccccc;">10</li>
+		  <li style="background-color: #cccccc;">11</li>
+		  <li style="background-color: #cccccc;">12</li>
+		  <li style="background-color: #cccccc;">13</li>
+		  <li style="background-color: #cccccc;">14</li>
+		  <li style="background-color: #cccccc;">15</li>
+		  <li style="background-color: #cccccc;">16</li>
+		  <li style="background-color: #cccccc;">17</li>
+		  <li style="background-color: #cccccc;">18</li>
+		  <li style="background-color: #cccccc;">19</li>
+		  <li style="background-color: #cccccc;">20</li>
+		  <li style="background-color: #cccccc;">21</li>
+		  <li style="background-color: #cccccc;">22</li>
+		  <li style="background-color: #cccccc;">23</li>
+		  <li style="background-color: #cccccc;">24</li>
+		  <li style="background-color: #cccccc;">25</li>
+		  <li style="background-color: #cccccc;">26</li>
+		  <li style="background-color: #cccccc;">27</li>
+		  <li style="background-color: #cccccc;">28</li>
+		  <li style="background-color: #cccccc;">29</li>
+		  <li style="background-color: #cccccc;">30</li>
+		  <li>1</li>
+		  <li>2</li>
+		  <li>3</li>
+		  <li>4</li>
+		  <li>5</li>
+		  <li>6</li>
+		</ul>
+
+		<div class="column" style="text-align: center;">
+			<h4>Available time slots:</h3>
+		</div>
+
+		<div class="custom-select" style="width:60%;">
+			<select>
+				<option>Select</option>
+				<option>9h00</option>
+				<option>9h30</option>
+				<option>10h00</option>
+				<option>10h30</option>
+			</select>
+		</div>
+
+		<br>
+		<br>
+		<form class="form-global" style="text-align: center">
+			<button class="button-global">Schedule</button>
+		</form>
+
+		<br>
+		<script src="../js/calendar.js">
+		</script>
+
+		<!-- Rodapé -->
+		<div class="footer">
+			<h3>Our Team</h3>
+			<p>Gabriel Camargo (gabrielcamargo@usp.br)</p>
+			<p>Marcos Camargo (marcoscrcamargo@gmail.com)</p>
+			<p>Victor Forbes (victor.forbes@usp.br)</p>
+		</div>
+	</body>
+</html>
