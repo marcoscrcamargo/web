@@ -1,32 +1,33 @@
 import React from 'react';
-import Slider from './Slider/Slider.js'
+import {Row, Slider, Slide} from 'react-materialize'
 
-
-import './../css/home.css';
 
 export default class Home extends React.Component {
 
 	render() {
-		var slideStyle = {
-			width: '100%',
-			height: '100%',
-		};
-		var dotStyle = {
-			'text-align': 'center'
-		};
-
 		return (
-			<div>
-				<Slider />
-				{
-				/*
-				<div style={dotStyle}>
-					<span className="dot" onclick="setSlide(0)"></span>
-					<span className="dot" onclick="setSlide(1)"></span>
-					<span className="dot" onclick="setSlide(2)"></span>
-				</div>
-				*/
-				}
+			<div className="container">
+			<Row style={{'margin-top':'20px'}}>
+				<Slider>
+					<Slide
+						src={require('../img/auau.jpg')}
+						title="This is our big Tagline!">
+						Here's our small slogan.
+					</Slide>
+					<Slide
+						src={require('../img/miau.jpg')}
+						title="Left aligned Caption"
+						placement="left">
+						Here's our small slogan.
+					</Slide>
+					<Slide
+						src={require('../img/auau_miau.jpg')}
+						title="Right aligned Caption"
+						placement="right">
+						Here's our small slogan.
+					</Slide>
+				</Slider>
+			</Row>
 			</div>
 		);
 	}

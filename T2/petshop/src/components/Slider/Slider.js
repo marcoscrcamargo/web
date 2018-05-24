@@ -11,7 +11,7 @@ export default class Slider extends React.Component {
 		super(props);
 
 		this.state = {
-			slideCount: 1
+			slideCount: 2
 		}
 		this.nextSlide = this.nextSlide.bind(this)
 		this.previousSlide = this.previousSlide.bind(this)
