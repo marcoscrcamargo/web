@@ -11,7 +11,7 @@ import Home from './Home.js';
 import Products from './Products.js';
 import Services from './Services.js';
 
-import './style.css';
+import './../css/style.css';
 
 export default class Main extends React.Component {
 	componentWillMount() {
