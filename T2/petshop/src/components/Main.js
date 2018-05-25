@@ -23,13 +23,13 @@ export default class Main extends React.Component {
 			<div>
 				{/*<Header />*/}
 				<Header/>
-				<Navbar className="red lighten-2" brand='logo' left
+				<Navbar className="red lighten-2" brand='Petshop' left
 					options={{closeOnClick: true, draggable: true}}
 				>
-					<NavItem><NavLink className="red lighten-2" exact to="/">Home</NavLink></NavItem>
-					<NavItem><NavLink className="red lighten-2" to="/products">Products</NavLink></NavItem>
-					<NavItem><NavLink className="red lighten-2" to="/services">Services</NavLink></NavItem>
-					<NavItem><NavLink className="red lighten-2 hide-on-large-only" to="/services">Login</NavLink></NavItem>
+					<NavItem className="red lighten-2"><NavLink exact to="/">Home</NavLink></NavItem>
+					<NavItem className="red lighten-2"><NavLink to="/products">Products</NavLink></NavItem>
+					<NavItem className="red lighten-2"><NavLink to="/services">Services</NavLink></NavItem>
+					<NavItem className="red lighten-2"><NavLink className="hide-on-large-only" to="/services">Login</NavLink></NavItem>
 				</Navbar>
 
 				<div className="content">

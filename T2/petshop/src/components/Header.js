@@ -26,11 +26,11 @@ export default class Header extends React.Component {
 
 		return (
 
-		<Row className="valign-wrapper hide-on-small-only">
+		<Row className="valign-wrapper hide-on-med-and-down">
 			<Col s={7} m={4} l={7} className="left">
 				<NavLink exact to="/">
 					<Row className="valign-wrapper">
-						<img className="responsive-img" src={require('../img/paw.png')} style={styleImg}alt="Logo"/>
+						<img className="responsive-img" src={require('../img/paw.png')} style={styleImg} alt="Logo"/>
 						<span style={styleLogo}>Petshop</span>
 					</Row>
 				</NavLink>
