@@ -22,11 +22,14 @@ export default class Main extends React.Component {
 		<HashRouter>
 			<div>
 				{/*<Header />*/}
-				<Header />
-				<Navbar brand='logo' left>
-					<NavItem><NavLink className="navbar-link" exact to="/">Home</NavLink></NavItem>
-					<NavItem><NavLink className="navbar-link" to="/products">Products</NavLink></NavItem>
-					<NavItem><NavLink className="navbar-link" to="/services">Services</NavLink></NavItem>
+				<Header/>
+				<Navbar className="red lighten-2" brand='logo' left
+					options={{closeOnClick: true, draggable: true}}
+				>
+					<NavItem><NavLink className="red lighten-2" exact to="/">Home</NavLink></NavItem>
+					<NavItem><NavLink className="red lighten-2" to="/products">Products</NavLink></NavItem>
+					<NavItem><NavLink className="red lighten-2" to="/services">Services</NavLink></NavItem>
+					<NavItem><NavLink className="red lighten-2 hide-on-large-only" to="/services">Login</NavLink></NavItem>
 				</Navbar>
 
 				<div className="content">

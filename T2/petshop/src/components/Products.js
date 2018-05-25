@@ -22,12 +22,12 @@ export default class Products extends React.Component {
 
 		];
 
-		let productList = products.map(function(prod) {
+		let productList = products.map((prod) => {
 				return (
-					<Col s={2}>
+					<Col s={6} m={4} l={2} >
 						<Card className='small'
 							header={<CardTitle image={prod.img_file}></CardTitle>}
-							actions={[<a href='#'>{prod.price} Buy</a>]}>
+							actions={[<a href=''>{prod.price} Buy</a>]}>
 							{prod.description}.
 						</Card>
 					</Col>)

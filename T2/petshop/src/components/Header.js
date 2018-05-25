@@ -1,16 +1,15 @@
 import React from 'react';
 import {Row, Col, Input, Button} from 'react-materialize';
-import {Route, NavLink, HashRouter} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 export default class Header extends React.Component {
 	render() {
 		let styleImg = {
-			width: '10%',
-			height: '20%'
+			'max-width': '100px',
 		}
 
 		let styleLoginRow = {
-			'margin-bottom': '0px'
+			'margin': '0px'
 		}
 		let styleLoginRowM = {
 			'margin-left': '10px'
@@ -20,29 +19,34 @@ export default class Header extends React.Component {
 			'font-size': 'x-small'
 		}
 
+		let styleLogo = {
+			'font-size': 'x-large',
+			'padding': '10px',
+		}
+
 		return (
 
-		<Row className="valign-wrapper">
-			<Col s={4}>
-			<NavLink className="navbar-link" exact to="/">
-				<img className="responsive-img" src={require('../img/paw.png')} style={styleImg} alt="Logo"/>
-				Petshop
-			</NavLink>
+		<Row className="valign-wrapper hide-on-small-only">
+			<Col s={7} m={4} l={7} className="left">
+				<NavLink exact to="/">
+					<Row className="valign-wrapper">
+						<img className="responsive-img" src={require('../img/paw.png')} style={styleImg}alt="Logo"/>
+						<span style={styleLogo}>Petshop</span>
+					</Row>
+				</NavLink>
 			</Col>
-			<Col s={4}>
-			</Col>
-			<Col s={4} >
-				<Row className="center-align valign-wrapper">
-					<Col className="left-align">
-						<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" /></Row>
-						<Row className="left-align" style={styleLoginRowM}><a  style={styleLoginLink}>Sign Up</a></Row>
-					</Col>
-					<Col >
-						<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" /></Row>
-						<Row className="left-align" style={styleLoginRowM}><a  style={styleLoginLink}>Forgot Password?</a></Row>
-					</Col>
+			<Col s={5} m={8} l={5} className="right styleLoginRow">
+				<Col s={8} m={8} l={4} className="left-align">
+					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" /></Row>
+					<Row className="left-align" style={styleLoginRowM}><a  style={styleLoginLink}>Sign Up</a></Row>
+				</Col>
+				<Col s={8} m={8} l={4}>
+					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" /></Row>
+					<Row className="left-align" style={styleLoginRowM}><a  style={styleLoginLink}>Forgot Password?</a></Row>
+				</Col>
+				<Col s={8} m={8} l={3}>
 					<Button waves='light'>Login</Button>
-				</Row>
+				</Col>
 			</Col>
 
 		{/*
