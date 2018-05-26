@@ -24,6 +24,34 @@ export default class Header extends React.Component {
 			'padding': '10px',
 		}
 
+		const isLoggedIn = (this.props.user !== null);
+
+		const profileLogin = isLoggedIn ? (
+			<Col s={5} m={8} l={5}>
+				<Row className="right">
+					<NavLink to="/profile">
+						<img src={this.props.user.picture} width="100" alt="profile_picture"/>
+						<p>{this.props.user.name}</p>
+					</NavLink>
+					<Button waves='light' onClick={this.props.onClickLogout}>Logout</Button>
+				</Row>
+			</Col>
+		) : (
+			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper">
+				<Col s={8} m={8} l={4} className="left-align">
+					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" /></Row>
+					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" style={styleLoginLink}>Sign Up</NavLink></Row>
+				</Col>
+				<Col s={8} m={8} l={4}>
+					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" /></Row>
+					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" style={styleLoginLink}>Forgot Password?</NavLink></Row>
+				</Col>
+				<Col s={8} m={8} l={3}>
+					<Button waves='light' onClick={this.props.onClickLogin}>Login</Button>
+				</Col>
+			</Col>
+		);
+
 		return (
 
 		<Row className="valign-wrapper hide-on-med-and-down">
@@ -35,43 +63,7 @@ export default class Header extends React.Component {
 					</Row>
 				</NavLink>
 			</Col>
-			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper">
-				<Col s={8} m={8} l={4} className="left-align">
-					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" /></Row>
-					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" style={styleLoginLink}>Sign Up</NavLink></Row>
-				</Col>
-				<Col s={8} m={8} l={4}>
-					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" /></Row>
-					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" style={styleLoginLink}>Forgot Password?</NavLink></Row>
-				</Col>
-				<Col s={8} m={8} l={3}>
-					<Button waves='light'>Login</Button>
-				</Col>
-			</Col>
-
-		{/*
-				<a className="logo-text" href="#">
-				<img src={require('../img/paw.png')} style={styleImg} alt="Logo"/>
-				Petshop
-				</a>
-
-
-			<form className="row" action="#" method="get" accept-charset="utf-8">
-					<div className="column">
-						<input className="header-login" type="text" name="username" placeholder="Username" required />
-						<a className="under-login" href="#">Sign Up</a>
-					</div>
-
-					<div className="column">
-						<input className="header-login" type="password" name="password" placeholder="Password" required />
-						<a className="under-login" href="#">Forgot Password?</a>
-					</div>
-
-					<button className="login-button" type="submit">Login</button>
-				</form>
-
-
-		*/}
+			{profileLogin}
 		</Row>
 
 

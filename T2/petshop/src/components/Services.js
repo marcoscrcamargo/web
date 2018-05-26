@@ -38,7 +38,7 @@ export default class Services extends React.Component {
 							header={<CardTitle image={service.img_file}></CardTitle>}
 							actions={[<a href=''>{service.price} Schedule</a>]}>
 							<h5>{service.title}</h5>
-							{service.description}.
+							{service.description}
 						</Card>
 					</Col>)
 			});

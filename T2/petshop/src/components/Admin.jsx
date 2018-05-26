@@ -62,8 +62,8 @@ export default class Signup extends React.Component {
 
 								<tbody>
 									{usersTable}
-									<Button>New user</Button>
 								</tbody>
+								<Button>New user</Button>
 							</Table>
 					</Tab>
 					<Tab title="Products">Products</Tab>
