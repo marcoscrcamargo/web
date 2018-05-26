@@ -2,10 +2,10 @@ import React from 'react';
 import { Navbar, NavItem, Footer, Container} from 'react-materialize';
 import { Route, NavLink, HashRouter} from 'react-router-dom';
 
-import Header from './Header.js'
-import Home from './Home.js';
-import Products from './Products.js';
-import Services from './Services.js';
+import Header from './Header.jsx'
+import Home from './Home.jsx';
+import Products from './Products.jsx';
+import Services from './Services.jsx';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import ForgotPassword from './ForgotPassword.jsx';
