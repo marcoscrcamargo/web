@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, NavItem, Footer, Container } from 'react-materialize';
+import { Navbar, NavItem, Footer, Container, Row} from 'react-materialize';
 import { Route, NavLink, HashRouter} from 'react-router-dom';
 
 import Header from './Header.js'
@@ -9,6 +9,7 @@ import Services from './Services.js';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import ForgotPassword from './ForgotPassword.jsx';
+import Admin from './Admin.jsx';
 
 
 export default class Main extends React.Component {
@@ -38,6 +39,7 @@ export default class Main extends React.Component {
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
 					<Route path="/forgot_password" component={ForgotPassword} />
+					<Route path="/admin" component={Admin} />
 				</Container>
 
 				<Footer copyrights="2018 Copyright Text"
