@@ -1,10 +1,19 @@
 # Introdução ao desenvolvimento WEB
-## Hypertext Transfer Protocol
+Esse repositório foi usado para a matéria de introdução ao desenvolvimento WEB, contendo um trabalho dividido em duas etapas:
+
+* Etapa 1: Construção de um [Mockup](https://github.com/marcoscrcamargo/web/tree/master/T1) usando HTML e CSS para testar os conhecimentos adquirido sobre essas linguagens, sem a utilização de nenhum framework adicional .
+
+* Etapa 2: Construção de uma [Single Page Application (SPA)](https://github.com/marcoscrcamargo/web/tree/master/T2/petshop) utilizando ReactJS e MaterializeCSS.
+
+
+## Notas de aula
+
+### Hypertext Transfer Protocol
 O HTTP é o protocolo da camada de aplicação do modelo OSI utilizado para transferencia de documentos de hipermidia, como o HTML. Foi desenvolvido para a comunicação de web browser e servidores, segue o modelo clássico cliente-servidor. É um protocolo *connectionless* e *stateless* (que não mantém nenhum dado entre os requests) e baseado na conecção (quando uma mensagem http é enviada e recebida por completo, *request* e *response*, a conecção **TCP/IP** é fechada).
 
 O tipo de dados é definido pelo campo *content-type* no Header, cujo propósito é descrever os dados contidos no corpo da resposta ou requisição.
 
-## Tipos de requisições HTML
+### Tipos de requisições HTML
 * **GET**: Requisita um representação do recurso especificado (O mesmo recurso pode ter várias representações, ao exemplo de serviços que retornam XML e JSON).
 * **HEAD**: Retorna os cabeçalhos de uma resposta (sem o corpo contendo o recurso)
 * **POST**: Envia uma entidade e requisita que o servidor aceita-a como subordinada do recurso identificado pela URI.
