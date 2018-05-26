@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col, Input, Button} from 'react-materialize';
+import {NavLink} from 'react-router-dom';
 
 export default class Login extends React.Component{
 	render() {
@@ -15,9 +16,9 @@ export default class Login extends React.Component{
 		return(
 			<Col s={8} m={8} l={8} className="center">
 				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Username" /></Col></Row>
-				<Row style={styleLoginRow}><Col s ={8} m={8} l={8} offset="s4 m4 l4"><a style={styleLoginLink}>Sign Up</a></Col></Row>
+				<Row style={styleLoginRow}><Col s ={8} m={8} l={8} offset="s4 m4 l4"><NavLink to="/signup" style={styleLoginLink}>Sign Up</NavLink></Col></Row>
 				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="password" label="Password" /></Col></Row>
-				<Row style={styleLoginRow}><Col s ={8} m={8} l={8} offset="s4 m4 l4"><a style={styleLoginLink}>Forgot Password?</a></Col></Row>
+				<Row style={styleLoginRow}><Col s ={8} m={8} l={8} offset="s4 m4 l4"><NavLink to="/forgot_password" style={styleLoginLink}>Forgot Password?</NavLink></Col></Row>
 				<Row><Button waves='light'>Login</Button></Row>
 			</Col>
 		);

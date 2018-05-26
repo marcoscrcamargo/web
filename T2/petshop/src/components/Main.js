@@ -7,6 +7,8 @@ import Home from './Home.js';
 import Products from './Products.js';
 import Services from './Services.js';
 import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+import ForgotPassword from './ForgotPassword.jsx';
 
 
 export default class Main extends React.Component {
@@ -34,6 +36,8 @@ export default class Main extends React.Component {
 					<Route path="/products" component={Products} />
 					<Route path="/services" component={Services} />
 					<Route path="/login" component={Login} />
+					<Route path="/signup" component={Signup} />
+					<Route path="/forgot_password" component={ForgotPassword} />
 				</Container>
 
 				<Footer copyrights="2018 Copyright Text"
