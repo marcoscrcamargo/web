@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Card, CardTitle} from 'react-materialize';
+import {Row, Col, Card, CardTitle} from 'react-materialize';
 
 export default class Services extends React.Component {
 	render() {
@@ -44,11 +44,9 @@ export default class Services extends React.Component {
 			});
 
 		return (
-			<Container>
-				<Row>
-					{serviceList}
-				</Row>
-			</Container>
+			<Row>
+				{serviceList}
+			</Row>
 		);
 	}
 }

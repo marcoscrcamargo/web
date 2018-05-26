@@ -35,7 +35,7 @@ export default class Header extends React.Component {
 					</Row>
 				</NavLink>
 			</Col>
-			<Col s={5} m={8} l={5} className="right styleLoginRow">
+			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper">
 				<Col s={8} m={8} l={4} className="left-align">
 					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" /></Row>
 					<Row className="left-align" style={styleLoginRowM}><a  style={styleLoginLink}>Sign Up</a></Row>

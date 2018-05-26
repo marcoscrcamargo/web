@@ -6,7 +6,6 @@ export default class Home extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
 			<Row style={{'margin-top':'20px'}}>
 				<Slider>
 					<Slide
@@ -28,7 +27,6 @@ export default class Home extends React.Component {
 					</Slide>
 				</Slider>
 			</Row>
-			</div>
 		);
 	}
 }

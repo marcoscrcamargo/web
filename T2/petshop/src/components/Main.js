@@ -1,15 +1,12 @@
 import React from 'react';
-import { Navbar, NavItem, Footer } from 'react-materialize';
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from 'react-router-dom';
+import { Navbar, NavItem, Footer, Container } from 'react-materialize';
+import { Route, NavLink, HashRouter} from 'react-router-dom';
 
 import Header from './Header.js'
 import Home from './Home.js';
 import Products from './Products.js';
 import Services from './Services.js';
+import Login from './Login.jsx';
 
 
 export default class Main extends React.Component {
@@ -29,14 +26,15 @@ export default class Main extends React.Component {
 					<NavItem className="red lighten-2"><NavLink exact to="/">Home</NavLink></NavItem>
 					<NavItem className="red lighten-2"><NavLink to="/products">Products</NavLink></NavItem>
 					<NavItem className="red lighten-2"><NavLink to="/services">Services</NavLink></NavItem>
-					<NavItem className="red lighten-2"><NavLink className="hide-on-large-only" to="/services">Login</NavLink></NavItem>
+					<NavItem className="red lighten-2"><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
 				</Navbar>
 
-				<div className="content">
+				<Container>
 					<Route exact path="/" component={Home} />
 					<Route path="/products" component={Products} />
 					<Route path="/services" component={Services} />
-				</div>
+					<Route path="/login" component={Login} />
+				</Container>
 
 				<Footer copyrights="2018 Copyright Text"
 					moreLinks={
