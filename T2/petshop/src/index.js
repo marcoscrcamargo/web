@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './components/Main.jsx'
+import DB from './components/DB.js'
+
 
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-	<Main />,
+	<Main db={new DB()}/>,
 	document.getElementById('root')
 );
 registerServiceWorker();

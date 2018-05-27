@@ -4,7 +4,7 @@ import {Row, Col, Input, Button} from 'react-materialize';
 export default class ForgotPassword extends React.Component {
 	render(){
 		let styleCol = {
-			'margin-top': '20px',
+			'marginTop': '20px',
 		}
 
 		return(

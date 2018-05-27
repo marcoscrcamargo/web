@@ -1,96 +1,30 @@
 import React from 'react';
 import {Tabs, Tab, Table, Button} from 'react-materialize';
 
-export default class Signup extends React.Component {
+export default class Admin extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			users: [],
+			products: [],
+			services: [],
+		};
+
+		this.props.db.getAllData('users').then(item => this.setState({ users: item }));
+		this.props.db.getAllData('products').then(item => this.setState({ products: item }));
+		this.props.db.getAllData('services').then(item => this.setState({ services: item }));
+	}
+
+
 	render(){
-		let users = [
-			{
-				id: '1',
-				name: 'Marcos Camargo',
-				phone: '14997189943',
-				username: 'marcoscrcamargo',
-				email: 'marcoscrcamargo@gmail.com',
-				password: 'admin',
-				admin: 'true',
-				adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-			},
-			{
-				id: '2',
-				name: 'Victor Forbes',
-				phone: '',
-				username: 'victorxjoey',
-				email: 'victor.forbes@usp.br',
-				password: 'admin',
-				admin: 'true',
-				adress: 'R. x'
-			},
-			{
-				id: '3',
-				name: 'Gabriel Camargo',
-				phone: '',
-				username: 'gabrielcamargo',
-				email: 'gabrielcamargos@usp.br',
-				password: 'admin',
-				admin: 'true',
-				adress: 'R. x'
-			},
-		];
+		let users = this.state.users;
+		let products = this.state.products;
+		let services = this.state.services;
 
-		let products = [
-			{
-				img_file: require('../img/prod.jpg'),
-				name: 'Ração X',
-				description: 'Ração pra animal doente1',
-				price: '55.00'
-			},
-			{
-				img_file: require('../img/prod.jpg'),
-				name: 'Ração X',
-				description: 'Ração pra animal doente2',
-				price: '35.00'
-			},
-			{
-				img_file: require('../img/prod.jpg'),
-				name: 'Ração X',
-				description: 'Ração pra animal doente1',
-				price: '55.00'
-			},
-
-		];
-
-		let services = [
-			{
-				title: 'Grooming',
-				img_file: require('../img/tosa.jpg'),
-				description: "We have the best professionals to take care of your pet's hair!",
-				price: '$10.00'
-			},
-			{
-				title: 'Castration',
-				img_file: require('../img/castracao.jpg'),
-				description: 'We have the best doctors to make the procedure safely!',
-				price: '$80.00'
-			},
-			{
-				title: 'Bath',
-				img_file: require('../img/banho.jpg'),
-				description: 'We leave your pet clean and smelling good for a fair price!',
-				price: '15.00'
-			},
-			{
-				title: 'Vaccination',
-				img_file: require('../img/vacinacao.jpg'),
-				description: 'We apply vaccines to keep your pet always protected and healthy!',
-				price: '20.00'
-			},
-
-		];
-
-
-
-		let usersTable = users.map((user) => {
+		let usersTable = users.map((user, index) => {
 			return (
-				<tr>
+				<tr key={index}>
 					<td>{user.name}</td>
 					<td>{user.username}</td>
 					<td><Button>Edit</Button></td>
@@ -98,9 +32,9 @@ export default class Signup extends React.Component {
 			)
 		});
 
-		let productsTable = products.map((prod) => {
+		let productsTable = products.map((prod, index) => {
 			return (
-				<tr>
+				<tr key={index}>
 					<td>{prod.name}</td>
 					<td>{prod.description}</td>
 					<td>{prod.price}</td>
@@ -108,9 +42,9 @@ export default class Signup extends React.Component {
 				</tr>
 			)
 		});
-		let servicesTable = services.map((service) => {
+		let servicesTable = services.map((service, index) => {
 			return (
-				<tr>
+				<tr key={index}>
 					<td>{service.title}</td>
 					<td>{service.description}</td>
 					<td>{service.price}</td>
@@ -136,8 +70,8 @@ export default class Signup extends React.Component {
 							<tbody>
 								{usersTable}
 							</tbody>
-							<Button>New user</Button>
 						</Table>
+						<Button>New user</Button>
 					</Tab>
 					<Tab title="Products">
 						<Table>
@@ -152,8 +86,8 @@ export default class Signup extends React.Component {
 							<tbody>
 								{productsTable}
 							</tbody>
-							<Button>New product</Button>
 						</Table>
+						<Button>New product</Button>
 					</Tab>
 					<Tab title="Services">
 						<Table>
@@ -168,8 +102,8 @@ export default class Signup extends React.Component {
 							<tbody>
 								{servicesTable}
 							</tbody>
-							<Button>New service</Button>
 						</Table>
+						<Button>New service</Button>
 
 					</Tab>
 

@@ -2,30 +2,19 @@ import React from 'react';
 import {Row, Col, Card, CardTitle} from 'react-materialize';
 
 export default class Products extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			products: [],
+		};
+		this.props.db.getAllData('products').then(item => this.setState({ products: item }));
+	}
+
 	render() {
-		let products = [
-			{
-				img_file: require('../img/prod.jpg'),
-				name: 'Ração X',
-				description: 'Ração pra animal doente1',
-				price: '55.00'
-			},
-			{
-				img_file: require('../img/prod.jpg'),
-				name: 'Ração X',
-				description: 'Ração pra animal doente2',
-				price: '35.00'
-			},
-			{
-				img_file: require('../img/prod.jpg'),
-				name: 'Ração X',
-				description: 'Ração pra animal doente1',
-				price: '55.00'
-			},
+		let products = this.state.products;
 
-		];
-
-		let productList = products.map((prod) => {
+		let productList = products.map((prod, index) => {
 				return (
 					<Col s={6} m={4} l={2} >
 						<Card className='medium'

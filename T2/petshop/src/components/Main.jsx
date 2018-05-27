@@ -14,9 +14,9 @@ import Profile from './Profile.jsx';
 
 
 export default class Main extends React.Component {
-	componentWillMount() {
-		document.title = 'Petshop'
-	}
+	// componentWillMount() {
+	// 	document.title = 'Petshop'
+	// }
 
 	constructor(props) {
 		super(props);
@@ -63,12 +63,12 @@ export default class Main extends React.Component {
 
 					<Container>
 						<Route exact path="/" component={Home} />
-						<Route path="/products" component={Products} />
-						<Route path="/services" component={Services} />
+						<Route path="/products" render={ ()=> <Products db={this.props.db} /> } />
+						<Route path="/admin" render={ ()=><Admin db={this.props.db} />} />
+						<Route path="/services" render={ ()=> <Services db={this.props.db} />} />
 						<Route path="/login" render={ ()=> <Login onClickLogin={this.userLogin}/> } />
 						<Route path="/signup" component={Signup} />
 						<Route path="/forgot_password" component={ForgotPassword} />
-						<Route path="/admin" component={Admin} />
 						<Route path="/profile" component={Profile} />
 					</Container>
 

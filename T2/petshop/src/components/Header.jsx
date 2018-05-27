@@ -5,22 +5,22 @@ import {NavLink} from 'react-router-dom';
 export default class Header extends React.Component {
 	render() {
 		let styleImg = {
-			'max-width': '100px',
+			'maxWidth': '100px',
 		}
 
 		let styleLoginRow = {
 			'margin': '0px'
 		}
 		let styleLoginRowM = {
-			'margin-left': '10px'
+			'marginLeft': '10px'
 		}
 
 		let styleLoginLink = {
-			'font-size': 'x-small'
+			'fontSize': 'x-small'
 		}
 
 		let styleLogo = {
-			'font-size': 'x-large',
+			'fontSize': 'x-large',
 			'padding': '10px',
 		}
 
