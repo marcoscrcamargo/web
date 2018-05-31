@@ -22,9 +22,13 @@ export default class Main extends React.Component {
 		super(props);
 
 		this.state = {
-			user: null
+			user: null,
+			username: null,
+			password: null
 		}
 		this.userLogin = this.userLogin.bind(this)
+		this.handleUsernameChange = this.handleUsernameChange.bind(this)
+		this.handlePasswordChange = this.handlePasswordChange.bind(this)
 		this.userLogout = this.userLogout.bind(this)
 
 	}
@@ -50,7 +54,13 @@ export default class Main extends React.Component {
 		return (
 			<HashRouter>
 				<div>
-					<Header user={user} onClickLogin={this.userLogin} onClickLogout={this.userLogout}/>
+					<Header
+						user={user}
+						onClickLogin={this.userLogin}
+						onClickLogout={this.userLogout}
+						handleUsernameChange={this.handleUsernameChange}
+						handlePasswordChange={this.handlePasswordChange}
+					/>
 					<Navbar className="red lighten-2" brand='Petshop' left
 						options={{closeOnClick: true, draggable: true}}
 					>
@@ -67,7 +77,7 @@ export default class Main extends React.Component {
 						<Route path="/admin" render={ ()=><Admin db={this.props.db} />} />
 						<Route path="/services" render={ ()=> <Services db={this.props.db} />} />
 						<Route path="/login" render={ ()=> <Login onClickLogin={this.userLogin}/> } />
-						<Route path="/signup" component={Signup} />
+						<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
 						<Route path="/forgot_password" component={ForgotPassword} />
 						<Route path="/profile" component={Profile} />
 					</Container>
@@ -91,24 +101,39 @@ export default class Main extends React.Component {
 
 	}
 
-	userLogin() {
-		this.setState({
-			user: {
-					id: '1',
-					picture: require('../img/avatar.png'),
-					name: 'Marcos Camargo',
-					phone: '14997189943',
-					username: 'marcoscrcamargo',
-					email: 'marcoscrcamargo@gmail.com',
-					password: 'admin',
-					admin: 'true',
-					adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-				}
-		})
+
+	handleUsernameChange(e) {
+		this.setState({username: e.target.value});
 	}
+
+	handlePasswordChange(e) {
+		this.setState({password: e.target.value});
+	}
+
+	userLogin() {
+		if (this.state.username == null){
+			window.Materialize.toast('Usuário Invalido!', 4000);
+		} else {
+			this.props.db.get('users', 'username', this.state.username)
+				.then(usr => {
+					if (usr == null) {
+						this.setState({ user: null });
+						window.Materialize.toast('Usuário Invalido!', 4000);
+					} else {
+						if(usr.password === this.state.password){
+							this.setState({ user: usr });
+						} else {
+							window.Materialize.toast('Senha incorreta!', 4000);
+						}
+					}
+				});
+		}
+	}
+
 	userLogout() {
 		this.setState({
-			user: null
+			user: null,
+			username: null
 		})
 	}
 

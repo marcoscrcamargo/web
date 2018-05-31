@@ -39,11 +39,11 @@ export default class Header extends React.Component {
 		) : (
 			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper">
 				<Col s={8} m={8} l={4} className="left-align">
-					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" /></Row>
+					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" onChange={this.props.handleUsernameChange}/></Row>
 					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" style={styleLoginLink}>Sign Up</NavLink></Row>
 				</Col>
 				<Col s={8} m={8} l={4}>
-					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" /></Row>
+					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" onChange={this.props.handlePasswordChange}/></Row>
 					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" style={styleLoginLink}>Forgot Password?</NavLink></Row>
 				</Col>
 				<Col s={8} m={8} l={3}>

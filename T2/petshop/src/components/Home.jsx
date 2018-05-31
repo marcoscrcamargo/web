@@ -6,7 +6,7 @@ export default class Home extends React.Component {
 
 	render() {
 		return (
-			<Row style={{'margin-top':'20px'}}>
+			<Row style={{'marginTop':'20px'}}>
 				<Slider>
 					<Slide
 						src={require('../img/auau.jpg')}

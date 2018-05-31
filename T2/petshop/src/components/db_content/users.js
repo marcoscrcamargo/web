@@ -2,6 +2,7 @@ const userData = [
 	{
 		name: 'Marcos Camargo',
 		phone: '14997189943',
+		picture: require('../../img/avatar.png'),
 		username: 'marcoscrcamargo',
 		email: 'marcoscrcamargo@gmail.com',
 		password: 'admin',
@@ -11,6 +12,7 @@ const userData = [
 	{
 		name: 'Victor Forbes',
 		phone: '',
+		picture: require('../../img/avatar.png'),
 		username: 'victorxjoey',
 		email: 'victor.forbes@usp.br',
 		password: 'admin',
@@ -20,6 +22,7 @@ const userData = [
 	{
 		name: 'Gabriel Camargo',
 		phone: '',
+		picture: require('../../img/avatar.png'),
 		username: 'gabrielcamargo',
 		email: 'gabrielcamargos@usp.br',
 		password: 'admin',

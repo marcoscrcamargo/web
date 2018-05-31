@@ -5,16 +5,18 @@ import serviceData from './db_content/services.js'
 
 
 // window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-const dbName = "petshopDB"
+const dbName = "petshopDB3"
 
 export default class DB {
+
 	constructor(store) {
 		this.state = {
 			name: 'Name',
 			data: [],
 		};
+		this.dbVersion = 1;
 
-		this.dbPromise = idb.open(dbName, 1, updateDB => {
+		this.dbPromise = idb.open(dbName, this.dbVersion, updateDB => {
 			var objectStore = updateDB.createObjectStore('users', {
 				keyPath: 'username'
 			});
@@ -54,19 +56,19 @@ export default class DB {
 		this.getAllData = this.getAllData.bind(this);
 		this.setData = this.setData.bind(this);
 		this.deleteData = this.deleteData.bind(this);
+		this.insert = this.insert.bind(this);
+		this.get = this.get.bind(this);
+		this.set = this.set.bind(this);
 	}
 
-	get(key) {
-		// return this.dbPromise
-		// 	.then(db =>
-		// 		db
-		// 			.transaction('tabs')
-		// 			// .objectStore("tabs").index("email").get(key)).then(val =>  this.setState({ name: val.name}));
-		// 			.objectStore('tabs')
-		// 			.index('tabId')
-		// 			.getAll(key),
-		// 	)
-		// 	.then(val => console.log(val));
+	get(table, idx, key) {
+		return this.dbPromise.then(db => {
+				return db
+					.transaction(table)
+					.objectStore(table)
+					.index(idx)
+					.get(key);
+			});
 	}
 
 	getAll(name) {
@@ -89,21 +91,47 @@ export default class DB {
 	}
 
 	set(val) {
-		// return this.dbPromise.then(db => {
-		// 	const tx = db.transaction('tabs', 'readwrite');
-		// 	tx.objectStore('tabs').put(val);
-		// 	tx.objectStore('tabs').getAll();
-		// 	// .then(val => this.setState({data: val}));
-		// 	return tx.complete;
-		// });
+		this.dbVersion = this.dbVersion + 1;
+		this.dbPromise = idb.open(dbName, this.dbVersion, updateDB => {
+			console.log(updateDB)
+			// .transaction(['users'], 'readwrite')
+			// .objectStore('users').put(val);
+		});
 	}
 
-	getData() {
-		// this.get('tab_1');
+
+	addUser(user) {
+		this.dbPromise.then(db => {
+			var trans = db.transaction(['users'], "readwrite");
+			var store = trans.objectStore("users");
+			var request = store.put(user);
+			store.getAll().then((a)=> { console.log(a)});
+				console.log("Sucess Adding an item: ");
+			request.onsuccess = function(e) {
+		    };
+		    request.onerror = function(e) {
+				console.log("Error Adding an item: ", e);
+		    };
+
+		});
 	}
 
-	async getAllData(name) {
-		return this.getAll(name);
+	insert(table, obj){
+		this.dbPromise.then(db => {
+			db
+			.transaction(table, 'readwrite')
+			.objectStore(table)
+			.add(obj);
+		});
+
+	}
+
+	async getData(table, idx, key) {
+		return this.get(table, idx, key);
+	}
+
+	async getAllData(table) {
+		return this.getAll(table);
 	}
 
 

@@ -69,8 +69,8 @@ export default class Profile extends React.Component {
 							<tbody>
 								{petsTable}
 							</tbody>
-							<Button>New pet</Button>
 						</Table>
+						<Button>New pet</Button>
 					</Tab>
 					<Tab title="My Schedule">Products</Tab>
 					<Tab title="Cart">Products</Tab>
