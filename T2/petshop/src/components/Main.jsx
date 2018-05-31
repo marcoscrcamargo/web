@@ -79,7 +79,7 @@ export default class Main extends React.Component {
 						<Route path="/login" render={ ()=> <Login onClickLogin={this.userLogin}/> } />
 						<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
 						<Route path="/forgot_password" component={ForgotPassword} />
-						<Route path="/profile" component={Profile} />
+						<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={this.state.user}/> } />
 					</Container>
 
 					<Footer copyrights="2018 Copyright Text"

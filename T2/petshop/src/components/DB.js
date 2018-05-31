@@ -79,6 +79,6 @@ export default class DB {
 	}
 
 	putUser(user) {
-		this.db.users.add(user).then(a => console.log(a));
+		this.db.users.add(user).then(a => console.log('new user sucess!'));
 	}
 }

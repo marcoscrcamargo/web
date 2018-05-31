@@ -3,17 +3,27 @@ import React from 'react';
 import {Tabs, Tab, Table, Button, MediaBox} from 'react-materialize';
 
 export default class Profile extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			user: null,
+			pets: null,
+		}
+		// this.userLogout = this.userLogout.bind(this)
+
+	}
 	render(){
-		let user = {
-				id: '1',
-				name: 'Marcos Camargo',
-				phone: '14997189943',
-				username: 'marcoscrcamargo',
-				email: 'marcoscrcamargo@gmail.com',
-				password: 'admin',
-				admin: 'true',
-				adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-			};
+		// let user = {
+		// 		id: '1',
+		// 		name: 'Marcos Camargo',
+		// 		phone: '14997189943',
+		// 		username: 'marcoscrcamargo',
+		// 		email: 'marcoscrcamargo@gmail.com',
+		// 		password: 'admin',
+		// 		admin: 'true',
+		// 		adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
+		// 	};
 
 		let pets = [
 			{
@@ -48,7 +58,7 @@ export default class Profile extends React.Component {
 
 		return(
 			<div>
-				<h4> Welcome {user.name} !</h4>
+				<h4> Welcome {this.props.user.name} !</h4>
 				Visão geral do profile aqui
 				foto
 				nome

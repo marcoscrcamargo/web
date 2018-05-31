@@ -1,5 +1,6 @@
 import React from 'react';
-import {Tabs, Tab, Table, Button} from 'react-materialize';
+import {Tabs, Tab, Table, Button, Modal} from 'react-materialize';
+// import Signup from './Signup.jsx';
 
 export default class Admin extends React.Component {
 	constructor(props) {
@@ -27,7 +28,13 @@ export default class Admin extends React.Component {
 				<tr key={index}>
 					<td>{user.name}</td>
 					<td>{user.username}</td>
-					<td><Button>Edit</Button></td>
+					<td>
+						<Modal
+						header={user.name}
+						trigger={<Button>Edit</Button>}>
+							<p> criar component edit e colocar aqui </p>
+						</Modal>
+					</td>
 				</tr>
 			)
 		});
@@ -38,7 +45,13 @@ export default class Admin extends React.Component {
 					<td>{prod.name}</td>
 					<td>{prod.description}</td>
 					<td>{prod.price}</td>
-					<td><Button>Edit</Button></td>
+					<td>
+						<Modal
+						header={prod.name}
+						trigger={<Button>Edit</Button>}>
+							<p> criar component edit e colocar aqui </p>
+						</Modal>
+					</td>
 				</tr>
 			)
 		});
@@ -48,7 +61,13 @@ export default class Admin extends React.Component {
 					<td>{service.title}</td>
 					<td>{service.description}</td>
 					<td>{service.price}</td>
-					<td><Button>Edit</Button></td>
+					<td>
+						<Modal
+						header={service.title}
+						trigger={<Button>Edit</Button>}>
+							<p> criar component edit e colocar aqui </p>
+						</Modal>
+					</td>
 				</tr>
 			)
 		});
@@ -71,7 +90,13 @@ export default class Admin extends React.Component {
 								{usersTable}
 							</tbody>
 						</Table>
-						<Button>New user</Button>
+{
+						// <Modal
+						// header='Create new user'
+						// trigger={<Button>New User</Button>}>
+						// 	<Signup />
+						// </Modal>
+}
 					</Tab>
 					<Tab title="Products">
 						<Table>
@@ -87,7 +112,11 @@ export default class Admin extends React.Component {
 								{productsTable}
 							</tbody>
 						</Table>
-						<Button>New product</Button>
+						<Modal
+						header='Create new product'
+						trigger={<Button>New Product</Button>}>
+							<p>New product</p>
+						</Modal>
 					</Tab>
 					<Tab title="Services">
 						<Table>
@@ -103,7 +132,11 @@ export default class Admin extends React.Component {
 								{servicesTable}
 							</tbody>
 						</Table>
-						<Button>New service</Button>
+						<Modal
+						header='Create new service'
+						trigger={<Button>New Service</Button>}>
+							<p>New Service</p>
+						</Modal>
 
 					</Tab>
 
