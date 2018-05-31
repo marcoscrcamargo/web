@@ -1,145 +1,84 @@
-import idb from 'idb';
+// import idb from 'idb';
+import Dexie from 'dexie';
 import userData from './db_content/users.js'
 import productData from './db_content/products.js'
 import serviceData from './db_content/services.js'
 
 
 // window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-const dbName = "petshopDB3"
+const dbName = "DexiePetshopDB"
 
 export default class DB {
+	constructor(){
+		this.state = {};
 
-	constructor(store) {
-		this.state = {
-			name: 'Name',
-			data: [],
-		};
 		this.dbVersion = 1;
 
-		this.dbPromise = idb.open(dbName, this.dbVersion, updateDB => {
-			var objectStore = updateDB.createObjectStore('users', {
-				keyPath: 'username'
-			});
+		this.db = new Dexie(dbName);
 
-			// Create an index to search users by name.
-			// Create an index to search customers by email and username that could be unique.
-			objectStore.createIndex("name", "name", { unique: false });
-			objectStore.createIndex("email", "email", { unique: true });
-			objectStore.createIndex("username", "username", { unique: true });
-
-			userData.map((item, index) => objectStore.add(item));
-
-			// Key by id autoincrement = true
-			objectStore = updateDB.createObjectStore('products', {
-				keyPath: 'id',
-				autoIncrement: true,
-			});
-
-			// Create an index to search users by name.
-			objectStore.createIndex("name", "name", { unique: false });
-
-			productData.map((item, index) => objectStore.add(item));
-
-			objectStore = updateDB.createObjectStore('services', {
-				keyPath: 'id',
-				autoIncrement: true,
-			});
-
-			objectStore.createIndex("title", "title", { unique: false });
-
-			serviceData.map((item, index) => objectStore.add(item));
-
-			return objectStore;
+		// Creating schema for database
+		this.db.version(this.dbVersion).stores({
+		    products: '++id,name',
+		    services: '++id,title',
+		    users: 'username,&email,name,&username'
 		});
 
-		this.getData = this.getData.bind(this);
-		this.getAllData = this.getAllData.bind(this);
-		this.setData = this.setData.bind(this);
-		this.deleteData = this.deleteData.bind(this);
-		this.insert = this.insert.bind(this);
-		this.get = this.get.bind(this);
-		this.set = this.set.bind(this);
+		this.createDB = this.createDB.bind(this);
+		this.getUser = this.getUser.bind(this);
+		this.getProduct = this.getProduct.bind(this);
+		this.getService = this.getService.bind(this);
+		this.getAllProducts = this.getAllProducts.bind(this);
+		this.getAllServices = this.getAllServices.bind(this);
+		this.getAllUsers = this.getAllUsers.bind(this);
+		this.delete = this.delete.bind(this);
+		this.putUser = this.putUser.bind(this);
 	}
 
-	get(table, idx, key) {
-		return this.dbPromise.then(db => {
-				return db
-					.transaction(table)
-					.objectStore(table)
-					.index(idx)
-					.get(key);
-			});
-	}
+	createDB(){
+		this.db.transaction('rw', this.db.users, () =>{
+			userData.map((user, index) => this.db.users.add(user));
+		}).catch(e => console.error(e.stack));
 
-	getAll(name) {
-		return this.dbPromise.then(db => {
-			return db
-			.transaction(name)
-			.objectStore(name)
-			.getAll();
+		this.db.transaction('rw', this.db.products, () =>{
+			productData.map((product, index) => this.db.products.add(product));
 		});
+
+		this.db.transaction('rw', this.db.services, () =>{
+			serviceData.map((service, index) => this.db.services.add(service));
+		});
+
 	}
+
+	getUser(idx, key) {
+		return this.db.users.where(idx).equals(key).first();
+	}
+
+	getProduct(id) {
+		return this.db.products.get(id);
+	}
+
+	getService(id) {
+		return this.db.services.get(id);
+	}
+
+	getAllProducts() {
+		return this.db.products.toArray();
+	}
+
+	getAllServices() {
+		return this.db.services.toArray();
+	}
+
+	getAllUsers() {
+		return this.db.users.toArray();
+	}
+
 
 	delete(key) {
-		// return this.dbPromise.then(db => {
-		// 	const tx = db.transaction('tabs', 'readwrite');
-		// 	tx.objectStore('tabs').delete(key);
-		// 	tx.objectStore('tabs').getAll();
-
-		// 	return tx.complete;
-		// });
-	}
-
-	set(val) {
-		this.dbVersion = this.dbVersion + 1;
-		this.dbPromise = idb.open(dbName, this.dbVersion, updateDB => {
-			console.log(updateDB)
-			// .transaction(['users'], 'readwrite')
-			// .objectStore('users').put(val);
-		});
-	}
-
-
-	addUser(user) {
-		this.dbPromise.then(db => {
-			var trans = db.transaction(['users'], "readwrite");
-			var store = trans.objectStore("users");
-			var request = store.put(user);
-			store.getAll().then((a)=> { console.log(a)});
-				console.log("Sucess Adding an item: ");
-			request.onsuccess = function(e) {
-		    };
-		    request.onerror = function(e) {
-				console.log("Error Adding an item: ", e);
-		    };
-
-		});
-	}
-
-	insert(table, obj){
-		this.dbPromise.then(db => {
-			db
-			.transaction(table, 'readwrite')
-			.objectStore(table)
-			.add(obj);
-		});
 
 	}
 
-	async getData(table, idx, key) {
-		return this.get(table, idx, key);
-	}
-
-	async getAllData(table) {
-		return this.getAll(table);
-	}
-
-
-	setData() {
-		// this.set({ tabId: 'tab_4', name: 'Event Four', checked: true });
-	}
-
-	deleteData() {
-		// this.delete('Event Three');
+	putUser(user) {
+		this.db.users.add(user).then(a => console.log(a));
 	}
 }

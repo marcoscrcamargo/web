@@ -11,7 +11,8 @@ export default class Signup extends React.Component {
 			username: null,
 			email: null,
 			password: null,
-			adress: null
+			adress: null,
+			created: false
 		}
 
 		this.handleNameChange = this.handleNameChange.bind(this)
@@ -28,20 +29,28 @@ export default class Signup extends React.Component {
 		let styleCol = {
 			'marginTop': '20px',
 		}
-
-		return(
-			<Col s={8} m={8} l={8} className="center" style={styleCol}>
-				<h4>Signup !</h4>
-				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Full Name" validate onChange={this.handleNameChange} /></Col></Row>
-				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="tel" label="Phone Number" validate onChange={this.handlePhoneChange} /></Col></Row>
-				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Username" validate onChange={this.handleUsernameChange} /></Col></Row>
-				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="email" label="Email" validate onChange={this.handleEmailChange} /></Col></Row>
-				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="password" label="Password" validate onChange={this.handlePasswordChange} /></Col></Row>
-				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Adress" validate onChange={this.handleAdressChange} /></Col></Row>
-				<Row><Button waves='light'>Upload a photo</Button></Row>
-				<Row><Button waves='light' onClick={this.newUser}>Signup</Button></Row>
-			</Col>
-		)
+		if (this.state.created === 'true') {
+			return (
+				<Col s={8} m={8} l={8} className="center" style={styleCol}>
+					<h4>User Created !</h4>
+				</Col>
+			)
+		}
+		else{
+			return(
+				<Col s={8} m={8} l={8} className="center" style={styleCol}>
+					<h4>Signup !</h4>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Full Name" validate onChange={this.handleNameChange} /></Col></Row>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="tel" label="Phone Number" validate onChange={this.handlePhoneChange} /></Col></Row>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Username" validate onChange={this.handleUsernameChange} /></Col></Row>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="email" label="Email" validate onChange={this.handleEmailChange} /></Col></Row>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="password" label="Password" validate onChange={this.handlePasswordChange} /></Col></Row>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Adress" validate onChange={this.handleAdressChange} /></Col></Row>
+					<Row><Button waves='light'>Upload a photo</Button></Row>
+					<Row><Button waves='light' onClick={this.newUser}>Signup</Button></Row>
+				</Col>
+			)
+		}
 	}
 
 	handleNameChange(e) {
@@ -69,29 +78,18 @@ export default class Signup extends React.Component {
 	}
 
 	newUser(){
-		// let new_user = {
-		// 	name: this.state.name,
-		// 	phone: this.state.phone,
-		// 	picture: require('../img/avatar.png'),
-		// 	username: this.state.username,
-		// 	email: this.state.email,
-		// 	password: this.state.password,
-		// 	admin: 'false',
-		// 	adress: this.state.adress
-		// }
 		let new_user = {
-			name: 'Admin',
-			phone: '14997189943',
+			name: this.state.name,
+			phone: this.state.phone,
 			picture: require('../img/avatar.png'),
-			username: 'admin',
-			email: 'marcoscrcamargo@gmail.com',
-			password: 'admin',
+			username: this.state.username,
+			email: this.state.email,
+			password: this.state.password,
 			admin: 'false',
-			adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-		};
-		// console.log(new_user)
-		// this.props.db.insert('users', new_user);
-		this.props.db.set(new_user);
+			adress: this.state.adress
+		}
+		this.props.db.putUser(new_user);
+		this.setState({created: 'true'});
 	}
 
 }

@@ -11,9 +11,9 @@ export default class Admin extends React.Component {
 			services: [],
 		};
 
-		this.props.db.getAllData('users').then(item => this.setState({ users: item }));
-		this.props.db.getAllData('products').then(item => this.setState({ products: item }));
-		this.props.db.getAllData('services').then(item => this.setState({ services: item }));
+		this.props.db.getAllUsers().then(item => this.setState({ users: item }));
+		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
+		this.props.db.getAllServices().then(item => this.setState({ services: item }));
 	}
 
 

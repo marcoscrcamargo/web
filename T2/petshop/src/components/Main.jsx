@@ -114,7 +114,7 @@ export default class Main extends React.Component {
 		if (this.state.username == null){
 			window.Materialize.toast('Usuário Invalido!', 4000);
 		} else {
-			this.props.db.get('users', 'username', this.state.username)
+			this.props.db.getUser('username', this.state.username)
 				.then(usr => {
 					if (usr == null) {
 						this.setState({ user: null });

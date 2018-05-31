@@ -8,7 +8,7 @@ export default class Services extends React.Component {
 		this.state = {
 			services: [],
 		};
-		this.props.db.getAllData('services').then(item => this.setState({ services: item }));
+		this.props.db.getAllServices().then(item => this.setState({ services: item }));
 	}
 
 	render() {

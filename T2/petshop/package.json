@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dexie": "^2.0.4",
     "idb": "^2.1.2",
     "npm": "^6.1.0",
     "react": "^16.3.2",
