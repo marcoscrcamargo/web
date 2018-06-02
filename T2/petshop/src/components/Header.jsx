@@ -29,11 +29,17 @@ export default class Header extends React.Component {
 		const profileLogin = isLoggedIn ? (
 			<Col s={5} m={8} l={5}>
 				<Row className="right">
+					<Col>
 					<NavLink to="/profile">
 						<img src={this.props.user.picture} width="100" alt="profile_picture"/>
-						<p>{this.props.user.name}</p>
 					</NavLink>
-					<Button waves='light' onClick={this.props.onClickLogout}>Logout</Button>
+					</Col>
+					<Col>
+						<NavLink to="/profile">
+							<p>{this.props.user.name}</p>
+						</NavLink>
+						<Button waves='light' onClick={this.props.onClickLogout}>Logout</Button>
+					</Col>
 				</Row>
 			</Col>
 		) : (
