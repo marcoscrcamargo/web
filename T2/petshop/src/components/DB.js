@@ -32,6 +32,40 @@ export default class DB {
 		this.getAllUsers = this.getAllUsers.bind(this);
 		this.delete = this.delete.bind(this);
 		this.putUser = this.putUser.bind(this);
+
+		let admin = {
+			name: 'Admin',
+			phone: '00000000000',
+			picture: require('../img/avatar.png'),
+			pets: [
+				{
+					name: 'Marley',
+					picture: require('../img/cachorro.jpg')
+				},
+				{
+					name: 'Tom',
+					picture: require('../img/gato.jpg')
+				},
+				{
+					name: 'Piu Piu',
+					picture: require('../img/passaro.jpg')
+				},
+				{
+					name: 'Nemo',
+					picture: require('../img/peixe.jpg')
+				},
+			],
+			username: 'admin',
+			email: 'admin@petshop.com',
+			password: 'admin',
+			admin: 'true',
+			adress: 'Rua do admin'
+		}
+
+		this.db.transaction('rw', this.db.users, () =>{
+			this.db.users.put(admin);
+		}).catch(e => console.error(e.stack));
+
 	}
 
 	createDB(){
@@ -47,6 +81,14 @@ export default class DB {
 			serviceData.map((service, index) => this.db.services.add(service));
 		});
 
+	}
+
+	deleteDB(){
+		this.db.delete().then(() => {
+			console.log("Database successfully deleted");
+		}).catch((err) => {
+			console.error("Could not delete database");
+		});
 	}
 
 	getUser(idx, key) {
@@ -79,6 +121,6 @@ export default class DB {
 	}
 
 	putUser(user) {
-		this.db.users.add(user).then(a => console.log('new user sucess!'));
+		this.db.users.put(user).then(a => console.log('new user sucess!'));
 	}
 }

@@ -35,6 +35,34 @@ export default class Main extends React.Component {
 
 	render() {
 		var user = this.state.user;
+		// var user = 	{
+		// 	name: 'Marcos Camargo',
+		// 	phone: '14997189943',
+		// 	picture: require('../img/avatar.png'),
+		// 	pets: [
+		// 			{
+		// 				name: 'Marley',
+		// 				picture: require('../img/cachorro.jpg')
+		// 			},
+		// 			{
+		// 				name: 'Tom',
+		// 				picture: require('../img/gato.jpg')
+		// 			},
+		// 			{
+		// 				name: 'Piu Piu',
+		// 				picture: require('../img/passaro.jpg')
+		// 			},
+		// 			{
+		// 				name: 'Nemo',
+		// 				picture: require('../img/peixe.jpg')
+		// 			},
+		// 		],
+		// 	username: 'marcoscrcamargo',
+		// 	email: 'marcoscrcamargo@gmail.com',
+		// 	password: 'admin',
+		// 	admin: 'true',
+		// 	adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
+		// };
 
 		const isLoggedIn = (user !== null);
 		const isAdmin = isLoggedIn ? (user.admin === 'true') : false;
@@ -79,7 +107,7 @@ export default class Main extends React.Component {
 						<Route path="/login" render={ ()=> <Login onClickLogin={this.userLogin}/> } />
 						<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
 						<Route path="/forgot_password" component={ForgotPassword} />
-						<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={this.state.user}/> } />
+						<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={user}/> } />
 					</Container>
 
 					<Footer copyrights="2018 Copyright Text"
