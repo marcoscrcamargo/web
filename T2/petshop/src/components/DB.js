@@ -64,46 +64,10 @@ export default class DB {
 			adress: 'Rua do admin'
 		}
 
-	// just a normal user
-	let sample_user = {
-			name: 'User',
-			phone: '00000000000',
-			picture: require('../img/avatar.png'),
-			pets: [
-				{
-					name: 'Marley',
-					picture: require('../img/cachorro.jpg')
-				},
-				{
-					name: 'Tom',
-					picture: require('../img/gato.jpg')
-				},
-				{
-					name: 'Piu Piu',
-					picture: require('../img/passaro.jpg')
-				},
-				{
-					name: 'Nemo',
-					picture: require('../img/peixe.jpg')
-				},
-			],
-			username: 'user',
-			email: 'user@gmail.com',
-			password: 'user',
-			admin: 'false',
-			adress: 'Rua do usuario'
-		}
-
 		// inserting admin as a user in the DB
 		this.db.transaction('rw', this.db.users, () =>{
 			this.db.users.put(admin);
 		}).catch(e => console.error(e.stack));
-
-		// iserting the sample_user as a user in the DB
-		this.db.transaction('rw', this.db.users, () =>{
-			this.db.users.put(sample_user);
-		}).catch(e => console.error(e.stack));
-
 	}
 
 	createDB(){

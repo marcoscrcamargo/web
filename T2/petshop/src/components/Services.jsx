@@ -19,11 +19,11 @@ export default class Services extends React.Component {
 				return (
 					<Col s={6} m={4} l={3}>
 						<Card className='medium'
-							{/*Service image*/}
+							/*Service image*/
 							header={<CardTitle image={service.img_file}></CardTitle>}
-							{/*Price/schedule (clickable) */}
+							/*Price/schedule (clickable) */
 							actions={[<a href=''>{service.price} Schedule</a>]}>
-							{/*Service name*/}
+							/*Service name*/
 							<h5>{service.title}</h5>
 							{/*Service description*/}
 							{service.description}
