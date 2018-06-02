@@ -17,10 +17,12 @@ export default class Products extends React.Component {
 		// fills a list with cards with name, image, price and a short description about each product
 		let productList = products.map((prod, index) => {
 				return (
+					// sets the size of the card for each type of screen
 					<Col s={6} m={4} l={2} >
-						<Card className='medium'
-							header={<CardTitle image={prod.img_file}></CardTitle>}
-							actions={[<a href=''>{prod.price} Buy</a>]}>
+						<Card className='medium' /*type of the card*/
+							header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
+							actions={[<a href=''>{prod.price} Buy</a>]}> {/*adding a "Buy" button with the price*/}
+							{/*name and description: */}
 							<h5>{prod.name}</h5>
 							{prod.description}.
 						</Card>

@@ -33,14 +33,17 @@ export default class Header extends React.Component {
 			<Col s={5} m={8} l={5}>
 				<Row className="right">
 					<Col>
+					{/*Profile picture that links to the user's information page*/}
 					<NavLink to="/profile">
 						<img src={this.props.user.picture} width="100" alt="profile_picture"/>
 					</NavLink>
 					</Col>
 					<Col>
+						{/*Link to the user's info page*/}
 						<NavLink to="/profile">
 							<p>{this.props.user.name}</p>
 						</NavLink>
+						{/*Logout button*/}
 						<Button waves='light' onClick={this.props.onClickLogout}>Logout</Button>
 					</Col>
 				</Row>
@@ -48,14 +51,19 @@ export default class Header extends React.Component {
 		) : (
 			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper">
 				<Col s={8} m={8} l={4} className="left-align">
+					{/*Input box for the username*/}
 					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" onChange={this.props.handleUsernameChange}/></Row>
+					{/*Link to sign up*/}
 					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" style={styleLoginLink}>Sign Up</NavLink></Row>
 				</Col>
 				<Col s={8} m={8} l={4}>
+					{/*Input box for the password*/}
 					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" onChange={this.props.handlePasswordChange}/></Row>
+					{/*Link to recover password*/}
 					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" style={styleLoginLink}>Forgot Password?</NavLink></Row>
 				</Col>
 				<Col s={8} m={8} l={3}>
+					{/*Login button*/}
 					<Button waves='light' onClick={this.props.onClickLogin}>Login</Button>
 				</Col>
 			</Col>
@@ -68,11 +76,13 @@ export default class Header extends React.Component {
 			<Col s={7} m={4} l={7} className="left">
 				<NavLink exact to="/">
 					<Row className="valign-wrapper">
+						{/*Logo and Petshop name*/}
 						<img className="responsive-img" src={require('../img/paw.png')} style={styleImg} alt="Logo"/>
 						<span style={styleLogo}>Petshop</span>
 					</Row>
 				</NavLink>
 			</Col>
+			{/*The rest of the page depends on the user, if he/she is logged in and was defined before*/}
 			{profileLogin}
 		</Row>
 

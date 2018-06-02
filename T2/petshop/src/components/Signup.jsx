@@ -56,26 +56,32 @@ export default class Signup extends React.Component {
 		}
 	}
 
+	// assigns the input value to the name
 	handleNameChange(e) {
 		this.setState({name: e.target.value});
 	}
 
+	// assigns the input value to the phone
 	handlePhoneChange(e) {
 		this.setState({phone: e.target.value});
 	}
 
+	// assigns the input value to the username
 	handleUsernameChange(e) {
 		this.setState({username: e.target.value});
 	}
 
+	// assigns the input value to the email
 	handleEmailChange(e) {
 		this.setState({email: e.target.value});
 	}
 
+	// assigns the input value to the password
 	handlePasswordChange(e) {
 		this.setState({password: e.target.value});
 	}
 
+	// assigns the input value to the address
 	handleAdressChange(e) {
 		this.setState({Adress: e.target.value});
 	}
