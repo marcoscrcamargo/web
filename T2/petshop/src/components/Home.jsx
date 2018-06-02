@@ -4,6 +4,7 @@ import {Row, Slider, Slide} from 'react-materialize'
 
 export default class Home extends React.Component {
 
+	// Builds a Slider with 3 images and sliding texts
 	render() {
 		return (
 			<Row style={{'marginTop':'20px'}}>

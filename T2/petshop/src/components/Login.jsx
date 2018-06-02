@@ -13,6 +13,7 @@ export default class Login extends React.Component{
 			'margin-left': '10px',
 		}
 
+		// Builds two input boxes, buttons to log in or sign up and a "forgot password?" option
 		return(
 			<Col s={8} m={8} l={8} className="center">
 				<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Username" /></Col></Row>

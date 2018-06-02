@@ -67,18 +67,21 @@ export default class Main extends React.Component {
 		const isLoggedIn = (user !== null);
 		const isAdmin = isLoggedIn ? (user.admin === 'true') : false;
 
+		// If the user is an Admin, there will be an Management tab in the navbar
 		const management = isAdmin ? (
 			<NavItem className="red lighten-2"><NavLink to="/admin">Management</NavLink></NavItem>
 		) : (
 			null
 		);
 
+		// If the user is logged, there will be an Profile tab in the navbar
 		const loginProfile = isLoggedIn ? (
 			<NavItem className="red lighten-2"><NavLink to="/profile">Profile</NavLink></NavItem>
 		) : (
 			<NavItem className="red lighten-2"><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
 		);
 
+		// returns what the page should render
 		return (
 			<HashRouter>
 				<div>

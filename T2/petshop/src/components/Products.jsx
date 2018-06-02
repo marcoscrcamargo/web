@@ -14,6 +14,7 @@ export default class Products extends React.Component {
 	render() {
 		let products = this.state.products;
 
+		// fills a list with cards with name, image, price and a short description about each product
 		let productList = products.map((prod, index) => {
 				return (
 					<Col s={6} m={4} l={2} >
@@ -26,6 +27,7 @@ export default class Products extends React.Component {
 					</Col>)
 			});
 
+		// returns the list of cards
 		return (
 			<Row>
 				{productList}

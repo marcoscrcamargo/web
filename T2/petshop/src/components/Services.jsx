@@ -14,6 +14,7 @@ export default class Services extends React.Component {
 	render() {
 		let services = this.state.services;
 
+		// fills a list with cards with name, image, price and a short description about each service
 		let serviceList = services.map((service) => {
 				return (
 					<Col s={6} m={4} l={3}>
@@ -26,6 +27,7 @@ export default class Services extends React.Component {
 					</Col>)
 			});
 
+		// returns the list of cards
 		return (
 			<Row>
 				{serviceList}

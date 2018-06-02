@@ -26,6 +26,9 @@ export default class Header extends React.Component {
 
 		const isLoggedIn = (this.props.user !== null);
 
+		// If the user is logged in, shows his/her basic information and the option to log out
+		// If not, then shows the options to log in or sign up
+		// This decision is made with a ternary operator
 		const profileLogin = isLoggedIn ? (
 			<Col s={5} m={8} l={5}>
 				<Row className="right">
@@ -58,6 +61,7 @@ export default class Header extends React.Component {
 			</Col>
 		);
 
+		// returns how the header should be displayed, with the website's logo and the profileLogin part
 		return (
 
 		<Row className="valign-wrapper hide-on-med-and-down">

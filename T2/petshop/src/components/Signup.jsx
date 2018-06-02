@@ -29,6 +29,8 @@ export default class Signup extends React.Component {
 		let styleCol = {
 			'marginTop': '20px',
 		}
+
+		// If a new user is created, shows a "User created !" message
 		if (this.state.created === 'true') {
 			return (
 				<Col s={8} m={8} l={8} className="center" style={styleCol}>
@@ -36,7 +38,8 @@ export default class Signup extends React.Component {
 				</Col>
 			)
 		}
-		else{
+		else{ // shows input boxes for name, phone number, username, email, password and address otherwise
+			// also shows an "Upload a photo" and a "Signup" button
 			return(
 				<Col s={8} m={8} l={8} className="center" style={styleCol}>
 					<h4>Signup !</h4>
@@ -77,6 +80,7 @@ export default class Signup extends React.Component {
 		this.setState({Adress: e.target.value});
 	}
 
+	// Inserts the a new user into the indexedDB
 	newUser(){
 		let new_user = {
 			name: this.state.name,

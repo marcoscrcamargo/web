@@ -11,18 +11,26 @@ export default class Profile extends React.Component {
 
 	}
 	render(){
+		// Defines a pattern for responsive images
 		let responsiveImg = {
 			width: '40vw',
 			minWidth: '200px',
 			maxWidth: '400px',
 			height: 'auto',
 		}
+
 		const isLoggedIn = (this.props.user !== null);
 		let pets = [];
 
+		// If the user is logged in, gets all his/her pets
 		if (isLoggedIn) {
 			pets = (this.props.user.pets) != null ? (this.props.user.pets) : [];
 		}
+
+		// Sets a list of pets as a table
+		// Each row represents a pet and has image, name and a button for more details
+		// When the "details" button is pressed, a pop-up window appears with a larger version
+		// of the image, the name of the pet and "delete" and "close" options.
 		let petsTable = pets.map((pet) => {
 			return (
 				<tr>
@@ -48,6 +56,10 @@ export default class Profile extends React.Component {
 			)
 		});
 
+		// If the user loggs in, a welcome message is showed
+		// A new navbar appears, with the tags profile, pets, schedule and cart
+		// Below the new navbar, some information about the user is showed:
+		// picture, name, address, phone, email and number of pets
 		if (isLoggedIn) {
 			return(
 				<div>
