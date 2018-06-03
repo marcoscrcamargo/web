@@ -34,35 +34,81 @@ export default class Main extends React.Component {
 	}
 
 	render() {
-		var user = this.state.user;
-		// var user = 	{
-		// 	name: 'Marcos Camargo',
-		// 	phone: '14997189943',
-		// 	picture: require('../img/avatar.png'),
-		// 	pets: [
-		// 			{
-		// 				name: 'Marley',
-		// 				picture: require('../img/cachorro.jpg')
-		// 			},
-		// 			{
-		// 				name: 'Tom',
-		// 				picture: require('../img/gato.jpg')
-		// 			},
-		// 			{
-		// 				name: 'Piu Piu',
-		// 				picture: require('../img/passaro.jpg')
-		// 			},
-		// 			{
-		// 				name: 'Nemo',
-		// 				picture: require('../img/peixe.jpg')
-		// 			},
-		// 		],
-		// 	username: 'marcoscrcamargo',
-		// 	email: 'marcoscrcamargo@gmail.com',
-		// 	password: 'admin',
-		// 	admin: 'true',
-		// 	adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-		// };
+		// var user = this.state.user;
+		var user = 	{
+			name: 'Marcos Camargo',
+			phone: '14997189943',
+			picture: require('../img/avatar.png'),
+			pets: [
+					{
+						name: 'Marley',
+						picture: require('../img/cachorro.jpg')
+					},
+					{
+						name: 'Tom',
+						picture: require('../img/gato.jpg')
+					},
+					{
+						name: 'Piu Piu',
+						picture: require('../img/passaro.jpg')
+					},
+					{
+						name: 'Nemo',
+						picture: require('../img/peixe.jpg')
+					},
+				],
+			schedule: [
+				{
+					name: 'Grooming',
+					pet: 'Marley',
+					date: "October 13, 2018 11:10:00",
+					picture: require('../img/tosa.jpg'),
+					description: "We have the best professionals to take care of your pet's hair!"
+				},
+				{
+					name: 'Bath',
+					pet: 'Tom',
+					date: "October 14, 2018 12:20:00",
+					picture: require('../img/banho.jpg'),
+					description: 'We leave your pet clean and smelling good for a fair price!'
+				},
+				{
+					name: 'Vaccination',
+					pet: 'Piu Piu',
+					date: "October 15, 2018 13:30:00",
+					picture: require('../img/vacinacao.jpg'),
+					description: 'We apply vaccines to keep your pet always protected and healthy!'
+				},
+			],
+			cart: [
+				{
+					name: 'Ração X',
+					price: '55,00',
+					quantity: '3',
+					picture: require('../img/prod.jpg'),
+					description: 'Ração pra animal doente1'
+				},
+				{
+					name: 'Ração X',
+					price: '55,00',
+					quantity: '4',
+					picture: require('../img/prod.jpg'),
+					description: 'Ração pra animal doente1'
+				},
+				{
+					name: 'Ração X',
+					price: '55,00',
+					quantity: '5',
+					picture: require('../img/prod.jpg'),
+					description: 'Ração pra animal doente1'
+				},
+			],
+			username: 'marcoscrcamargo',
+			email: 'marcoscrcamargo@gmail.com',
+			password: 'admin',
+			admin: 'true',
+			adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
+		};
 
 		// flag that indicates wheter the user is logged in
 		const isLoggedIn = (user !== null);

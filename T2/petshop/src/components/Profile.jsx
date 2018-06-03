@@ -21,10 +21,14 @@ export default class Profile extends React.Component {
 
 		const isLoggedIn = (this.props.user !== null);
 		let pets = [];
+		let schedule = [];
+		let cart = [];
 
 		// If the user is logged in, gets all his/her pets
 		if (isLoggedIn) {
 			pets = (this.props.user.pets) != null ? (this.props.user.pets) : [];
+			schedule = (this.props.user.schedule != null ? (this.props.user.schedule) : []);
+			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
 		}
 
 		// Sets a list of pets as a table
@@ -57,6 +61,93 @@ export default class Profile extends React.Component {
 							</Row>
 							{/*Delete option*/}
 							<Row className="left"><Button> Delete </Button></Row>
+						</Modal>
+					</td>
+				</tr>
+			)
+		});
+
+		let servicesTable = schedule.map((service) => {
+			return (
+				<tr>
+					{/*Service name*/}
+					<td>{service.name}</td>
+					{/*pet name*/}
+					<td>{service.pet}</td>
+					{/*date and time*/}
+					<td>{service.date}</td>
+
+					{/*Details option*/}
+					<td>
+						<Modal
+						header={service.name}
+						trigger={<Button>Details</Button>}>
+							{/*Pop-up window with more details*/}
+							<Row>
+								{/*Larger pet picture*/}
+								<Col l={4}>
+									<MediaBox src={service.picture} caption="Service picture" width="200"/>
+								</Col>
+								{/*Pet info*/}
+								<Col l={4}>
+									<h5>Service:</h5>
+									<p>{service.name}</p>
+									<h5>Description:</h5>
+									<p>{service.description}</p>
+									<h5>Pet:</h5>
+									<p>{service.pet}</p>
+									<h5>Date:</h5>
+									<p>{service.date}</p>
+								</Col>
+							</Row>
+							{/*Delete option*/}
+							<Row className="left"><Button> Delete </Button></Row>
+						</Modal>
+					</td>
+				</tr>
+			)
+		});
+
+		let cartTable = cart.map((product) => {
+			return (
+				<tr>
+					{/*Product picture*/}
+					<td><MediaBox src={product.picture} caption="Product picture" width="150"/></td>
+					{/*Product name*/}
+					<td>{product.name}</td>
+					{/*Quantity*/}
+					<td>{product.quantity}</td>
+					{/*Price*/}
+					<td>{parseInt(product.price) * parseInt(product.quantity)}</td>
+
+					{/*Details option*/}
+					<td>
+						<Modal
+						header={product.name}
+						trigger={<Button>Checkout</Button>}>
+							{/*Pop-up window with more details*/}
+							<Row>
+								{/*Larger pet picture*/}
+								<Col l={4}>
+									<MediaBox src={product.picture} caption="Product picture" width="200"/>
+								</Col>
+								{/*Pet info*/}
+								<Col l={4}>
+									<h5>Product:</h5>
+									<p>{product.name}</p>
+									<h5>Description:</h5>
+									<p>{product.description}</p>
+									<h5>Quantity:</h5>
+									<p>{product.quantity}</p>
+									<h5>Total price:</h5>
+									<p>{parseInt(product.price) * parseInt(product.quantity)}</p>
+								</Col>
+							</Row>
+							{/*Delete option*/}
+							<Row className="left" l={4}>
+								<Button> Pay </Button>
+								<Button> Delete </Button>
+							</Row>
 						</Modal>
 					</td>
 				</tr>
@@ -128,10 +219,44 @@ export default class Profile extends React.Component {
 								<Row className="left"><Button>Create</Button></Row>
 							</Modal>
 						</Tab>
-						{/*Products tab*/}
-						<Tab title="My Schedule">Products</Tab>
-						{/*Cart*/}
-						<Tab title="Cart">Products</Tab>
+
+						{/*Schedule tab*/}
+						<Tab title="My Schedule">
+							{/*Schedule table*/}
+							<Table>
+								<thead>
+									{/*Colum names*/}
+									<tr>
+										<th data-field="img">Service</th>
+										<th data-field="name">Pet</th>
+										<th data-field="date">Date</th>
+										<th data-field="details">Details</th>
+									</tr>
+								</thead>
+								<tbody>
+									{servicesTable}
+								</tbody>
+							</Table>
+						</Tab>
+						{/*Cart tab*/}
+						<Tab title="Cart">
+							{/*Cart table*/}
+							<Table>
+								<thead>
+									{/*Colum names*/}
+									<tr>
+										<th data-field="img">Product</th>
+										<th data-field="name">Name</th>
+										<th data-field="quantity">Quantity</th>
+										<th data-field="price">Total price</th>
+										<th data-field="checkout">Checkout</th>
+									</tr>
+								</thead>
+								<tbody>
+									{cartTable}
+								</tbody>
+							</Table>
+						</Tab>
 					</Tabs>
 				</div>
 			)
