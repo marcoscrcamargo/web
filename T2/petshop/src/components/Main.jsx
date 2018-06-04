@@ -103,6 +103,30 @@ export default class Main extends React.Component {
 					description: 'Ração pra animal doente1'
 				},
 			],
+
+			sales : [
+				{
+					name: 'Ração X',
+					price: '55,00',
+					quantity: '5',
+					date: "October 15, 2018 13:10:00",
+					picture: require('../img/prod.jpg')
+				},
+				{
+					name: 'Ração X',
+					price: '55,00',
+					quantity: '6',
+					date: "October 16, 2018 13:20:00",
+					picture: require('../img/prod.jpg')
+				},
+				{
+					name: 'Ração X',
+					price: '55,00',
+					quantity: '7',
+					picture: require('../img/prod.jpg'),
+					date: "October 17, 2018 13:30:00"
+				},
+			],
 			username: 'marcoscrcamargo',
 			email: 'marcoscrcamargo@gmail.com',
 			password: 'admin',

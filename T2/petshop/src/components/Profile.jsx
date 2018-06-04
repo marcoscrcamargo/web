@@ -24,7 +24,7 @@ export default class Profile extends React.Component {
 		let schedule = [];
 		let cart = [];
 
-		// If the user is logged in, gets all his/her pets
+		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
 			pets = (this.props.user.pets) != null ? (this.props.user.pets) : [];
 			schedule = (this.props.user.schedule != null ? (this.props.user.schedule) : []);
@@ -144,7 +144,7 @@ export default class Profile extends React.Component {
 								</Col>
 							</Row>
 							{/*Delete option*/}
-							<Row className="left" l={4}>
+							<Row className="left">
 								<Button> Pay </Button>
 								<Button> Delete </Button>
 							</Row>

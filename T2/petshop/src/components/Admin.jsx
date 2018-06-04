@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tabs, Tab, Table, Button, Modal} from 'react-materialize';
+import {Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
 // import Signup from './Signup.jsx';
 
 export default class Admin extends React.Component {
@@ -10,6 +10,7 @@ export default class Admin extends React.Component {
 			users: [],
 			products: [],
 			services: [],
+			// sales: [],
 		};
 
 		// getting values from the db and assigning them to the users, products and services attributes
@@ -22,6 +23,7 @@ export default class Admin extends React.Component {
 		let users = this.state.users;
 		let products = this.state.products;
 		let services = this.state.services;
+		let sales = this.props.user.sales;
 
 		// for each user in users, runs the function
 		let usersTable = users.map((user, index) => {
@@ -80,6 +82,19 @@ export default class Admin extends React.Component {
 			)
 		});
 
+		// for each sale in sales, runs the function
+		let salesTable = sales.map((sale, index) => {
+			return (
+				// creates a table with colums: Product, Quantity, Total Price and Date
+				<tr key={index}>
+					<td><MediaBox src={sale.picture} caption="Sale picture" width="150"/></td>
+					<td>{sale.quantity}</td>
+					<td>{parseInt(sale.price) * parseInt(sale.quantity)}</td>
+					<td>{sale.date}</td>					
+				</tr>
+			)
+		});
+
 		// how the screen should be rendered
 		return(
 			<div>
@@ -105,6 +120,7 @@ export default class Admin extends React.Component {
 							<tbody>
 								{usersTable}
 							</tbody>
+							<Button> New user </Button>
 						</Table>
 {
 						// <Modal
@@ -170,7 +186,26 @@ export default class Admin extends React.Component {
 
 					</Tab>
 
-					<Tab title="Sales">Some Sales Resume here!!!!!!</Tab>
+					<Tab title="Sales">
+						{/*Sales table*/}
+						<Table>
+							<thead>
+								{/*Names of the colums*/}
+								<tr>
+									<th data-field="product">Product</th>
+									<th data-field="quantity">Quantity</th>
+									<th data-field="price">Total Price</th>
+									<th data-field="date">Date</th>
+								</tr>
+							</thead>
+
+							{/*Table content*/}
+							<tbody>
+								{salesTable}
+							</tbody>
+						</Table>
+
+					</Tab>
 				</Tabs>
 			</div>
 		)
