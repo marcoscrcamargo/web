@@ -27,6 +27,7 @@ export default class Profile extends React.Component {
 		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
 			pets = (this.props.user.pets) != null ? (this.props.user.pets) : [];
+			// pets = this.props.db.getUserPets(this.props.user.username);
 			schedule = (this.props.user.schedule != null ? (this.props.user.schedule) : []);
 			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
 		}
@@ -118,7 +119,7 @@ export default class Profile extends React.Component {
 					{/*Quantity*/}
 					<td>{product.quantity}</td>
 					{/*Price*/}
-					<td>{parseInt(product.price) * parseInt(product.quantity)}</td>
+					<td>{parseInt(product.price, 10) * parseInt(product.quantity, 10)}</td>
 
 					{/*Details option*/}
 					<td>
@@ -140,7 +141,7 @@ export default class Profile extends React.Component {
 									<h5>Quantity:</h5>
 									<p>{product.quantity}</p>
 									<h5>Total price:</h5>
-									<p>{parseInt(product.price) * parseInt(product.quantity)}</p>
+									<p>{parseInt(product.price, 10) * parseInt(product.quantity, 10)}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}

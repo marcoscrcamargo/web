@@ -91,7 +91,7 @@ export default class Admin extends React.Component {
 					<td><MediaBox src={sale.picture} caption="Sale picture" width="150"/></td>
 					<td>{sale.username}</td>
 					<td>{sale.quantity}</td>
-					<td>{parseInt(sale.price) * parseInt(sale.quantity)}</td>
+					<td>{parseInt(sale.price, 10) * parseInt(sale.quantity, 10)}</td>
 					<td>{sale.date}</td>					
 				</tr>
 			)

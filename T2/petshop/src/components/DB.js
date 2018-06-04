@@ -4,6 +4,7 @@ import userData from './db_content/users.js'
 import productData from './db_content/products.js'
 import serviceData from './db_content/services.js'
 import salesData from './db_content/sales.js'
+import petsData from'./db_content/pets.js'
 
 
 // window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -23,7 +24,8 @@ export default class DB {
 		    products: '++id,name',
 		    services: '++id,title',
 		    users: 'username,&email,name,&username',
-		    sales: '++id,price,date,username'
+		    sales: '++id,price,date,username',
+		    pets: '++id,name,username'
 		});
 
 		// Initializing DB atributes
@@ -35,6 +37,7 @@ export default class DB {
 		this.getAllServices = this.getAllServices.bind(this);
 		this.getAllUsers = this.getAllUsers.bind(this);
 		this.getAllSales = this.getAllSales.bind(this);
+		this.getUserPets = this.getUserPets.bind(this);
 		this.delete = this.delete.bind(this);
 		this.putUser = this.putUser.bind(this);
 		// this.createDB();
@@ -91,6 +94,10 @@ export default class DB {
 		this.db.transaction('rw', this.db.sales, () =>{
 			salesData.map((sale, index) => this.db.sales.add(sale));
 		});
+
+		this.db.transaction('rw', this.db.pets, () =>{
+			petsData.map((pet, index) => this.db.pets.add(pet));
+		});
 	}
 
 	deleteDB(){
@@ -127,6 +134,10 @@ export default class DB {
 
 	getAllSales(){
 		return this.db.sales.toArray();
+	}
+
+	getUserPets(name){
+		return this.db.pets.where('username').equals(name).toArray();
 	}
 
 	delete(key) {
