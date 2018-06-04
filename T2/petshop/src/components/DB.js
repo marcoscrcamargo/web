@@ -16,13 +16,14 @@ export default class DB {
 		this.dbVersion = 1;
 
 		this.db = new Dexie(dbName);
+		// this.deleteDB();
 
 		// Creating schema for database
 		this.db.version(this.dbVersion).stores({
 		    products: '++id,name',
 		    services: '++id,title',
 		    users: 'username,&email,name,&username',
-		    sales: 'price,date,username'
+		    sales: '++id,price,date,username'
 		});
 
 		// Initializing DB atributes

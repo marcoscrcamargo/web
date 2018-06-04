@@ -89,6 +89,7 @@ export default class Admin extends React.Component {
 				// creates a table with colums: Product, Quantity, Total Price and Date
 				<tr key={index}>
 					<td><MediaBox src={sale.picture} caption="Sale picture" width="150"/></td>
+					<td>{sale.username}</td>
 					<td>{sale.quantity}</td>
 					<td>{parseInt(sale.price) * parseInt(sale.quantity)}</td>
 					<td>{sale.date}</td>					
@@ -194,6 +195,7 @@ export default class Admin extends React.Component {
 								{/*Names of the colums*/}
 								<tr>
 									<th data-field="product">Product</th>
+									<th data-field="username">Username</th>
 									<th data-field="quantity">Quantity</th>
 									<th data-field="price">Total Price</th>
 									<th data-field="date">Date</th>
