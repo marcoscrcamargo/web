@@ -3,6 +3,7 @@ import Dexie from 'dexie';
 import userData from './db_content/users.js'
 import productData from './db_content/products.js'
 import serviceData from './db_content/services.js'
+import salesData from './db_content/sales.js'
 
 
 // window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -20,7 +21,8 @@ export default class DB {
 		this.db.version(this.dbVersion).stores({
 		    products: '++id,name',
 		    services: '++id,title',
-		    users: 'username,&email,name,&username'
+		    users: 'username,&email,name,&username',
+		    sales: 'price,date,username'
 		});
 
 		// Initializing DB atributes
@@ -31,8 +33,10 @@ export default class DB {
 		this.getAllProducts = this.getAllProducts.bind(this);
 		this.getAllServices = this.getAllServices.bind(this);
 		this.getAllUsers = this.getAllUsers.bind(this);
+		this.getAllSales = this.getAllSales.bind(this);
 		this.delete = this.delete.bind(this);
 		this.putUser = this.putUser.bind(this);
+		// this.createDB();
 
 		// admin info
 		let admin = {
@@ -83,6 +87,9 @@ export default class DB {
 			serviceData.map((service, index) => this.db.services.add(service));
 		});
 
+		this.db.transaction('rw', this.db.sales, () =>{
+			salesData.map((sale, index) => this.db.sales.add(sale));
+		});
 	}
 
 	deleteDB(){
@@ -117,6 +124,9 @@ export default class DB {
 		return this.db.users.toArray();
 	}
 
+	getAllSales(){
+		return this.db.sales.toArray();
+	}
 
 	delete(key) {
 

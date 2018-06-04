@@ -10,20 +10,21 @@ export default class Admin extends React.Component {
 			users: [],
 			products: [],
 			services: [],
-			// sales: [],
+			sales: [],
 		};
 
 		// getting values from the db and assigning them to the users, products and services attributes
 		this.props.db.getAllUsers().then(item => this.setState({ users: item }));
 		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
 		this.props.db.getAllServices().then(item => this.setState({ services: item }));
+		this.props.db.getAllSales().then(item => this.setState({ sales: item }));
 	}
 
 	render(){
 		let users = this.state.users;
 		let products = this.state.products;
 		let services = this.state.services;
-		let sales = this.props.user.sales;
+		let sales = this.state.sales;
 
 		// for each user in users, runs the function
 		let usersTable = users.map((user, index) => {
