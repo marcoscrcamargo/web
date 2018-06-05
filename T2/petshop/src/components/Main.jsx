@@ -39,24 +39,24 @@ export default class Main extends React.Component {
 			name: 'Marcos Camargo',
 			phone: '14997189943',
 			picture: require('../img/avatar.png'),
-			// pets: [
-			// 		{
-			// 			name: 'Marley',
-			// 			picture: require('../img/cachorro.jpg')
-			// 		},
-			// 		{
-			// 			name: 'Tom',
-			// 			picture: require('../img/gato.jpg')
-			// 		},
-			// 		{
-			// 			name: 'Piu Piu',
-			// 			picture: require('../img/passaro.jpg')
-			// 		},
-			// 		{
-			// 			name: 'Nemo',
-			// 			picture: require('../img/peixe.jpg')
-			// 		},
-			// 	],
+			pets: [
+					{
+						name: 'Marley',
+						picture: require('../img/silhueta_cachorro.png')
+					},
+					{
+						name: 'Tom',
+						picture: require('../img/silhueta_gato.png')
+					},
+					{
+						name: 'Piu Piu',
+						picture: require('../img/silhueta_passaro.png')
+					},
+					{
+						name: 'Nemo',
+						picture: require('../img/silhueta_peixe.png')
+					},
+				],
 			schedule: [
 				{
 					name: 'Grooming',

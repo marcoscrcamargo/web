@@ -52,19 +52,19 @@ export default class DB {
 			pets: [
 				{
 					name: 'Marley',
-					picture: require('../img/cachorro.jpg')
+					picture: require('../img/silhueta_cachorro.png')
 				},
 				{
 					name: 'Tom',
-					picture: require('../img/gato.jpg')
+					picture: require('../img/silhueta_gato.png')
 				},
 				{
 					name: 'Piu Piu',
-					picture: require('../img/passaro.jpg')
+					picture: require('../img/silhueta_passaro.png')
 				},
 				{
 					name: 'Nemo',
-					picture: require('../img/peixe.jpg')
+					picture: require('../img/silhueta_peixe.png')
 				},
 			],
 			username: 'admin',

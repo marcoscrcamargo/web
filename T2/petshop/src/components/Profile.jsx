@@ -27,6 +27,7 @@ export default class Profile extends React.Component {
 		let pets = [];
 		let schedule = [];
 		let cart = [];
+		let total = 0;
 
 		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
@@ -125,6 +126,8 @@ export default class Profile extends React.Component {
 		});
 
 		let cartTable = cart.map((product) => {
+			total += parseInt(product.price, 10) * parseInt(product.quantity, 10);
+
 			return (
 				<tr>
 					{/*Product picture*/}
@@ -140,7 +143,7 @@ export default class Profile extends React.Component {
 					<td>
 						<Modal
 						header={product.name}
-						trigger={<Button>Checkout</Button>}>
+						trigger={<Button>Delete</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
@@ -161,7 +164,6 @@ export default class Profile extends React.Component {
 							</Row>
 							{/*Delete option*/}
 							<Row className="left">
-								<Button> Pay </Button>
 								<Button> Delete </Button>
 							</Row>
 						</Modal>
@@ -213,7 +215,7 @@ export default class Profile extends React.Component {
 								<thead>
 									{/*Colum names*/}
 									<tr>
-										<th data-field="img">Pet</th>
+										<th data-field="img">Specie</th>
 										<th data-field="name">Name</th>
 										<th data-field="details">Details</th>
 									</tr>
@@ -222,14 +224,21 @@ export default class Profile extends React.Component {
 									{petsTable}
 								</tbody>
 							</Table>
+							<Row></Row>
+							<Row></Row>
 							{/*Add new pet option*/}
 							<Modal
 							header='Create new pet'
 							trigger={<Button>New pet</Button>}>
 								<Row>
 									{/*Upload pet's picture*/}
-									<Row><Input s={6} m={6} l={6} type="text" label="Pet Name" validate /></Row>
-									<Row><Button>Upload Picture</Button></Row>
+									<Input s={6} m={6} l={6} type="text" label="Pet Name" validate />
+								</Row>
+								<Row>
+								    <Input name='group1' type='radio' value='dog' label='Dog' />
+								    <Input name='group1' type='radio' value='cat' label='Cat' />
+								    <Input name='group1' type='radio' value='bird' label='Bird' />
+								    <Input name='group1' type='radio' value='fish' label='Fish' />
 								</Row>
 								{/*Create button*/}
 								<Row className="left"><Button>Create</Button></Row>
@@ -265,14 +274,24 @@ export default class Profile extends React.Component {
 										<th data-field="name">Name</th>
 										<th data-field="quantity">Quantity</th>
 										<th data-field="price">Total price</th>
-										<th data-field="checkout">Checkout</th>
+										<th data-field="checkout"></th>
 									</tr>
 								</thead>
 								<tbody>
 									{cartTable}
 								</tbody>
 							</Table>
+							<Modal
+							header='Checkout'
+							trigger={<Button>Checkout</Button>}>
+								<h5>Number of items:</h5>
+								<p>{cart.length}</p>
+								<h5>Total:</h5>
+								<p>${total}</p>
+								<Button>Pay</Button>
+							</Modal>
 						</Tab>
+
 					</Tabs>
 				</div>
 			)
