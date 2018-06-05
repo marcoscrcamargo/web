@@ -5,6 +5,7 @@ import productData from './db_content/products.js'
 import serviceData from './db_content/services.js'
 import salesData from './db_content/sales.js'
 import petsData from'./db_content/pets.js'
+import scheduleData from'./db_content/schedule.js'
 
 
 // window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -26,56 +27,40 @@ export default class DB {
 		    services: '++id,title',
 		    users: 'username,&email,name,&username',
 		    sales: '++id,price,date,username',
-		    pets: '++id,name,username'
+		    pets: '++id,name,username',
+		    schedules: '++id,pet,username'
 		});
 
 		// Initializing DB atributes
 		this.createDB = this.createDB.bind(this);
 		this.getUser = this.getUser.bind(this);
+		this.getSchedule = this.getSchedule.bind(this);
 		this.getProduct = this.getProduct.bind(this);
 		this.getService = this.getService.bind(this);
 		this.getAllProducts = this.getAllProducts.bind(this);
 		this.getAllServices = this.getAllServices.bind(this);
 		this.getAllUsers = this.getAllUsers.bind(this);
 		this.getAllSales = this.getAllSales.bind(this);
-		this.getUserPets = this.getUserPets.bind(this);
 		this.deleteUser = this.deleteUser.bind(this);
 		this.deleteProduct = this.deleteProduct.bind(this);
 		this.deletePet = this.deletePet.bind(this);
+		this.deleteSchedule = this.deleteSchedule.bind(this);
 		this.putUser = this.putUser.bind(this);
+		this.putSchedule = this.putSchedule.bind(this);
 
-		this.createDB();
+		// this.createDB();
 
 		// admin info
 		let admin = {
 			name: 'Admin',
 			phone: '00000000000',
 			picture: require('../img/avatar.png'),
-			pets: [
-				{
-					name: 'Marley',
-					picture: require('../img/silhueta_cachorro.png')
-				},
-				{
-					name: 'Tom',
-					picture: require('../img/silhueta_gato.png')
-				},
-				{
-					name: 'Piu Piu',
-					picture: require('../img/silhueta_passaro.png')
-				},
-				{
-					name: 'Nemo',
-					picture: require('../img/silhueta_peixe.png')
-				},
-			],
 			username: 'admin',
 			email: 'admin@petshop.com',
 			password: 'admin',
 			admin: 'true',
 			adress: 'Rua do admin'
 		}
-		// this.createDB();
 
 		// inserting admin as a user in the DB
 		this.db.transaction('rw', this.db.users, () =>{
@@ -103,6 +88,10 @@ export default class DB {
 		this.db.transaction('rw', this.db.pets, () =>{
 			petsData.map((pet, index) => this.db.pets.add(pet));
 		});
+
+		this.db.transaction('rw', this.db.schedules, () =>{
+			scheduleData.map((schedule, index) => this.db.schedules.add(schedule));
+		});
 	}
 
 	deleteDB(){
@@ -116,8 +105,13 @@ export default class DB {
 	getUser(idx, key) {
 		return this.db.users.where(idx).equals(key).first();
 	}
+
 	getPets(idx, key) {
 		return this.db.pets.where(idx).equals(key).toArray();
+	}
+
+	getSchedule(idx, key) {
+		return this.db.schedules.where(idx).equals(key).toArray();
 	}
 
 	getProduct(id) {
@@ -144,10 +138,6 @@ export default class DB {
 		return this.db.sales.toArray();
 	}
 
-	getUserPets(name){
-		return this.db.pets.where('username').equals(name).toArray();
-	}
-
 	deleteUser(key) {
 		this.db.users.delete(key);
 	}
@@ -161,9 +151,18 @@ export default class DB {
 		this.db.pets.delete(key).then(a=> console.log('delete user sucess!'));
 	}
 
+	deleteSchedule(key) {
+		this.db.schedules.delete(key).then(a=> console.log('delete schedule sucess!'));
+	}
+
 	putUser(user) {
 		this.db.users.put(user).then(a => console.log('new user sucess!'));
 	}
+
+	putSchedule(schedule) {
+		this.db.schedules.put(schedule).then(a => console.log('new schedule sucess!'));
+	}
+
 	putPet(pet) {
 		this.db.pets.put(pet).then(a => console.log('new pet sucess!'));
 	}

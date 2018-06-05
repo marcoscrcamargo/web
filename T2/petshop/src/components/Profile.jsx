@@ -8,13 +8,18 @@ export default class Profile extends React.Component {
 
 		this.state = {
 			pets: [],
+			schedules: [],
 			petname: '',
 			createdPet: 'false',
 		}
 
 		this.petToDelete = null
+		this.scheduleToDelete = null
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+		this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+
 		this.deletePet = this.deletePet.bind(this);
+		this.deleteSchedule = this.deleteSchedule.bind(this);
 		this.createNewPet = this.createNewPet.bind(this);
 
 	}
@@ -37,7 +42,7 @@ export default class Profile extends React.Component {
 		if (isLoggedIn) {
 			pets = this.state.pets;
 			// pets = this.props.db.getUserPets(this.props.user.username);
-			schedule = (this.props.user.schedule != null ? (this.props.user.schedule) : []);
+			schedule = this.state.schedules;
 			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
 		}
 
@@ -54,40 +59,34 @@ export default class Profile extends React.Component {
 					<td><Col>{pet.name}</Col></td>
 					{/*Details option*/}
 					<td>
-						<Row className="right">
-							<Col>
-							<Modal
-							id={"pet"+pet.id}
-							header={pet.name}
-							trigger={<Button>Details</Button>}>
-								{/*Pop-up window with more details*/}
-								<Row>
-									{/*Larger pet picture*/}
-									<Col l={4}>
-										<MediaBox src={pet.picture} caption="Pet picture" width="200"/>
-									</Col>
-									{/*Pet info*/}
-									<Col l={4}>
-										<h5>Name:</h5>
-										<p>{pet.name}</p>
-									</Col>
-								</Row>
-								{/*Delete option*/}
-							</Modal>
-							</Col>
-							<Col>
-							<Button id="index" onClick={ ()=> {
+						<Modal
+						id={"pet"+pet.id}
+						header={pet.name}
+						trigger={<Button>Details</Button>}>
+							{/*Pop-up window with more details*/}
+							<Row>
+								{/*Larger pet picture*/}
+								<Col l={4}>
+									<MediaBox src={pet.picture} caption="Pet picture" width="200"/>
+								</Col>
+								{/*Pet info*/}
+								<Col l={4}>
+									<h5>Name:</h5>
+									<p>{pet.name}</p>
+								</Col>
+							</Row>
+							{/*Delete option*/}
+							<Button modal="close" onClick={ ()=> {
 								this.petToDelete = pet;
 								this.deletePet();
 							}}> Delete </Button>
-							</Col>
-						</Row>
+						</Modal>
 					</td>
 				</tr>
 			)
 		});
 
-		let servicesTable = schedule.map((service) => {
+		let scheduleTable = schedule.map((service) => {
 			return (
 				<tr>
 					{/*Service name*/}
@@ -121,7 +120,10 @@ export default class Profile extends React.Component {
 								</Col>
 							</Row>
 							{/*Delete option*/}
-							<Row className="left"><Button> Delete </Button></Row>
+							<Row className="left"><Button modal="close" onClick={ ()=> {
+								this.scheduleToDelete = service;
+								this.deleteSchedule();
+							}}> Delete </Button></Row>
 						</Modal>
 					</td>
 				</tr>
@@ -262,7 +264,7 @@ export default class Profile extends React.Component {
 									</tr>
 								</thead>
 								<tbody>
-									{servicesTable}
+									{scheduleTable}
 								</tbody>
 							</Table>
 						</Tab>
@@ -311,6 +313,11 @@ export default class Profile extends React.Component {
 	deletePet(){
 		this.props.db.deletePet(this.petToDelete.id);
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+	}
+
+	deleteSchedule(){
+		this.props.db.deleteSchedule(this.scheduleToDelete.id);
+		this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
 	}
 
 	createNewPet(){
