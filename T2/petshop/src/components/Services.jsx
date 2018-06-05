@@ -80,6 +80,7 @@ export default class Services extends React.Component {
 										<Row className="left"><Button modal="close" onClick={ ()=> {
 											this.servicetoSchedule = service;
 											this.createNewSchedule();
+											alert("Scheduled!");
 										}}>Schedule</Button></Row>
 									</Modal>
 									]}>
