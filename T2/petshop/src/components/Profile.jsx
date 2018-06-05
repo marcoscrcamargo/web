@@ -236,14 +236,13 @@ export default class Profile extends React.Component {
 							header='Create new pet'
 							trigger={<Button>New pet</Button>}>
 								<Row>
-									{/*Upload pet's picture*/}
 									<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" validate/>
 								</Row>
 								<Row>
-								    <Input name='group1' type='radio' value='dog' label='Dog' />
-								    <Input name='group1' type='radio' value='cat' label='Cat' />
-								    <Input name='group1' type='radio' value='bird' label='Bird' />
-								    <Input name='group1' type='radio' value='fish' label='Fish' />
+								    <Input id="radio_dog" name='group1' type='radio' value='dog' label='Dog' checked="true"/>
+								    <Input id="radio_cat" name='group1' type='radio' value='cat' label='Cat'/>
+								    <Input id="radio_bird" name='group1' type='radio' value='bird' label='Bird'/>
+								    <Input id="radio_fish" name='group1' type='radio' value='fish' label='Fish'/>
 								</Row>
 								{/*Create button*/}
 								<Row className="left"><Button modal="close" onClick={this.createNewPet}>Create</Button></Row>
@@ -321,8 +320,28 @@ export default class Profile extends React.Component {
 	}
 
 	createNewPet(){
-		let pic = require('../img/silhueta_gato.png');
-		let petname = document.getElementById("petname").value;
+		let pic, petname, dog, cat, bird, fish;
+
+		petname = document.getElementById("petname").value;
+
+		dog = document.getElementById("radio_dog");
+		cat = document.getElementById("radio_cat");
+		bird = document.getElementById("radio_bird");
+		fish = document.getElementById("radio_fish");
+
+		if (dog.checked){
+			pic = require('../img/silhueta_cachorro.png');
+		}
+		else if (cat.checked){
+			pic = require('../img/silhueta_gato.png');
+		}
+		else if (bird.checked){
+			pic = require('../img/silhueta_passaro.png');
+		}
+		else if (fish.checked){
+			pic = require('../img/silhueta_peixe.png');
+		}
+
 		if(petname !== ''){
 			let newPet = {
 				name: petname,
