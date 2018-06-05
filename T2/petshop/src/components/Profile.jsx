@@ -209,14 +209,21 @@ export default class Profile extends React.Component {
 									{petsTable}
 								</tbody>
 							</Table>
+							<Row></Row>
+							<Row></Row>
 							{/*Add new pet option*/}
 							<Modal
 							header='Create new pet'
 							trigger={<Button>New pet</Button>}>
 								<Row>
 									{/*Upload pet's picture*/}
-									<Row><Input s={6} m={6} l={6} type="text" label="Pet Name" validate /></Row>
-									<Row><Button>Upload Picture</Button></Row>
+									<Input s={6} m={6} l={6} type="text" label="Pet Name" validate />
+								</Row>
+								<Row>
+								    <Input name='group1' type='radio' value='dog' label='Dog' />
+								    <Input name='group1' type='radio' value='cat' label='Cat' />
+								    <Input name='group1' type='radio' value='bird' label='Bird' />
+								    <Input name='group1' type='radio' value='fish' label='Fish' />
 								</Row>
 								{/*Create button*/}
 								<Row className="left"><Button>Create</Button></Row>
