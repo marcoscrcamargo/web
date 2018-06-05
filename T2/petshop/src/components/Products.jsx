@@ -7,7 +7,7 @@ export default class Products extends React.Component {
 
 		this.state = {
 			products: [],
-			quantity: 0,
+			quantity: 1,
 		};
 		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
 		this.prodId = '';
@@ -17,6 +17,7 @@ export default class Products extends React.Component {
 		this.prodPrice = '';
 
 		this.createNewItem = this.createNewItem.bind(this);
+		this.setState({quantity: 1})
 	}
 
 	render() {
