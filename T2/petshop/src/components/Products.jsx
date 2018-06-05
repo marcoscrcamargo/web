@@ -81,7 +81,7 @@ export default class Products extends React.Component {
 			username: this.props.user.username,
 			productId: this.prodId,
 			name: this.prodName,
-			img_file: this.prodImg,
+			picture: this.prodImg,
 			description: this.prodDescription,
 			price: this.prodPrice,
 			quantity: this.state.quantity

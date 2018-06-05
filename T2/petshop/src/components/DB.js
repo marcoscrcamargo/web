@@ -18,8 +18,8 @@ export default class DB {
 		this.dbVersion = 1;
 
 		this.db = new Dexie(dbName);
-		this.deleteDB();
-		this.db = new Dexie(dbName);
+		// this.deleteDB();
+		// this.db = new Dexie(dbName);
 
 		// Creating schema for database
 		this.db.version(this.dbVersion).stores({
@@ -50,8 +50,9 @@ export default class DB {
 		this.putSchedule = this.putSchedule.bind(this);
 		this.addToCart = this.addToCart.bind(this);
 		this.getCart = this.getCart.bind(this);
+		this.deleteFromCart = this.deleteFromCart.bind(this);
 
-		this.createDB();
+		// this.createDB();
 
 		// admin info
 		let admin = {
@@ -176,5 +177,9 @@ export default class DB {
 
 	getCart(username){
 		return this.db.cart.where('username').equals(username).toArray();
+	}
+
+	deleteFromCart(key){
+		this.db.cart.delete(key).then(a => console.log('deleted from cart successfully!'))
 	}
 }
