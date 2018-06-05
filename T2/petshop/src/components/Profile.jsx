@@ -11,6 +11,7 @@ export default class Profile extends React.Component {
 			schedules: [],
 			petname: '',
 			createdPet: 'false',
+			cart: []
 		}
 
 		this.petToDelete = null
@@ -43,7 +44,8 @@ export default class Profile extends React.Component {
 			pets = this.state.pets;
 			// pets = this.props.db.getUserPets(this.props.user.username);
 			schedule = this.state.schedules;
-			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
+			// cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
+			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 		}
 
 		// Sets a list of pets as a table
@@ -334,5 +336,4 @@ export default class Profile extends React.Component {
 		}
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 	}
-
 }

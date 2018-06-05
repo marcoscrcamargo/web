@@ -28,7 +28,8 @@ export default class DB {
 		    users: 'username,&email,name,&username',
 		    sales: '++id,price,date,username',
 		    pets: '++id,name,username',
-		    schedules: '++id,pet,username'
+		    schedules: '++id,pet,username',
+		    cart: '++id,username,productId'
 		});
 
 		// Initializing DB atributes
@@ -47,6 +48,8 @@ export default class DB {
 		this.deleteSchedule = this.deleteSchedule.bind(this);
 		this.putUser = this.putUser.bind(this);
 		this.putSchedule = this.putSchedule.bind(this);
+		this.addToCart = this.addToCart.bind(this);
+		this.getCart = this.getCart.bind(this);
 
 		// this.createDB();
 
@@ -165,5 +168,13 @@ export default class DB {
 
 	putPet(pet) {
 		this.db.pets.put(pet).then(a => console.log('new pet sucess!'));
+	}
+
+	addToCart(item){
+		this.db.cart.put(item).then(a => console.log('inserted into cart!'));
+	}
+
+	getCart(username){
+		return this.db.cart.where('username').equals(username).toArray();
 	}
 }
