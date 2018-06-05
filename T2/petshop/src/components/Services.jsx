@@ -7,44 +7,84 @@ export default class Services extends React.Component {
 
 		this.state = {
 			services: [],
+			petsForUser: [],
 		};
 		this.props.db.getAllServices().then(item => this.setState({ services: item }));
+		
+		if (this.props.user !== null){
+			this.props.db.getPets("username", this.props.user.username).then(item => this.setState({ petsForUser: item }));
+		}
 	}
 
 	render() {
-		let services = this.state.services;
+		let services, serviceList, pets, pet_list;
 
-		// fills a list with cards with name, image, price and a short description about each service
-		let serviceList = services.map((service) => {
-				return (
-					<Col s={6} m={4} l={3}>
-						<Card className='medium'
-							/*Service image*/
-							header={<CardTitle image={service.img_file}></CardTitle>}
-							/*Price/schedule (clickable) */
-							actions={[
-								<Modal
-								header='Schedule a service'
-								trigger={<Button>Schedule ({service.price})</Button>}>
-									Date:
-									<Row>
-									  <Input name='on' type='date' onChange={ {}} />
-									</Row>
-									Time:
-									<Row>
-									  <Input name='on' type='time' onChange={function(e, value) {}} />
-									</Row>
-									{/*Schedule button*/}
-									<Row className="left"><Button>Schedule</Button></Row>
-								</Modal>
-								]}>
-							{/*Service name*/}
-							<h5>{service.title}</h5>
-							{/*Service description*/}
-							{service.description}
-						</Card>
-					</Col>)
-			});
+		services = this.state.services;
+
+		if (this.props.user === null){
+			serviceList = services.map((service) => {
+					return (
+						<Col s={6} m={4} l={3}>
+							<Card className='medium'
+								/*Service image*/
+								header={<CardTitle image={service.img_file}></CardTitle>}
+								/*Price/schedule (clickable) */
+								actions={[
+									<Modal
+									header='Schedule a service'
+									trigger={<Button>Schedule ({service.price})</Button>}>
+										Please login first!
+									</Modal>
+									]}>
+								{/*Service name*/}
+								<h5>{service.title}</h5>
+								{/*Service description*/}
+								{service.description}
+							</Card>
+						</Col>)
+				});
+		}
+		else{
+			pet_list = this.state.petsForUser.map((pet) => {return(<option>{pet.name}</option>)})
+			
+			// fills a list with cards with name, image, price and a short description about each service
+			serviceList = services.map((service) => {
+					return (
+						<Col s={6} m={4} l={3}>
+							<Card className='medium'
+								/*Service image*/
+								header={<CardTitle image={service.img_file}></CardTitle>}
+								/*Price/schedule (clickable) */
+								actions={[
+									<Modal
+									header='Schedule a service'
+									trigger={<Button>Schedule ({service.price})</Button>}>
+										Pet:
+										<Row>
+											<Input s={12} type='select' label="Pet selection" defaultValue='2'>
+												{pet_list}
+											</Input>
+										</Row>
+										Date:
+										<Row>
+										  <Input name='on' type='date' onChange={ {}} />
+										</Row>
+										Time:
+										<Row>
+										  <Input name='on' type='time' onChange={function(e, value) {}} />
+										</Row>
+										{/*Schedule button*/}
+										<Row className="left"><Button>Schedule</Button></Row>
+									</Modal>
+									]}>
+								{/*Service name*/}
+								<h5>{service.title}</h5>
+								{/*Service description*/}
+								{service.description}
+							</Card>
+						</Col>)
+				});
+		}
 
 		// returns the list of cards
 		return (
