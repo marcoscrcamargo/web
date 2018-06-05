@@ -28,14 +28,14 @@ Signup.jsx - Página para criar novo usuário.
 
 Roteiro para teste do site:
 
-- Tentar comprar um produto (notar que aparecerá um aviso pedindo para logar antes)
-- Tentar agendar um serviço (notar que aparecerá um aviso pedindo para logar antes)
+- Tentar comprar um produto na aba Products (notar que aparecerá um aviso pedindo para logar antes)
+- Tentar agendar um serviço na aba Services (notar que aparecerá um aviso pedindo para logar antes)
 - Criar usuário (opção signup logo embaixo do campo "nome de usuário" no topo superior direito da página)
 - Logar com o usuário criado (canto superior direito da página)
-- Adicionar produtos ao carrinho, mudando as quantidades do mesmo produto adicionadas de uma vez
+- Adicionar produtos ao carrinho, mudando as quantidades do mesmo produto adicionadas de uma vez (ir na aba products e clicar no botão "Buy" do produto desejado e escolher a quantidade desejada)
 - Cadastrar animais (aba profile, sub-aba pets, clicar em "new pet")
-- Agendar serviços para os animais cadastrados
-- Voltar para a aba Profile e vizualizar o carrinho de produtos e os serviços agendados
+- Agendar serviços para os animais cadastrados (aba Services, clicar no botão "Schedule" do serviço desejado, escolher data e hora)
+- Ir para a aba Profile e vizualizar o carrinho de produtos e os serviços agendados
 - Remover alguns produtos do carrinho (clicando no botão delete ao lado do produto desejado)
 - Remover alguns serviços da agenda (clicando no botão "Details" ao lado do serviço desejado e depois em "Delete")
-- Remover alguns animais (clicando no botão "Details ao lado do animal desejado e depois em "Delete")
+- Remover alguns animais (clicando no botão "Details" ao lado do animal desejado e depois em "Delete")
