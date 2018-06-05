@@ -140,7 +140,7 @@ export default class Main extends React.Component {
 					{/*This container contains all the main content of the page*/}
 					<Container>
 						<Route exact path="/" component={Home} />
-						<Route path="/products" render={ ()=> <Products db={this.props.db} /> } />
+						<Route path="/products" render={ ()=> <Products db={this.props.db} user={user}/> } />
 						<Route path="/admin" render={ ()=><Admin db={this.props.db} user={user}/>} />
 						<Route path="/services" render={ ()=> <Services db={this.props.db} user={user} />} />
 						<Route path="/login" render={ ()=> <Login onClickLogin={this.userLogin}/> } />
