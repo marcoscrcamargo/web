@@ -21,7 +21,7 @@ export default class Services extends React.Component {
 	}
 
 	render() {
-		let services, serviceList, pets, pet_list;
+		let services, serviceList, pet_list;
 
 		services = this.state.services;
 
@@ -50,7 +50,6 @@ export default class Services extends React.Component {
 		}
 		else{
 			pet_list = this.state.petsForUser.map((pet) => {return(<option>{pet.name}</option>)})
-
 			// fills a list with cards with name, image, price and a short description about each service
 			serviceList = services.map((service) => {
 					return (
@@ -61,11 +60,11 @@ export default class Services extends React.Component {
 								/*Price/schedule (clickable) */
 								actions={[
 									<Modal
-									header='Schedule a service'
+									header={'Schedule '+service.title}
 									trigger={<Button>Schedule ({service.price})</Button>}>
 										Pet:
 										<Row>
-											<Input s={12} type='select' label="Pet selection" defaultValue='2'>
+											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2'>
 												{pet_list}
 											</Input>
 										</Row>
@@ -103,11 +102,13 @@ export default class Services extends React.Component {
 	createNewSchedule(){
 		let date = String(document.getElementById("inputdate").value);
 		let time = String(document.getElementById("inputime").value);
+		let dt = date + " " + time;
+		let petname = String(document.getElementById("inputname").value);
 		let newSchedule = {
 			name: this.servicetoSchedule.title,
 			username: this.props.user.username,
-			pet: 'Marleyeeu',
-			date: date + " " + time,
+			pet: petname,
+			date: dt,
 			picture: this.servicetoSchedule.img_file,
 			description: this.servicetoSchedule.description
 		}
