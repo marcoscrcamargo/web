@@ -154,11 +154,15 @@ export default class DB {
 		this.db.products.delete(key);
 
 	}
+
 	deletePet(key) {
-		this.db.pets.delete(key).then(a=> console.log('scuess!'));
+		this.db.pets.delete(key).then(a=> console.log('delete user sucess!'));
 	}
 
 	putUser(user) {
 		this.db.users.put(user).then(a => console.log('new user sucess!'));
+	}
+	putPet(pet) {
+		this.db.pets.put(pet).then(a => console.log('new pet sucess!'));
 	}
 }

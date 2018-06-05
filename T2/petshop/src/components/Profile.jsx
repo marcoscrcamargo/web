@@ -8,11 +8,15 @@ export default class Profile extends React.Component {
 
 		this.state = {
 			pets: [],
+			petname: '',
+			createdPet: 'false',
 		}
 
 		this.petToDelete = null
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 		this.deletePet = this.deletePet.bind(this);
+		this.createNewPet = this.createNewPet.bind(this);
+
 	}
 	render(){
 		// Defines a pattern for responsive images
@@ -32,7 +36,6 @@ export default class Profile extends React.Component {
 		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
 			pets = this.state.pets;
-			console.log(pets);
 			// pets = this.props.db.getUserPets(this.props.user.username);
 			schedule = (this.props.user.schedule != null ? (this.props.user.schedule) : []);
 			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
@@ -232,7 +235,7 @@ export default class Profile extends React.Component {
 							trigger={<Button>New pet</Button>}>
 								<Row>
 									{/*Upload pet's picture*/}
-									<Input s={6} m={6} l={6} type="text" label="Pet Name" validate />
+									<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" validate/>
 								</Row>
 								<Row>
 								    <Input name='group1' type='radio' value='dog' label='Dog' />
@@ -241,7 +244,7 @@ export default class Profile extends React.Component {
 								    <Input name='group1' type='radio' value='fish' label='Fish' />
 								</Row>
 								{/*Create button*/}
-								<Row className="left"><Button>Create</Button></Row>
+								<Row className="left"><Button modal="close" onClick={this.createNewPet}>Create</Button></Row>
 							</Modal>
 						</Tab>
 
@@ -309,4 +312,20 @@ export default class Profile extends React.Component {
 		this.props.db.deletePet(this.petToDelete.id);
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 	}
+
+	createNewPet(){
+		let pic = require('../img/silhueta_gato.png');
+		let petname = document.getElementById("petname").value;
+		if(petname !== ''){
+			let newPet = {
+				name: petname,
+				picture: pic,
+				username: this.props.user.username
+			}
+			this.props.db.putPet(newPet);
+			this.setState({createdPet: 'true'});
+		}
+		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+	}
+
 }
