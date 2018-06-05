@@ -1,5 +1,7 @@
 ﻿Victor Forbes - 9293394
+
 Marcos Camargo - 9278045
+
 Gabriel Camargo - 9293456
 
 
@@ -14,15 +16,25 @@ npm install
 npm start
 
 O Projeto contém os arquivos:
+
 Admin.jsx - Página de adminstrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
+
 DB.js - Implementação das funções do banco de dados utilizando Dexie (IndexedDB).
+
 ForgotPassword.jsx - Página esqueceu a senha.
+
 Header.jsx - Componente do Header da página.
+
 Login.jsx - Página de Login (utilizada na navbar em mobile).
+
 Main.jsx - Componente principal, realiza as chamadas para os outros componentes.
+
 Products.jsx - Página para exibição dos produtos.
+
 Profile.jsx - Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados.
+
 Services.jsx - Página para exibição dos serviços.
+
 Signup.jsx - Página para criar novo usuário.
 
 
