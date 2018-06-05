@@ -15,13 +15,13 @@ const serviceData = [
 		title: 'Bath',
 		img_file: require('../../img/banho.jpg'),
 		description: 'We leave your pet clean and smelling good for a fair price!',
-		price: '15.00'
+		price: '$15.00'
 	},
 	{
 		title: 'Vaccination',
 		img_file: require('../../img/vacinacao.jpg'),
 		description: 'We apply vaccines to keep your pet always protected and healthy!',
-		price: '20.00'
+		price: '$20.00'
 	},
 
 ];
