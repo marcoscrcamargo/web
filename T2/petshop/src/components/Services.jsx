@@ -52,7 +52,7 @@ export default class Services extends React.Component {
 			pet_list = this.state.petsForUser.map((pet) => {return(<option>{pet.name}</option>)})
 
 			// fills a list with cards with name, image, price and a short description about each service
-			let serviceList = services.map((service) => {
+			serviceList = services.map((service) => {
 					return (
 						<Col s={6} m={4} l={3}>
 							<Card className='medium'
@@ -63,6 +63,12 @@ export default class Services extends React.Component {
 									<Modal
 									header='Schedule a service'
 									trigger={<Button>Schedule ({service.price})</Button>}>
+										Pet:
+										<Row>
+											<Input s={12} type='select' label="Pet selection" defaultValue='2'>
+												{pet_list}
+											</Input>
+										</Row>
 										Date:
 										<Row>
 										  <Input id="inputdate" name='on' type='date'/>
