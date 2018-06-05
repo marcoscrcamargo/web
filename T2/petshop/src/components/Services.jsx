@@ -8,7 +8,10 @@ export default class Services extends React.Component {
 		this.state = {
 			services: [],
 		};
+
+		this.servicetoSchedule = null
 		this.props.db.getAllServices().then(item => this.setState({ services: item }));
+		this.createNewSchedule = this.createNewSchedule.bind(this);
 	}
 
 	render() {
@@ -28,14 +31,17 @@ export default class Services extends React.Component {
 								trigger={<Button>Schedule ({service.price})</Button>}>
 									Date:
 									<Row>
-									  <Input name='on' type='date' onChange={ {}} />
+									  <Input id="inputdate" name='on' type='date'/>
 									</Row>
 									Time:
 									<Row>
-									  <Input name='on' type='time' onChange={function(e, value) {}} />
+									  <Input id="inputime" name='on' type='time'/>
 									</Row>
 									{/*Schedule button*/}
-									<Row className="left"><Button>Schedule</Button></Row>
+									<Row className="left"><Button modal="close" onClick={ ()=> {
+										this.servicetoSchedule = service;
+										this.createNewSchedule();
+									}}>Schedule</Button></Row>
 								</Modal>
 								]}>
 							{/*Service name*/}
@@ -52,5 +58,19 @@ export default class Services extends React.Component {
 				{serviceList}
 			</Row>
 		);
+	}
+
+	createNewSchedule(){
+		let date = String(document.getElementById("inputdate").value);
+		let time = String(document.getElementById("inputime").value);
+		let newSchedule = {
+			name: this.servicetoSchedule.title,
+			username: this.props.user.username,
+			pet: 'Marleyeeu',
+			date: date + " " + time,
+			picture: this.servicetoSchedule.img_file,
+			description: this.servicetoSchedule.description
+		}
+		this.props.db.putSchedule(newSchedule);
 	}
 }
