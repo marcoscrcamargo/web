@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card, CardTitle} from 'react-materialize';
+import {Row, Col, Card, CardTitle, Modal, Input, Button} from 'react-materialize';
 
 export default class Services extends React.Component {
 	constructor(props) {
@@ -22,7 +22,22 @@ export default class Services extends React.Component {
 							/*Service image*/
 							header={<CardTitle image={service.img_file}></CardTitle>}
 							/*Price/schedule (clickable) */
-							actions={[<a href=''>{service.price} Schedule</a>]}>
+							actions={[
+								<Modal
+								header='Schedule a service'
+								trigger={<Button>Schedule ({service.price})</Button>}>
+									Date:
+									<Row>
+									  <Input name='on' type='date' onChange={ {}} />
+									</Row>
+									Time:
+									<Row>
+									  <Input name='on' type='time' onChange={function(e, value) {}} />
+									</Row>
+									{/*Schedule button*/}
+									<Row className="left"><Button>Schedule</Button></Row>
+								</Modal>
+								]}>
 							{/*Service name*/}
 							<h5>{service.title}</h5>
 							{/*Service description*/}
