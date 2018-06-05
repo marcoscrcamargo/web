@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card, CardTitle} from 'react-materialize';
+import {Row, Col, Card, CardTitle, Button, Modal, MediaBox, Input} from 'react-materialize';
 
 export default class Products extends React.Component {
 	constructor(props) {
@@ -7,6 +7,7 @@ export default class Products extends React.Component {
 
 		this.state = {
 			products: [],
+			quantity: 0
 		};
 		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
 	}
@@ -21,7 +22,28 @@ export default class Products extends React.Component {
 					<Col s={6} m={4} l={2} >
 						<Card className='medium' /*type of the card*/
 							header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
-							actions={[<a href=''>{prod.price} Buy</a>]}> {/*adding a "Buy" button with the price*/}
+							actions={<Modal
+								header={prod.name}
+								trigger={<Button>{prod.price} Buy</Button>}>
+									{/*Pop-up window with more details*/}
+									<Row>
+										{/*Larger product picture*/}
+										<Col l={4}>
+											<MediaBox src={prod.img_file} caption="Product picture" width="200"/>
+										</Col>
+										{/*Product info*/}
+										<Col l={4}>
+											<h5>Description:</h5>
+											<p>{prod.description}</p>
+											<h5>Total price:</h5>
+											<Input type="number" label="Quantity" min="1" max="100"
+												onChange={(e) => {this.setState({quantity: e.target.value})} }/>
+											<p>{parseInt(prod.price, 10) * this.state.quantity}</p>
+										</Col>
+									</Row>
+									{/*Delete option*/}
+									<Row className="left"><Button> Add to cart </Button></Row>
+								</Modal>}> {/*adding a "Buy" button with the price*/}
 							{/*name and description: */}
 							<h5>{prod.name}</h5>
 							{prod.description}.
