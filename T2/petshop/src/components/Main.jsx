@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, NavItem, Footer, Container} from 'react-materialize';
 import { Route, NavLink, HashRouter} from 'react-router-dom';
-import StickyFooter from 'react-sticky-footer';
 
 import Header from './Header.jsx'
 import Home from './Home.jsx';
