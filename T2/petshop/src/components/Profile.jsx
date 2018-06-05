@@ -18,6 +18,7 @@ export default class Profile extends React.Component {
 		this.scheduleToDelete = null
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 		this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+		this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 
 		this.deletePet = this.deletePet.bind(this);
 		this.deleteSchedule = this.deleteSchedule.bind(this);
@@ -45,7 +46,6 @@ export default class Profile extends React.Component {
 			// pets = this.props.db.getUserPets(this.props.user.username);
 			schedule = this.state.schedules;
 			// cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
-			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 		}
 
 		// Sets a list of pets as a table

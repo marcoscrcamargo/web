@@ -11,6 +11,10 @@ export default class Products extends React.Component {
 		};
 		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
 		this.prodId = '';
+		this.prodName = '';
+		this.prodImg = null;
+		this.prodDescription = '';
+		this.prodPrice = '';
 
 		this.createNewItem = this.createNewItem.bind(this);
 	}
@@ -21,6 +25,10 @@ export default class Products extends React.Component {
 		// fills a list with cards with name, image, price and a short description about each product
 		let productList = products.map((prod, index) => {
 				this.prodId = prod.id;
+				this.prodName = prod.name;
+				this.prodImg = prod.img_file;
+				this.prodDescription = prod.description;
+				this.prodPrice = prod.price;
 
 				return (
 					// sets the size of the card for each type of screen
@@ -72,6 +80,10 @@ export default class Products extends React.Component {
 		let newItem = {
 			username: this.props.user.username,
 			productId: this.prodId,
+			name: this.prodName,
+			img_file: this.prodImg,
+			description: this.prodDescription,
+			price: this.prodPrice,
 			quantity: this.state.quantity
 		}
 		this.props.db.addToCart(newItem);
