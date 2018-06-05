@@ -37,7 +37,7 @@ export default class Admin extends React.Component {
 						<Modal
 						header={user.name}
 						trigger={<Button>Details</Button>}>
-							<p> criar component edit e colocar aqui </p>
+							<p>  </p>
 
 						</Modal>
 					</td>
@@ -57,7 +57,7 @@ export default class Admin extends React.Component {
 						<Modal
 						header={prod.name}
 						trigger={<Button>Edit</Button>}>
-							<p> criar component edit e colocar aqui </p>
+							<p>  </p>
 						</Modal>
 					</td>
 				</tr>
@@ -76,7 +76,7 @@ export default class Admin extends React.Component {
 						<Modal
 						header={service.title}
 						trigger={<Button>Edit</Button>}>
-							<p> criar component edit e colocar aqui </p>
+							<p>  </p>
 						</Modal>
 					</td>
 				</tr>

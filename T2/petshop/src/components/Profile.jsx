@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Tabs, Tab, Table, Button, MediaBox, Row, Col, Modal, Input} from 'react-materialize';
 
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
 
 export default class Profile extends React.Component {
 	constructor(props) {

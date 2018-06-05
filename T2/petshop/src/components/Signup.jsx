@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col, Input, Button} from 'react-materialize';
+import { Redirect } from 'react-router';
 
 export default class Signup extends React.Component {
 	constructor(props) {
@@ -35,6 +36,7 @@ export default class Signup extends React.Component {
 			return (
 				<Col s={8} m={8} l={8} className="center" style={styleCol}>
 					<h4>User Created !</h4>
+					<Redirect to="/profile"/>
 				</Col>
 			)
 		}
@@ -49,7 +51,6 @@ export default class Signup extends React.Component {
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="email" label="Email" validate onChange={this.handleEmailChange} /></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="password" label="Password" validate onChange={this.handlePasswordChange} /></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Adress" validate onChange={this.handleAdressChange} /></Col></Row>
-					<Row><Button waves='light'>Upload a photo</Button></Row>
 					<Row><Button waves='light' onClick={this.newUser}>Signup</Button></Row>
 				</Col>
 			)
