@@ -36,7 +36,7 @@ export default class Products extends React.Component {
 											<h5>Description:</h5>
 											<p>{prod.description}</p>
 											<h5>Total price:</h5>
-											<Input type="number" label="Quantity" min="1" max="100"
+											<Input type="number" label="Quantity" min="1" max="100" defaultValue="1"
 												onChange={(e) => {this.setState({quantity: e.target.value})} }/>
 											<p>{parseInt(prod.price, 10) * this.state.quantity}</p>
 										</Col>
