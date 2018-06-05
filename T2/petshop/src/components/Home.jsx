@@ -11,20 +11,21 @@ export default class Home extends React.Component {
 				<Slider>
 					<Slide
 						src={require('../img/auau.jpg')}
-						title="This is our big Tagline!">
-						Here's our small slogan.
+						placement="right"
+						title="Pet Shop!">
+						Animal lovers!
 					</Slide>
 					<Slide
 						src={require('../img/miau.jpg')}
-						title="Left aligned Caption"
+						title="We have everything your pet needs!"
 						placement="left">
-						Here's our small slogan.
+						Check out our products and services!
 					</Slide>
 					<Slide
 						src={require('../img/auau_miau.jpg')}
-						title="Right aligned Caption"
+						title="The care your pet deserves!"
 						placement="right">
-						Here's our small slogan.
+						Your pet's health in first place!
 					</Slide>
 				</Slider>
 			</Row>
