@@ -30,7 +30,6 @@ export default class Main extends React.Component {
 		this.handleUsernameChange = this.handleUsernameChange.bind(this)
 		this.handlePasswordChange = this.handlePasswordChange.bind(this)
 		this.userLogout = this.userLogout.bind(this)
-
 	}
 
 	render() {

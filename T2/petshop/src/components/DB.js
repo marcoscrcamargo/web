@@ -44,6 +44,8 @@ export default class DB {
 		this.deletePet = this.deletePet.bind(this);
 		this.putUser = this.putUser.bind(this);
 
+		this.createDB();
+
 		// admin info
 		let admin = {
 			name: 'Admin',
