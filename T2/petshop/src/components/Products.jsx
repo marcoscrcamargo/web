@@ -116,5 +116,6 @@ export default class Products extends React.Component {
 			quantity: this.state.quantity
 		}
 		this.props.db.addToCart(newItem);
+		alert("Added to cart!")
 	}
 }
