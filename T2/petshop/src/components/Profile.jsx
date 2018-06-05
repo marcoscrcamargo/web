@@ -125,7 +125,7 @@ export default class Profile extends React.Component {
 					<td>
 						<Modal
 						header={product.name}
-						trigger={<Button>Checkout</Button>}>
+						trigger={<Button>Delete</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
@@ -152,6 +152,7 @@ export default class Profile extends React.Component {
 						</Modal>
 					</td>
 				</tr>
+				<Button> Checkout </Button>
 			)
 		});
 
@@ -198,7 +199,7 @@ export default class Profile extends React.Component {
 								<thead>
 									{/*Colum names*/}
 									<tr>
-										<th data-field="img">Pet</th>
+										<th data-field="img">Specie</th>
 										<th data-field="name">Name</th>
 										<th data-field="details">Details</th>
 									</tr>
@@ -250,7 +251,7 @@ export default class Profile extends React.Component {
 										<th data-field="name">Name</th>
 										<th data-field="quantity">Quantity</th>
 										<th data-field="price">Total price</th>
-										<th data-field="checkout">Checkout</th>
+										<th data-field="checkout"></th>
 									</tr>
 								</thead>
 								<tbody>
