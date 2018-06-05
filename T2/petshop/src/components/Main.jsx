@@ -33,64 +33,64 @@ export default class Main extends React.Component {
 	}
 
 	render() {
-		// var user = this.state.user;
-		var user = 	{
-			name: 'Marcos Camargo',
-			phone: '14997189943',
-			picture: require('../img/avatar.png'),
-			cart: [
-				{
-					name: 'Ração X',
-					price: '55,00',
-					quantity: '3',
-					picture: require('../img/prod.jpg'),
-					description: 'Ração pra animal doente1'
-				},
-				{
-					name: 'Ração X',
-					price: '55,00',
-					quantity: '4',
-					picture: require('../img/prod.jpg'),
-					description: 'Ração pra animal doente1'
-				},
-				{
-					name: 'Ração X',
-					price: '55,00',
-					quantity: '5',
-					picture: require('../img/prod.jpg'),
-					description: 'Ração pra animal doente1'
-				},
-			],
+		var user = this.state.user;
+		// var user = 	{
+		// 	name: 'Marcos Camargo',
+		// 	phone: '14997189943',
+		// 	picture: require('../img/avatar.png'),
+		// 	cart: [
+		// 		{
+		// 			name: 'Ração X',
+		// 			price: '55,00',
+		// 			quantity: '3',
+		// 			picture: require('../img/prod.jpg'),
+		// 			description: 'Ração pra animal doente1'
+		// 		},
+		// 		{
+		// 			name: 'Ração X',
+		// 			price: '55,00',
+		// 			quantity: '4',
+		// 			picture: require('../img/prod.jpg'),
+		// 			description: 'Ração pra animal doente1'
+		// 		},
+		// 		{
+		// 			name: 'Ração X',
+		// 			price: '55,00',
+		// 			quantity: '5',
+		// 			picture: require('../img/prod.jpg'),
+		// 			description: 'Ração pra animal doente1'
+		// 		},
+		// 	],
 
-			sales : [
-				{
-					name: 'Ração X',
-					price: '55,00',
-					quantity: '5',
-					date: "October 15, 2018 13:10:00",
-					picture: require('../img/prod.jpg')
-				},
-				{
-					name: 'Ração X',
-					price: '55,00',
-					quantity: '6',
-					date: "October 16, 2018 13:20:00",
-					picture: require('../img/prod.jpg')
-				},
-				{
-					name: 'Ração X',
-					price: '55,00',
-					quantity: '7',
-					picture: require('../img/prod.jpg'),
-					date: "October 17, 2018 13:30:00"
-				},
-			],
-			username: 'marcoscrcamargo',
-			email: 'marcoscrcamargo@gmail.com',
-			password: 'admin',
-			admin: 'true',
-			adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-		};
+		// 	sales : [
+		// 		{
+		// 			name: 'Ração X',
+		// 			price: '55,00',
+		// 			quantity: '5',
+		// 			date: "October 15, 2018 13:10:00",
+		// 			picture: require('../img/prod.jpg')
+		// 		},
+		// 		{
+		// 			name: 'Ração X',
+		// 			price: '55,00',
+		// 			quantity: '6',
+		// 			date: "October 16, 2018 13:20:00",
+		// 			picture: require('../img/prod.jpg')
+		// 		},
+		// 		{
+		// 			name: 'Ração X',
+		// 			price: '55,00',
+		// 			quantity: '7',
+		// 			picture: require('../img/prod.jpg'),
+		// 			date: "October 17, 2018 13:30:00"
+		// 		},
+		// 	],
+		// 	username: 'marcoscrcamargo',
+		// 	email: 'marcoscrcamargo@gmail.com',
+		// 	password: 'admin',
+		// 	admin: 'true',
+		// 	adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
+		// };
 
 		// flag that indicates wheter the user is logged in
 		const isLoggedIn = (user !== null);
@@ -142,7 +142,13 @@ export default class Main extends React.Component {
 						<Route path="/products" render={ ()=> <Products db={this.props.db} user={user}/> } />
 						<Route path="/admin" render={ ()=><Admin db={this.props.db} user={user}/>} />
 						<Route path="/services" render={ ()=> <Services db={this.props.db} user={user} />} />
-						<Route path="/login" render={ ()=> <Login onClickLogin={this.userLogin}/> } />
+						<Route path="/login" render={ ()=> <Login
+								user={user}
+								onClickLogin={this.userLogin}
+								onClickLogout={this.userLogout}
+								handleUsernameChange={this.handleUsernameChange}
+								handlePasswordChange={this.handlePasswordChange}
+							/> } />
 						<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
 						<Route path="/forgot_password" component={ForgotPassword} />
 						<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={user}/> } />

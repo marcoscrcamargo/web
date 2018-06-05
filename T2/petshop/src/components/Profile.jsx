@@ -2,6 +2,8 @@ import React from 'react';
 
 import {Tabs, Tab, Table, Button, MediaBox, Row, Col, Modal, Input} from 'react-materialize';
 
+import { Redirect } from 'react-router'
+
 export default class Profile extends React.Component {
 	constructor(props) {
 		super(props);
@@ -16,10 +18,11 @@ export default class Profile extends React.Component {
 
 		this.petToDelete = null
 		this.scheduleToDelete = null
-		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
-		this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
-		this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
-
+		if (this.props.user !== null){
+			this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+			this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+		}
 		this.deletePet = this.deletePet.bind(this);
 		this.deleteSchedule = this.deleteSchedule.bind(this);
 		this.createNewPet = this.createNewPet.bind(this);
@@ -43,7 +46,6 @@ export default class Profile extends React.Component {
 		let schedule = [];
 		let cart = [];
 		let total = 0;
-
 		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
 			pets = this.state.pets;
@@ -313,6 +315,7 @@ export default class Profile extends React.Component {
 			return(
 				/*warning message*/
 				<Row className="center">
+					<Redirect to="/login"/>
 					<h4> Please Login </h4>
 				</Row>
 			)
