@@ -11,18 +11,24 @@ export default class Profile extends React.Component {
 			schedules: [],
 			petname: '',
 			createdPet: 'false',
+			cart: []
 		}
 
 		this.petToDelete = null
 		this.scheduleToDelete = null
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 		this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+		this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 
 		this.deletePet = this.deletePet.bind(this);
 		this.deleteSchedule = this.deleteSchedule.bind(this);
 		this.createNewPet = this.createNewPet.bind(this);
+		this.deleteItem = this.deleteItem.bind(this);
+
+		this.itemId = '';
 
 	}
+
 	render(){
 		// Defines a pattern for responsive images
 		let responsiveImg = {
@@ -43,7 +49,8 @@ export default class Profile extends React.Component {
 			pets = this.state.pets;
 			// pets = this.props.db.getUserPets(this.props.user.username);
 			schedule = this.state.schedules;
-			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
+			// cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
+			cart = this.state.cart;
 		}
 
 		// Sets a list of pets as a table
@@ -132,6 +139,7 @@ export default class Profile extends React.Component {
 
 		let cartTable = cart.map((product) => {
 			total += parseInt(product.price, 10) * parseInt(product.quantity, 10);
+			this.itemId = product.id;
 
 			return (
 				<tr>
@@ -169,7 +177,9 @@ export default class Profile extends React.Component {
 							</Row>
 							{/*Delete option*/}
 							<Row className="left">
-								<Button> Delete </Button>
+								<Button onClick={this.deleteItem}>
+									Delete
+								</Button>
 							</Row>
 						</Modal>
 					</td>
@@ -354,4 +364,8 @@ export default class Profile extends React.Component {
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 	}
 
+	deleteItem(){
+		this.props.db.deleteFromCart(this.itemId);
+		this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+	}
 }
