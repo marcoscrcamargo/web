@@ -23,6 +23,7 @@ export default class Profile extends React.Component {
 		let pets = [];
 		let schedule = [];
 		let cart = [];
+		let total = 0;
 
 		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
@@ -110,6 +111,8 @@ export default class Profile extends React.Component {
 		});
 
 		let cartTable = cart.map((product) => {
+			total += parseInt(product.price, 10) * parseInt(product.quantity, 10);
+
 			return (
 				<tr>
 					{/*Product picture*/}
@@ -146,13 +149,11 @@ export default class Profile extends React.Component {
 							</Row>
 							{/*Delete option*/}
 							<Row className="left">
-								<Button> Pay </Button>
 								<Button> Delete </Button>
 							</Row>
 						</Modal>
 					</td>
 				</tr>
-				<Button> Checkout </Button>
 			)
 		});
 
@@ -258,7 +259,17 @@ export default class Profile extends React.Component {
 									{cartTable}
 								</tbody>
 							</Table>
+							<Modal
+							header='Checkout'
+							trigger={<Button>Checkout</Button>}>
+								<h5>Number of items:</h5>
+								<p>{cart.length}</p>	
+								<h5>Total:</h5>
+								<p>${total}</p>
+								<Button>Pay</Button>
+							</Modal>
 						</Tab>
+
 					</Tabs>
 				</div>
 			)
