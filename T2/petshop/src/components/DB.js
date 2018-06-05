@@ -52,7 +52,11 @@ export default class DB {
 		this.getCart = this.getCart.bind(this);
 		this.deleteFromCart = this.deleteFromCart.bind(this);
 
-		// this.createDB();
+		this.db.products.toArray().then(prod =>{
+			if(prod.length === 0){
+				this.createDB();
+			}
+		});
 
 		// admin info
 		let admin = {

@@ -10,6 +10,7 @@ O projeto foi feito utilizando react e react-materialize. Para rodar o servidor 
 Na pasta petshop rodar os comandos:
 
 npm install
+
 npm start
 
 O Projeto contém os arquivos:
