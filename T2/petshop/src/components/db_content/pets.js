@@ -2,7 +2,7 @@ const petsData = [
 	{
 		name: 'Marley',
 		picture: require('../../img/cachorro.jpg'),
-		username: 'marcoscrcamargo'
+		username: 'victorxjoey'
 	},
 	{
 		name: 'Tom',
@@ -12,7 +12,7 @@ const petsData = [
 	{
 		name: 'Piu Piu',
 		picture: require('../../img/passaro.jpg'),
-		username: 'marcoscrcamargo'
+		username: 'gabrielcamargo'
 	},
 	{
 		name: 'Nemo',

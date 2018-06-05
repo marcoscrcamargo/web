@@ -18,6 +18,7 @@ export default class DB {
 
 		this.db = new Dexie(dbName);
 		// this.deleteDB();
+		// this.db = new Dexie(dbName);
 
 		// Creating schema for database
 		this.db.version(this.dbVersion).stores({
@@ -38,9 +39,10 @@ export default class DB {
 		this.getAllUsers = this.getAllUsers.bind(this);
 		this.getAllSales = this.getAllSales.bind(this);
 		this.getUserPets = this.getUserPets.bind(this);
-		this.delete = this.delete.bind(this);
+		this.deleteUser = this.deleteUser.bind(this);
+		this.deleteProduct = this.deleteProduct.bind(this);
+		this.deletePet = this.deletePet.bind(this);
 		this.putUser = this.putUser.bind(this);
-		// this.createDB();
 
 		// admin info
 		let admin = {
@@ -71,6 +73,7 @@ export default class DB {
 			admin: 'true',
 			adress: 'Rua do admin'
 		}
+		// this.createDB();
 
 		// inserting admin as a user in the DB
 		this.db.transaction('rw', this.db.users, () =>{
@@ -111,6 +114,9 @@ export default class DB {
 	getUser(idx, key) {
 		return this.db.users.where(idx).equals(key).first();
 	}
+	getPets(idx, key) {
+		return this.db.pets.where(idx).equals(key).toArray();
+	}
 
 	getProduct(id) {
 		return this.db.products.get(id);
@@ -140,8 +146,16 @@ export default class DB {
 		return this.db.pets.where('username').equals(name).toArray();
 	}
 
-	delete(key) {
+	deleteUser(key) {
+		this.db.users.delete(key);
+	}
 
+	deleteProduct(key) {
+		this.db.products.delete(key);
+
+	}
+	deletePet(key) {
+		this.db.pets.delete(key).then(a=> console.log('scuess!'));
 	}
 
 	putUser(user) {

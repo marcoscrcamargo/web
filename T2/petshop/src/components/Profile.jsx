@@ -7,8 +7,12 @@ export default class Profile extends React.Component {
 		super(props);
 
 		this.state = {
+			pets: [],
 		}
 
+		this.petToDelete = null
+		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+		this.deletePet = this.deletePet.bind(this);
 	}
 	render(){
 		// Defines a pattern for responsive images
@@ -26,7 +30,8 @@ export default class Profile extends React.Component {
 
 		// If the user is logged in, gets it's lists
 		if (isLoggedIn) {
-			pets = (this.props.user.pets) != null ? (this.props.user.pets) : [];
+			pets = this.state.pets;
+			console.log(pets);
 			// pets = this.props.db.getUserPets(this.props.user.username);
 			schedule = (this.props.user.schedule != null ? (this.props.user.schedule) : []);
 			cart = (this.props.user.cart) != null ? (this.props.user.cart) : [];
@@ -36,33 +41,43 @@ export default class Profile extends React.Component {
 		// Each row represent a pet and has image, name and a button for more details
 		// When the "details" button is pressed, a pop-up window appears with a larger version
 		// of the image, the name of the pet and "delete" and "close" options.
-		let petsTable = pets.map((pet) => {
+		let petsTable = pets.map((pet, index) => {
 			return (
 				<tr>
 					{/*Pet picture*/}
 					<td><MediaBox src={pet.picture} caption="Pet picture" width="150"/></td>
 					{/*Pet name*/}
-					<td>{pet.name}</td>
+					<td><Col>{pet.name}</Col></td>
 					{/*Details option*/}
 					<td>
-						<Modal
-						header={pet.name}
-						trigger={<Button>Details</Button>}>
-							{/*Pop-up window with more details*/}
-							<Row>
-								{/*Larger pet picture*/}
-								<Col l={4}>
-									<MediaBox src={pet.picture} caption="Pet picture" width="200"/>
-								</Col>
-								{/*Pet info*/}
-								<Col l={4}>
-									<h5>Name:</h5>
-									<p>{pet.name}</p>
-								</Col>
-							</Row>
-							{/*Delete option*/}
-							<Row className="left"><Button> Delete </Button></Row>
-						</Modal>
+						<Row className="right">
+							<Col>
+							<Modal
+							id={"pet"+pet.id}
+							header={pet.name}
+							trigger={<Button>Details</Button>}>
+								{/*Pop-up window with more details*/}
+								<Row>
+									{/*Larger pet picture*/}
+									<Col l={4}>
+										<MediaBox src={pet.picture} caption="Pet picture" width="200"/>
+									</Col>
+									{/*Pet info*/}
+									<Col l={4}>
+										<h5>Name:</h5>
+										<p>{pet.name}</p>
+									</Col>
+								</Row>
+								{/*Delete option*/}
+							</Modal>
+							</Col>
+							<Col>
+							<Button id="index" onClick={ ()=> {
+								this.petToDelete = pet;
+								this.deletePet();
+							}}> Delete </Button>
+							</Col>
+						</Row>
 					</td>
 				</tr>
 			)
@@ -269,5 +284,10 @@ export default class Profile extends React.Component {
 				</Row>
 			)
 		}
+	}
+
+	deletePet(){
+		this.props.db.deletePet(this.petToDelete.id);
+		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 	}
 }
