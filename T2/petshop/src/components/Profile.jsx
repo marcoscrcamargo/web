@@ -105,6 +105,7 @@ export default class Profile extends React.Component {
 							<Row>
 								{/*Larger pet picture*/}
 								<Col l={4}>
+									{console.log(service.picture)}
 									<MediaBox src={service.picture} caption="Service picture" width="200"/>
 								</Col>
 								{/*Pet info*/}

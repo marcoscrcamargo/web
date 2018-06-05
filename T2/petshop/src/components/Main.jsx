@@ -38,47 +38,6 @@ export default class Main extends React.Component {
 			name: 'Marcos Camargo',
 			phone: '14997189943',
 			picture: require('../img/avatar.png'),
-			pets: [
-					{
-						name: 'Marley',
-						picture: require('../img/silhueta_cachorro.png')
-					},
-					{
-						name: 'Tom',
-						picture: require('../img/silhueta_gato.png')
-					},
-					{
-						name: 'Piu Piu',
-						picture: require('../img/silhueta_passaro.png')
-					},
-					{
-						name: 'Nemo',
-						picture: require('../img/silhueta_peixe.png')
-					},
-				],
-			schedule: [
-				{
-					name: 'Grooming',
-					pet: 'Marley',
-					date: "October 13, 2018 11:10:00",
-					picture: require('../img/tosa.jpg'),
-					description: "We have the best professionals to take care of your pet's hair!"
-				},
-				{
-					name: 'Bath',
-					pet: 'Tom',
-					date: "October 14, 2018 12:20:00",
-					picture: require('../img/banho.jpg'),
-					description: 'We leave your pet clean and smelling good for a fair price!'
-				},
-				{
-					name: 'Vaccination',
-					pet: 'Piu Piu',
-					date: "October 15, 2018 13:30:00",
-					picture: require('../img/vacinacao.jpg'),
-					description: 'We apply vaccines to keep your pet always protected and healthy!'
-				},
-			],
 			cart: [
 				{
 					name: 'Ração X',
