@@ -152,7 +152,7 @@ export default class Profile extends React.Component {
 					{/*Quantity*/}
 					<td>{product.quantity}</td>
 					{/*Price*/}
-					<td>{parseInt(product.price, 10) * parseInt(product.quantity, 10)}</td>
+					<td>{product.price*product.quantity}</td>
 
 					{/*Details option*/}
 					<td>
@@ -174,12 +174,12 @@ export default class Profile extends React.Component {
 									<h5>Quantity:</h5>
 									<p>{product.quantity}</p>
 									<h5>Total price:</h5>
-									<p>{parseInt(product.price, 10) * parseInt(product.quantity, 10)}</p>
+									<p>${product.price * product.quantity}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
 							<Row className="left">
-								<Button onClick={this.deleteItem}>
+								<Button modal="close" onClick={this.deleteItem}>
 									Delete
 								</Button>
 							</Row>

@@ -31,7 +31,7 @@ export default class Products extends React.Component {
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
-									trigger={<Button>{prod.price} Buy</Button>}>
+									trigger={<Button>${prod.price} Buy</Button>}>
 										Please login first!
 									</Modal>}> {/*adding a "Buy" button with the price*/}
 								{/*name and description: */}
@@ -64,7 +64,7 @@ export default class Products extends React.Component {
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
-									trigger={<Button>{prod.price} Buy</Button>}>
+									trigger={<Button>${prod.price} Buy</Button>}>
 										{/*Pop-up window with more details*/}
 										<Row>
 											{/*Larger product picture*/}
@@ -76,7 +76,7 @@ export default class Products extends React.Component {
 												<h5>Description:</h5>
 												<p>{prod.description}</p>
 												<h5>Total price:</h5>
-												<p>{parseInt(prod.price, 10) * this.state.quantity}</p>
+												<p>${prod.price}</p>
 												<h5></h5>
 												<Input type="number" label="Quantity" min="1" max="100" defaultValue="1"
 													onChange={(e) => {this.setState({quantity: e.target.value})} }/>
