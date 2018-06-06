@@ -8,6 +8,9 @@ export default class Services extends React.Component {
 		this.state = {
 			services: [],
 			petsForUser: [],
+			petname: null,
+			time: null,
+			date: null
 		};
 
 		this.servicetoSchedule = null
@@ -17,7 +20,23 @@ export default class Services extends React.Component {
 			this.props.db.getPets("username", this.props.user.username).then(item => this.setState({ petsForUser: item }));
 		}
 
+		this.handleChangeDate = this.handleChangeDate.bind(this);
+		this.handleChangeTime = this.handleChangeTime.bind(this);
+		this.handleChangePetName = this.handleChangePetName.bind(this);
 		this.createNewSchedule = this.createNewSchedule.bind(this);
+
+	}
+
+	handleChangeDate(event){
+		this.setState({date: event.target.value});
+	}
+
+	handleChangeTime(event){
+		this.setState({time: event.target.value})
+	}
+
+	handleChangePetName(event){
+		this.setState({petname: event.target.value});
 	}
 
 	render() {
@@ -64,17 +83,17 @@ export default class Services extends React.Component {
 									trigger={<Button>Schedule ({service.price})</Button>}>
 										Pet:
 										<Row>
-											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2'>
+											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2' onChange={this.handleChangePetName}>
 												{pet_list}
 											</Input>
 										</Row>
 										Date:
 										<Row>
-										  <Input id="inputdate" name='on' type='date'/>
+										  <Input id="inputdate" name='on' type='date' onChange={this.handleChangeDate}/>
 										</Row>
 										Time:
 										<Row>
-										  <Input id="inputime" name='on' type='time'/>
+										  <Input id="inputime" name='on' type='time' onChange={this.handleChangeTime}/>
 										</Row>
 										{/*Schedule button*/}
 										<Row className="left"><Button modal="close" onClick={ ()=> {
@@ -101,10 +120,10 @@ export default class Services extends React.Component {
 	}
 
 	createNewSchedule(){
-		let date = String(document.getElementById("inputdate").value);
-		let time = String(document.getElementById("inputime").value);
+		let date = String(this.state.date);
+		let time = String(this.state.time);
 		let dt = date + " " + time;
-		let petname = String(document.getElementById("inputname").value);
+		let petname = String(this.state.petname);
 		let newSchedule = {
 			name: this.servicetoSchedule.title,
 			username: this.props.user.username,
