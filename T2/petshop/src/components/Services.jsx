@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Card, CardTitle, Modal, Input, Button} from 'react-materialize';
+import {Row, Col, Card, CardTitle, Modal, Input, Button } from 'react-materialize';
 
 export default class Services extends React.Component {
 	constructor(props) {
@@ -84,6 +84,7 @@ export default class Services extends React.Component {
 										Pet:
 										<Row>
 											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2' onChange={this.handleChangePetName}>
+												<option>-</option>
 												{pet_list}
 											</Input>
 										</Row>
@@ -99,7 +100,7 @@ export default class Services extends React.Component {
 										<Row className="left"><Button modal="close" onClick={ ()=> {
 											this.servicetoSchedule = service;
 											this.createNewSchedule();
-											alert("Scheduled!");
+											window.Materialize.toast('Service scheduled!', 2000)
 										}}>Schedule</Button></Row>
 									</Modal>
 									]}>
