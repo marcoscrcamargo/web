@@ -123,48 +123,53 @@ export default class Main extends React.Component {
 						handleUsernameChange={this.handleUsernameChange}
 						handlePasswordChange={this.handlePasswordChange}
 					/>
-					{/*setting the navbar*/}
-					<Navbar className="red lighten-2" brand='Petshop' left
-						options={{closeOnClick: true, draggable: true}}
-					>
-						{/*Itens of the navbar*/}
-						<NavItem className="red lighten-2"><NavLink exact to="/">Home</NavLink></NavItem>
-						<NavItem className="red lighten-2"><NavLink to="/products">Products</NavLink></NavItem>
-						<NavItem className="red lighten-2"><NavLink to="/services">Services</NavLink></NavItem>
-						{/*These two attributes depends on the user, if he/she is logged in or not*/}
-						{loginProfile}
-						{management}
-					</Navbar>
+					<div className="wrap">
+						{/*setting the navbar*/}
+						<Navbar className="red lighten-2" brand='Petshop' left
+							options={{closeOnClick: true, draggable: true}}
+						>
+							{/*Itens of the navbar*/}
+							<NavItem className="red lighten-2"><NavLink exact to="/">Home</NavLink></NavItem>
+							<NavItem className="red lighten-2"><NavLink to="/products">Products</NavLink></NavItem>
+							<NavItem className="red lighten-2"><NavLink to="/services">Services</NavLink></NavItem>
+							{/*These two attributes depends on the user, if he/she is logged in or not*/}
+							{loginProfile}
+							{management}
+						</Navbar>
 
-					{/*This container contains all the main content of the page*/}
-					<Container>
-						<Route exact path="/" component={Home} />
-						<Route path="/products" render={ ()=> <Products db={this.props.db} user={user}/> } />
-						<Route path="/admin" render={ ()=><Admin db={this.props.db} user={user}/>} />
-						<Route path="/services" render={ ()=> <Services db={this.props.db} user={user} />} />
-						<Route path="/login" render={ ()=> <Login
-								user={user}
-								onClickLogin={this.userLogin}
-								onClickLogout={this.userLogout}
-								handleUsernameChange={this.handleUsernameChange}
-								handlePasswordChange={this.handlePasswordChange}
-							/> } />
-						<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
-						<Route path="/forgot_password" component={ForgotPassword} />
-						<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={user}/> } />
-					</Container>
+						{/*This container contains all the main content of the page*/}
+						<div className="content">
+							<Container> 
+								<Route exact path="/" component={Home} />
+								<Route path="/products" render={ ()=> <Products db={this.props.db} user={user}/> } />
+								<Route path="/admin" render={ ()=><Admin db={this.props.db} user={user}/>} />
+								<Route path="/services" render={ ()=> <Services db={this.props.db} user={user} />} />
+								<Route path="/login" render={ ()=> <Login
+										user={user}
+										onClickLogin={this.userLogin}
+										onClickLogout={this.userLogout}
+										handleUsernameChange={this.handleUsernameChange}
+										handlePasswordChange={this.handlePasswordChange}
+									/> } />
+								<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
+								<Route path="/forgot_password" component={ForgotPassword} />
+								<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={user}/> } />
+							</Container>
+						</div>
 
-					{/*Setting the footer of the page*/}
-					<Footer copyrights="2018 Copyright Text"
-						moreLinks={
-	    					<a className="grey-text text-lighten-4 right" href="https://github.com/marcoscrcamargo/web">Github</a>
-	  					}
-					>
-						<h3>Our Team</h3>
-						<p>Gabriel Camargo <a className="grey-text text-lighten-4" href="mailto:gabrielcamargo@usp.br">(gabrielcamargo@usp.br)</a></p>
-						<p>Marcos Camargo <a className="grey-text text-lighten-4" href="mailto:marcoscrcamargo@gmail.com">(marcoscrcamargo@gmail.com)</a></p>
-						<p>Victor Forbes <a className="grey-text text-lighten-4" href="mailto:victor.forbes@usp.br">(victor.forbes@usp.br)</a></p>
-					</Footer>
+						{/*Setting the footer of the page*/}
+						<Footer className="footer" copyrights="2018 Copyright Text"
+							moreLinks={
+		    					<a className="grey-text text-lighten-4 right" href="https://github.com/marcoscrcamargo/web">Github</a>
+		  					}
+						>
+							<h3>Our Team</h3>
+							<p>Gabriel Camargo <a className="grey-text text-lighten-4" href="mailto:gabrielcamargo@usp.br">(gabrielcamargo@usp.br)</a></p>
+							<p>Letícia Sakurai <a className="grey-text text-lighten-4" href="mailto:leticia.sakurai@usp.br">(leticia.sakurai@usp.br)</a></p>
+							<p>Marcos Camargo <a className="grey-text text-lighten-4" href="mailto:marcoscrcamargo@gmail.com">(marcoscrcamargo@gmail.com)</a></p>
+							<p>Victor Forbes <a className="grey-text text-lighten-4" href="mailto:victor.forbes@usp.br">(victor.forbes@usp.br)</a></p>
+						</Footer>
+					</div>
 
 				</div>
 			</HashRouter>
