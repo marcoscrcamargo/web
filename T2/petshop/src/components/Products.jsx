@@ -10,12 +10,7 @@ export default class Products extends React.Component {
 			quantity: 1,
 		};
 		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
-		this.prodId = '';
-		this.prodName = '';
-		this.prodImg = null;
-		this.prodDescription = '';
-		this.prodPrice = '';
-
+		this.prodToCard = null;
 		this.createNewItem = this.createNewItem.bind(this);
 		this.setState({quantity: 1})
 	}
@@ -51,12 +46,6 @@ export default class Products extends React.Component {
 		else{
 			// fills a list with cards with name, image, price and a short description about each product
 			let productList = products.map((prod, index) => {
-					this.prodId = prod.id;
-					this.prodName = prod.name;
-					this.prodImg = prod.img_file;
-					this.prodDescription = prod.description;
-					this.prodPrice = prod.price;
-
 					return (
 						// sets the size of the card for each type of screen
 						<Col s={6} m={4} l={2} >
@@ -84,7 +73,11 @@ export default class Products extends React.Component {
 										</Row>
 										{/*Delete option*/}
 										<Row className="left">
-											<Button modal="close" onClick={this.createNewItem}>
+											<Button modal="close" onClick={ () => {
+												this.prodToCart = prod;
+												this.createNewItem();
+											}
+											}>
 												Add to cart
 											</Button>
 										</Row>
@@ -108,11 +101,11 @@ export default class Products extends React.Component {
 	createNewItem(){
 		let newItem = {
 			username: this.props.user.username,
-			productId: this.prodId,
-			name: this.prodName,
-			picture: this.prodImg,
-			description: this.prodDescription,
-			price: this.prodPrice,
+			productId: this.prodToCart.id,
+			name: this.prodToCart.name,
+			picture: this.prodToCart.img_file,
+			description: this.prodToCart.description,
+			price: this.prodToCart.price,
 			quantity: this.state.quantity
 		}
 		this.props.db.addToCart(newItem);
