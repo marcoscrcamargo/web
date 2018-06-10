@@ -51,7 +51,7 @@ export default class Signup extends React.Component {
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="email" label="Email" validate onChange={this.handleEmailChange} /></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="password" label="Password" validate onChange={this.handlePasswordChange} /></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Adress" validate onChange={this.handleAdressChange} /></Col></Row>
-					<Row><Button waves='light' onClick={this.newUser}>Signup</Button></Row>
+					<Row><Button className="sleek-grey" onClick={this.newUser}>Signup</Button></Row>
 				</Col>
 			)
 		}

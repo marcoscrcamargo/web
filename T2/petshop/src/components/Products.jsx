@@ -72,7 +72,7 @@ export default class Products extends React.Component {
 										</Row>
 										{/*Delete option*/}
 										<Row className="left">
-											<Button modal="close" onClick={ () => {
+											<Button className="sleek-grey" modal="close" onClick={ () => {
 												this.prodToCart = prod;
 												this.createNewItem();
 											}

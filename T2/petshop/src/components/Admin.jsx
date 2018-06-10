@@ -36,7 +36,7 @@ export default class Admin extends React.Component {
 					<td>
 						<Modal
 						header={user.name}
-						trigger={<Button>Details</Button>}>
+						trigger={<Button className="sleek-grey">Details</Button>}>
 							<p>  </p>
 
 						</Modal>
@@ -56,7 +56,7 @@ export default class Admin extends React.Component {
 					<td>
 						<Modal
 						header={prod.name}
-						trigger={<Button>Edit</Button>}>
+						trigger={<Button className="sleek-grey">Edit</Button>}>
 							<p>  </p>
 						</Modal>
 					</td>
@@ -75,7 +75,7 @@ export default class Admin extends React.Component {
 					<td>
 						<Modal
 						header={service.title}
-						trigger={<Button>Edit</Button>}>
+						trigger={<Button className="sleek-grey">Edit</Button>}>
 							<p>  </p>
 						</Modal>
 					</td>
@@ -122,7 +122,7 @@ export default class Admin extends React.Component {
 							<tbody>
 								{usersTable}
 							</tbody>
-							<Button> New user </Button>
+							<Button className="sleek-grey"> New user </Button>
 						</Table>
 {
 						// <Modal
@@ -154,7 +154,7 @@ export default class Admin extends React.Component {
 						</Table>
 						<Modal
 						header='Create new product'
-						trigger={<Button>New Product</Button>}>
+						trigger={<Button className="sleek-grey">New Product</Button>}>
 							<p>New product</p>
 						</Modal>
 					</Tab>
@@ -182,7 +182,7 @@ export default class Admin extends React.Component {
 						{/*New service button*/}
 						<Modal
 						header='Create new service'
-						trigger={<Button>New Service</Button>}>
+						trigger={<Button className="sleek-grey">New Service</Button>}>
 							<p>New Service</p>
 						</Modal>
 

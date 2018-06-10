@@ -4,6 +4,11 @@ import {NavLink} from 'react-router-dom';
 
 export default class Header extends React.Component {
 	render() {
+
+		let styleHeader = {
+			'paddingBottom': '0px',
+		}
+
 		let styleImg = {
 			'maxWidth': '100px',
 		}
@@ -16,7 +21,7 @@ export default class Header extends React.Component {
 		}
 
 		let styleLoginLink = {
-			'fontSize': 'x-small'
+			'fontSize': 'x-small',
 		}
 
 		let styleLogo = {
@@ -44,27 +49,27 @@ export default class Header extends React.Component {
 							<p>{this.props.user.name}</p>
 						</NavLink>
 						{/*Logout button*/}
-						<Button waves='light' onClick={this.props.onClickLogout}>Logout</Button>
+						<Button className="sleek-grey" onClick={this.props.onClickLogout}>Logout</Button>
 					</Col>
 				</Row>
 			</Col>
 		) : (
-			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper">
+			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper ">
 				<Col s={8} m={8} l={4} className="left-align">
 					{/*Input box for the username*/}
 					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" onChange={this.props.handleUsernameChange}/></Row>
 					{/*Link to sign up*/}
-					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" style={styleLoginLink}>Sign Up</NavLink></Row>
+					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" className="forest-text" style={styleLoginLink}>Sign Up</NavLink></Row>
 				</Col>
 				<Col s={8} m={8} l={4}>
 					{/*Input box for the password*/}
 					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" onChange={this.props.handlePasswordChange}/></Row>
 					{/*Link to recover password*/}
-					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" style={styleLoginLink}>Forgot Password?</NavLink></Row>
+					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" className="forest-text" style={styleLoginLink}>Forgot Password?</NavLink></Row>
 				</Col>
 				<Col s={8} m={8} l={3}>
 					{/*Login button*/}
-					<Button waves='light' onClick={this.props.onClickLogin}>Login</Button>
+					<Button className="sleek-grey" onClick={this.props.onClickLogin}>Login</Button>
 				</Col>
 			</Col>
 		);
@@ -72,13 +77,13 @@ export default class Header extends React.Component {
 		// returns how the header should be displayed, with the website's logo and the profileLogin part
 		return (
 
-		<Row className="valign-wrapper hide-on-med-and-down">
+		<Row className="valign-wrapper hide-on-med-and-down marine" style={styleHeader}>
 			<Col s={7} m={4} l={7} className="left">
 				<NavLink exact to="/">
 					<Row className="valign-wrapper">
 						{/*Logo and Petshop name*/}
-						<img className="responsive-img" src={require('../img/paw.png')} style={styleImg} alt="Logo"/>
-						<span style={styleLogo}>Petshop</span>
+						<img className="responsive-img" src={require('../img/paw.svg')} style={styleImg} alt="Logo"/>
+						<span style={styleLogo} className="forest-text" >Petshop</span>
 					</Row>
 				</NavLink>
 			</Col>

@@ -34,6 +34,7 @@ export default class Main extends React.Component {
 
 	render() {
 		var user = this.state.user;
+
 		// var user = 	{
 		// 	name: 'Marcos Camargo',
 		// 	phone: '14997189943',
@@ -99,22 +100,22 @@ export default class Main extends React.Component {
 
 		// If the user is an Admin, there will be an Management tab in the navbar
 		const management = isAdmin ? (
-			<NavItem className="red lighten-2"><NavLink to="/admin">Management</NavLink></NavItem>
+			<NavItem className="forest"><NavLink to="/admin">Management</NavLink></NavItem>
 		) : (
 			null
 		);
 
 		// If the user is logged in, there will be an Profile tab in the navbar
 		const loginProfile = isLoggedIn ? (
-			<NavItem className="red lighten-2"><NavLink to="/profile">Profile</NavLink></NavItem>
+			<NavItem className="forest"><NavLink to="/profile">Profile</NavLink></NavItem>
 		) : (
-			<NavItem className="red lighten-2"><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
+			<NavItem className="forest"><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
 		);
 
 		// returns what the page should render
 		return (
 			<HashRouter>
-				<div> {/*this div contains all the main page*/}
+				<div className="marine"> {/*this div contains all the main page*/}
 					<Header
 						// setting the attributes and functions of the header
 						user={user}
@@ -125,20 +126,20 @@ export default class Main extends React.Component {
 					/>
 					<div className="wrap">
 						{/*setting the navbar*/}
-						<Navbar className="red lighten-2" brand='Petshop' left
+						<Navbar className="forest" brand='Petshop' left
 							options={{closeOnClick: true, draggable: true}}
 						>
 							{/*Itens of the navbar*/}
-							<NavItem className="red lighten-2"><NavLink exact to="/">Home</NavLink></NavItem>
-							<NavItem className="red lighten-2"><NavLink to="/products">Products</NavLink></NavItem>
-							<NavItem className="red lighten-2"><NavLink to="/services">Services</NavLink></NavItem>
+							<NavItem><NavLink exact to="/">Home</NavLink></NavItem>
+							<NavItem><NavLink to="/products">Products</NavLink></NavItem>
+							<NavItem><NavLink to="/services">Services</NavLink></NavItem>
 							{/*These two attributes depends on the user, if he/she is logged in or not*/}
 							{loginProfile}
 							{management}
 						</Navbar>
 
 						{/*This container contains all the main content of the page*/}
-						<div className="content">
+						<div className="content white">
 							<Container> 
 								<Route exact path="/" component={Home} />
 								<Route path="/products" render={ ()=> <Products db={this.props.db} user={user}/> } />
@@ -158,7 +159,7 @@ export default class Main extends React.Component {
 						</div>
 
 						{/*Setting the footer of the page*/}
-						<Footer className="footer" copyrights="2018 Copyright Text"
+						<Footer className="footer forest" copyrights="2018 Copyright Text"
 							moreLinks={
 		    					<a className="grey-text text-lighten-4 right" href="https://github.com/marcoscrcamargo/web">Github</a>
 		  					}
