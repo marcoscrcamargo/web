@@ -26,7 +26,7 @@ export default class Products extends React.Component {
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
-									trigger={<Button>${prod.price} Buy</Button>}>
+									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Buy for ${prod.price} </a></p>}>
 										Please login first!
 									</Modal>}> {/*adding a "Buy" button with the price*/}
 								{/*name and description: */}
@@ -53,7 +53,7 @@ export default class Products extends React.Component {
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
-									trigger={<Button>${prod.price} Buy</Button>}>
+									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Buy for ${prod.price} </a></p>}>
 										{/*Pop-up window with more details*/}
 										<Row>
 											{/*Larger product picture*/}

@@ -55,7 +55,7 @@ export default class Services extends React.Component {
 								actions={[
 									<Modal
 									header='Schedule a service'
-									trigger={<Button>Schedule ({service.price})</Button>}>
+									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Schedule for ${service.price}</a></p>}>
 										Please login first!
 									</Modal>
 									]}>
@@ -80,7 +80,7 @@ export default class Services extends React.Component {
 								actions={[
 									<Modal
 									header={'Schedule '+service.title}
-									trigger={<Button>Schedule ({service.price})</Button>}>
+									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Schedule for ${service.price}</a></p>}>
 										Pet:
 										<Row>
 											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2' onChange={this.handleChangePetName}>
