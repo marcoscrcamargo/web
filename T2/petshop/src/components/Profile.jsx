@@ -152,7 +152,7 @@ export default class Profile extends React.Component {
 					{/*Quantity*/}
 					<td>{product.quantity}</td>
 					{/*Price*/}
-					<td>{product.price*product.quantity}</td>
+					<td>$ {Number(product.price * product.quantity).toFixed(2)}</td>
 
 					{/*Details option*/}
 					<td>
@@ -174,7 +174,7 @@ export default class Profile extends React.Component {
 									<h5>Quantity:</h5>
 									<p>{product.quantity}</p>
 									<h5>Total price:</h5>
-									<p>${product.price * product.quantity}</p>
+									<p>${Number(product.price * product.quantity).toFixed(2)}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
