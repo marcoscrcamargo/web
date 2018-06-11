@@ -141,7 +141,7 @@ export default class Profile extends React.Component {
 
 		let cartTable = cart.map((product) => {
 			total += parseInt(product.price, 10) * parseInt(product.quantity, 10);
-			this.itemId = product.id;
+			// this.itemId = product.id;
 
 			return (
 				<tr>
@@ -185,7 +185,7 @@ export default class Profile extends React.Component {
 							</Row>
 							{/*Delete option*/}
 							<Row className="left">
-								<Button className="sleek-grey" modal="close" onClick={this.deleteItem}>
+								<Button className="sleek-grey" modal="close" onClick={() => {this.itemId = product.id; this.deleteItem()} }>
 									Delete
 								</Button>
 							</Row>
@@ -374,7 +374,8 @@ export default class Profile extends React.Component {
 	}
 
 	deleteItem(){
-		this.props.db.deleteFromCart(this.itemId);
-		this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+		this.props.db.deleteFromCart(this.itemId).then(
+			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}))
+		)
 	}
 }

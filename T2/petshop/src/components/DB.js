@@ -185,7 +185,7 @@ export default class DB {
 	}
 
 	deleteFromCart(key){
-		this.db.cart.delete(key).then(a => console.log('deleted from cart successfully!'));
+		return this.db.cart.delete(key).then(a => console.log('deleted from cart successfully!'));
 	}
 
 	updateCartProduct(key, quantity){
