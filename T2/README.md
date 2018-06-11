@@ -2,6 +2,8 @@
 
 Marcos Camargo - 9278045
 
+Letícia Sakurai - 9278010
+
 Gabriel Camargo - 9293456
 
 

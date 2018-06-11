@@ -14,7 +14,7 @@ export default class ForgotPassword extends React.Component {
 					{/*A input box for the user's email*/}
 					<Col s ={8} m={8} l={8} offset="s1 m1 l1" className="valign-wrapper">
 						<Input s={6} m={6} l={6} type="email" label="Email" validate />
-						<Button  className="sleek-grey">Submit</Button>
+						<Button >Submit</Button>
 					</Col>
 				</Row>
 			</Col>

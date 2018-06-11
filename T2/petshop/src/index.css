@@ -8,13 +8,8 @@
 	flex: 1 0 auto;
 }
 
-
-.marine{
-	background-color: #b3e5fc;
-}
-
-.marine-text{
-	color: #b3e5fc;
+#nav-mobile{
+	background-color: #00acc1;
 }
 
 .forest{
@@ -25,30 +20,41 @@
 	color: #0288d1;
 }
 
-.sleek-grey{
-	background-color: #a5a5af;
+.btn{
+	background-color: #ffb300;
+}
+
+.btn:visited, .btn:hover, .btn:active, .btn:focus{
+	background-color: #ffc107;
 }
 
 .sleek-grey-text{
-	color: #a5a5af;
+	color: #ffb300;
 }
 
- .input-field input:focus + label, .materialize-textarea:focus:not([readonly]) + label,  option {
-   color: #0288d1  !important;
+ .input-field label, .input-field input:focus + label, .materialize-textarea:focus:not([readonly]) + label,  option {
+   color: #006064  !important;
  }
+
+.input-field input{
+   border-bottom: 1px solid #006064 !important;
+   box-shadow: 0 1px 0 0 #006064 !important
+
+}
+
  /* label underline focus color */
  .input-field input:focus, .materialize-textarea:focus:not([readonly]) {
-   border-bottom: 1px solid #0288d1  !important;
-   box-shadow: 0 1px 0 0 #0288d1  !important
+   border-bottom: 1px solid #006064 !important;
+   box-shadow: 0 1px 0 0 #006064 !important
  }
 
  .tabs .tab a{
-    color:#0288d1;
+    color:#ffb300;
 }
 
 .tabs .tab a:hover,.tabs .tab a.active {
 	background-color:transparent;
-	color:#0288d1;
+	color:#ffb300;
 }
 
 .tabs .tab.disabled a,.tabs .tab.disabled a:hover {

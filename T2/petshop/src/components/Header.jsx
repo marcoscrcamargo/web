@@ -14,7 +14,7 @@ export default class Header extends React.Component {
 		}
 
 		let styleLoginRow = {
-			'margin': '0px'
+			'margin': '0px',
 		}
 		let styleLoginRowM = {
 			'marginLeft': '10px'
@@ -46,30 +46,36 @@ export default class Header extends React.Component {
 					<Col>
 						{/*Link to the user's info page*/}
 						<NavLink to="/profile">
-							<p>{this.props.user.name}</p>
+							<p className="cyan-text text-darken-4">{this.props.user.name}</p>
 						</NavLink>
 						{/*Logout button*/}
-						<Button className="sleek-grey" onClick={this.props.onClickLogout}>Logout</Button>
+						<Button onClick={this.props.onClickLogout}>Logout</Button>
 					</Col>
 				</Row>
 			</Col>
 		) : (
-			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper ">
+			<Col s={5} m={8} l={5} className="right styleLoginRow valign-wrapper cyan-text text-darken-4">
 				<Col s={8} m={8} l={4} className="left-align">
 					{/*Input box for the username*/}
-					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="text" label="Username" onChange={this.props.handleUsernameChange}/></Row>
+					<Row className="left-align" style={styleLoginRow}>
+						<Input style={styleLoginRow} type="text" label="Username" onChange={this.props.handleUsernameChange}/>
+					</Row>
 					{/*Link to sign up*/}
-					<Row className="left-align" style={styleLoginRowM}><NavLink to="/signup" className="forest-text" style={styleLoginLink}>Sign Up</NavLink></Row>
+					<Row className="left-align" style={styleLoginRowM}>
+						<NavLink to="/signup" className="cyan-text text-darken-4" style={styleLoginLink}>Sign Up</NavLink>
+					</Row>
 				</Col>
 				<Col s={8} m={8} l={4}>
 					{/*Input box for the password*/}
 					<Row className="left-align" style={styleLoginRow}><Input style={styleLoginRow} type="password" label="Password" onChange={this.props.handlePasswordChange}/></Row>
 					{/*Link to recover password*/}
-					<Row className="left-align" style={styleLoginRowM}><NavLink to="/forgot_password" className="forest-text" style={styleLoginLink}>Forgot Password?</NavLink></Row>
+					<Row className="left-align" style={styleLoginRowM}>
+						<NavLink to="/forgot_password" className="cyan-text text-darken-4" style={styleLoginLink}>Forgot Password?</NavLink>
+					</Row>
 				</Col>
 				<Col s={8} m={8} l={3}>
 					{/*Login button*/}
-					<Button className="sleek-grey" onClick={this.props.onClickLogin}>Login</Button>
+					<Button onClick={this.props.onClickLogin}>Login</Button>
 				</Col>
 			</Col>
 		);
@@ -77,7 +83,7 @@ export default class Header extends React.Component {
 		// returns how the header should be displayed, with the website's logo and the profileLogin part
 		return (
 
-		<Row className="valign-wrapper hide-on-med-and-down marine" style={styleHeader}>
+		<Row className="valign-wrapper hide-on-med-and-down cyan" style={styleHeader}>
 			<Col s={7} m={4} l={7} className="left">
 				<NavLink exact to="/">
 					<Row className="valign-wrapper">

@@ -71,7 +71,7 @@ export default class Profile extends React.Component {
 						<Modal
 						id={"pet"+pet.id}
 						header={pet.name}
-						trigger={<Button className="sleek-grey">Details</Button>}>
+						trigger={<Button>Details</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
 								</Col>
 							</Row>
 							{/*Delete option*/}
-							<Button className="sleek-grey" modal="close" onClick={ ()=> {
+							<Button modal="close" onClick={ ()=> {
 								this.petToDelete = pet;
 								this.deletePet();
 							}}> Delete </Button>
@@ -111,7 +111,7 @@ export default class Profile extends React.Component {
 					<td>
 						<Modal
 						header={service.name}
-						trigger={<Button className="sleek-grey">Details</Button>}>
+						trigger={<Button>Details</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
@@ -133,7 +133,7 @@ export default class Profile extends React.Component {
 								</Col>
 							</Row>
 							{/*Delete option*/}
-							<Row className="left"><Button className="sleek-grey" modal="close" onClick={ ()=> {
+							<Row className="left"><Button modal="close" onClick={ ()=> {
 								this.scheduleToDelete = service;
 								this.deleteSchedule();
 							}}> Delete </Button></Row>
@@ -168,7 +168,7 @@ export default class Profile extends React.Component {
 					<td>
 						<Modal
 						header={product.name}
-						trigger={<Button className="sleek-grey">Delete</Button>}>
+						trigger={<Button>Delete</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
@@ -189,7 +189,7 @@ export default class Profile extends React.Component {
 							</Row>
 							{/*Delete option*/}
 							<Row className="left">
-								<Button className="sleek-grey" modal="close" onClick={() => {this.itemId = product.id; this.deleteItem()} }>
+								<Button modal="close" onClick={() => {this.itemId = product.id; this.deleteItem()} }>
 									Delete
 								</Button>
 							</Row>
@@ -262,7 +262,7 @@ export default class Profile extends React.Component {
 							{/*Add new pet option*/}
 							<Modal
 							header='Create new pet'
-							trigger={<Button className="sleek-grey">New pet</Button>}>
+							trigger={<Button>New pet</Button>}>
 								<Row>
 									<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" validate/>
 								</Row>
@@ -273,7 +273,7 @@ export default class Profile extends React.Component {
 								    <Input id="radio_fish" name='group1' type='radio' value='fish' label='Fish'/>
 								</Row>
 								{/*Create button*/}
-								<Row className="left"><Button className="sleek-grey" modal="close" onClick={this.createNewPet}>Create</Button></Row>
+								<Row className="left"><Button modal="close" onClick={this.createNewPet}>Create</Button></Row>
 							</Modal>
 						</Tab>
 
@@ -296,7 +296,6 @@ export default class Profile extends React.Component {
 								</tbody>
 							</Table>
 						</Tab>
-
 						{/*Profile tab*/}
 						<Tab title="Profile">
 							<Row>

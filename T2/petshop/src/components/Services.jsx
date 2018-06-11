@@ -97,7 +97,7 @@ export default class Services extends React.Component {
 										  <Input id="inputime" name='on' type='time' onChange={this.handleChangeTime}/>
 										</Row>
 										{/*Schedule button*/}
-										<Row className="left"><Button className="sleek-grey" modal="close" onClick={ ()=> {
+										<Row className="left"><Button modal="close" onClick={ ()=> {
 											this.servicetoSchedule = service;
 											this.createNewSchedule();
 											window.Materialize.toast('Service scheduled!', 2000)

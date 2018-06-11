@@ -177,6 +177,7 @@ export default class DB {
 	}
 
 	addToCart(item){
+		console.log(this.db.cart.where('username').equals(item.username).toArray());
 		this.db.cart.put(item).then(a => console.log('inserted into cart!'));
 	}
 

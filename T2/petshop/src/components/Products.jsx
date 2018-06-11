@@ -53,7 +53,7 @@ export default class Products extends React.Component {
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
-									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Buy for ${prod.price} </a></p>}>
+									trigger={<p className="center"><a>Buy for ${prod.price} </a></p>}>
 										{/*Pop-up window with more details*/}
 										<Row>
 											{/*Larger product picture*/}
@@ -72,7 +72,7 @@ export default class Products extends React.Component {
 										</Row>
 										{/*Delete option*/}
 										<Row className="left">
-											<Button className="sleek-grey" modal="close" onClick={ () => {
+											<Button modal="close" onClick={ () => {
 												this.prodToCart = prod;
 												this.createNewItem();
 											}

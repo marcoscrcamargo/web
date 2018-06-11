@@ -100,22 +100,22 @@ export default class Main extends React.Component {
 
 		// If the user is an Admin, there will be an Management tab in the navbar
 		const management = isAdmin ? (
-			<NavItem className="forest"><NavLink to="/admin">Management</NavLink></NavItem>
+			<NavItem><NavLink to="/admin">Management</NavLink></NavItem>
 		) : (
 			null
 		);
 
 		// If the user is logged in, there will be an Profile tab in the navbar
 		const loginProfile = isLoggedIn ? (
-			<NavItem className="forest"><NavLink to="/profile">Profile</NavLink></NavItem>
+			<NavItem><NavLink to="/profile">Profile</NavLink></NavItem>
 		) : (
-			<NavItem className="forest"><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
+			<NavItem><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
 		);
 
 		// returns what the page should render
 		return (
 			<HashRouter>
-				<div className="marine"> {/*this div contains all the main page*/}
+				<div className="cyan"> {/*this div contains all the main page*/}
 					<Header
 						// setting the attributes and functions of the header
 						user={user}
@@ -126,7 +126,7 @@ export default class Main extends React.Component {
 					/>
 					<div className="wrap">
 						{/*setting the navbar*/}
-						<Navbar className="forest" brand='Petshop' left
+						<Navbar className="cyan darken-1" brand='Petshop' left
 							options={{closeOnClick: true, draggable: true}}
 						>
 							{/*Itens of the navbar*/}
@@ -159,7 +159,7 @@ export default class Main extends React.Component {
 						</div>
 
 						{/*Setting the footer of the page*/}
-						<Footer className="footer forest" copyrights="2018 Copyright Text"
+						<Footer className="grey darken-4" copyrights="2018 Copyright Text"
 							moreLinks={
 		    					<a className="grey-text text-lighten-4 right" href="https://github.com/marcoscrcamargo/web">Github</a>
 		  					}
