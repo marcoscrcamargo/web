@@ -51,6 +51,7 @@ export default class DB {
 		this.addToCart = this.addToCart.bind(this);
 		this.getCart = this.getCart.bind(this);
 		this.deleteFromCart = this.deleteFromCart.bind(this);
+		this.updateCartProduct = this.updateCartProduct.bind(this);
 
 		this.db.products.toArray().then(prod =>{
 			if(prod.length === 0){
@@ -184,6 +185,10 @@ export default class DB {
 	}
 
 	deleteFromCart(key){
-		this.db.cart.delete(key).then(a => console.log('deleted from cart successfully!'))
+		this.db.cart.delete(key).then(a => console.log('deleted from cart successfully!'));
+	}
+
+	updateCartProduct(key, quantity){
+		return this.db.cart.update(key, {quantity}).then(console.log("object with id " + key + " was changed: " + quantity));
 	}
 }

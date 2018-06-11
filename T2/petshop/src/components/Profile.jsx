@@ -150,9 +150,15 @@ export default class Profile extends React.Component {
 					{/*Product name*/}
 					<td>{product.name}</td>
 					{/*Quantity*/}
-					<td>{product.quantity}</td>
+					<td><Input type="number" label="Quantity" min="1" max="100" defaultValue={product.quantity}
+							onChange={(e) => {
+								this.props.db.updateCartProduct(product.id, Number(e.target.value)).then(
+									this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item})))
+								}
+							}/></td>
 					{/*Price*/}
 					<td>$ {Number(product.price * product.quantity).toFixed(2)}</td>
+					{console.log("quantity = " + product.quantity)}
 
 					{/*Details option*/}
 					<td>
@@ -202,27 +208,33 @@ export default class Profile extends React.Component {
 					</Row>
 					{/*User navbar*/}
 					<Tabs className='z-depth-1'>
-						{/*Profile tab*/}
-						<Tab title="Profile" active>
-							<Row>
-								{/*User image*/}
-								<Col l={6} className="valign-wrapper center center-align">
-									<MediaBox src={this.props.user.picture} style={responsiveImg} caption="profile_picture"/>
-								</Col>
-								{/*User information*/}
-								<Col l={6}>
-									<h5>Name:</h5>
-									<p>{this.props.user.name}</p>
-									<h5>Adress:</h5>
-									<p>{this.props.user.adress}</p>
-									<h5>Phone:</h5>
-									<p>{this.props.user.phone}</p>
-									<h5>Email:</h5>
-									<p>{this.props.user.email}</p>
-									<h5>Number of pets:</h5>
-									<p>{pets.length}</p>
-								</Col>
-							</Row>
+						{/*Cart tab*/}
+						<Tab title="Cart" active>
+							{/*Cart table*/}
+							<Table>
+								<thead>
+									{/*Colum names*/}
+									<tr>
+										<th data-field="img">Product</th>
+										<th data-field="name">Name</th>
+										<th data-field="quantity">Quantity</th>
+										<th data-field="price">Total price</th>
+										<th data-field="checkout"></th>
+									</tr>
+								</thead>
+								<tbody>
+									{cartTable}
+								</tbody>
+							</Table>
+							<Modal
+							header='Checkout'
+							trigger={<Button className="sleek-grey">Checkout</Button>}>
+								<h5>Number of items:</h5>
+								<p>{cart.length}</p>
+								<h5>Total:</h5>
+								<p>${total}</p>
+								<Button className="sleek-grey">Pay</Button>
+							</Modal>
 						</Tab>
 
 						{/*Pets tab*/}
@@ -279,35 +291,29 @@ export default class Profile extends React.Component {
 								</tbody>
 							</Table>
 						</Tab>
-						{/*Cart tab*/}
-						<Tab title="Cart">
-							{/*Cart table*/}
-							<Table>
-								<thead>
-									{/*Colum names*/}
-									<tr>
-										<th data-field="img">Product</th>
-										<th data-field="name">Name</th>
-										<th data-field="quantity">Quantity</th>
-										<th data-field="price">Total price</th>
-										<th data-field="checkout"></th>
-									</tr>
-								</thead>
-								<tbody>
-									{cartTable}
-								</tbody>
-							</Table>
-							<Modal
-							header='Checkout'
-							trigger={<Button className="sleek-grey">Checkout</Button>}>
-								<h5>Number of items:</h5>
-								<p>{cart.length}</p>
-								<h5>Total:</h5>
-								<p>${total}</p>
-								<Button className="sleek-grey">Pay</Button>
-							</Modal>
-						</Tab>
 
+						{/*Profile tab*/}
+						<Tab title="Profile">
+							<Row>
+								{/*User image*/}
+								<Col l={6} className="valign-wrapper center center-align">
+									<MediaBox src={this.props.user.picture} style={responsiveImg} caption="profile_picture"/>
+								</Col>
+								{/*User information*/}
+								<Col l={6}>
+									<h5>Name:</h5>
+									<p>{this.props.user.name}</p>
+									<h5>Adress:</h5>
+									<p>{this.props.user.adress}</p>
+									<h5>Phone:</h5>
+									<p>{this.props.user.phone}</p>
+									<h5>Email:</h5>
+									<p>{this.props.user.email}</p>
+									<h5>Number of pets:</h5>
+									<p>{pets.length}</p>
+								</Col>
+							</Row>
+						</Tab>
 					</Tabs>
 				</div>
 			)
