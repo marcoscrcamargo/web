@@ -89,7 +89,7 @@ export default class Header extends React.Component {
 					<Row className="valign-wrapper">
 						{/*Logo and Petshop name*/}
 						<img className="responsive-img" src={require('../img/paw.svg')} style={styleImg} alt="Logo"/>
-						<span style={styleLogo} className="forest-text" >Petshop</span>
+						<span style={styleLogo} className="cyan-text text-darken-4" >Petshop</span>
 					</Row>
 				</NavLink>
 			</Col>
