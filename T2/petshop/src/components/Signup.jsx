@@ -13,6 +13,7 @@ export default class Signup extends React.Component {
 			email: null,
 			password: null,
 			adress: null,
+			picture: null,
 			created: false
 		}
 
@@ -22,6 +23,7 @@ export default class Signup extends React.Component {
 		this.handleEmailChange = this.handleEmailChange.bind(this)
 		this.handlePasswordChange = this.handlePasswordChange.bind(this)
 		this.handleAdressChange = this.handleAdressChange.bind(this)
+		this.previewFile = this.previewFile.bind(this)
 		this.newUser = this.newUser.bind(this)
 
 	}
@@ -45,6 +47,8 @@ export default class Signup extends React.Component {
 			return(
 				<Col s={8} m={8} l={8} className="center" style={styleCol}>
 					<h4>Signup !</h4>
+					<Row><img id="profile_pic" src={require('../img/avatar.png')} height="250" alt="preview" /></Row>
+					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Full Name" validate onChange={this.handleNameChange} /></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="tel" label="Phone Number" validate onChange={this.handlePhoneChange} /></Col></Row>
 					<Row><Col s ={8} m={8} l={8} offset="s4 m4 l4"><Input s={6} m={6} l={6} type="text" label="Username" validate onChange={this.handleUsernameChange} /></Col></Row>
@@ -87,12 +91,29 @@ export default class Signup extends React.Component {
 		this.setState({Adress: e.target.value});
 	}
 
+	previewFile() {
+		var preview = document.querySelector('#profile_pic');
+		var file	= document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+
+		reader.addEventListener("load", () => {
+			preview.src = reader.result;
+		}, false);
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
+
 	// Inserts the a new user into the indexedDB
 	newUser(){
+		var preview = document.querySelector('#profile_pic');
+		var pic = preview.src;
+		console.log(pic);
 		let new_user = {
 			name: this.state.name,
 			phone: this.state.phone,
-			picture: require('../img/avatar.png'),
+			picture: pic,
 			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password,
