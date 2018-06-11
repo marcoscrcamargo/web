@@ -173,7 +173,7 @@ export default class DB {
 	}
 
 	putPet(pet) {
-		this.db.pets.put(pet).then(a => console.log('new pet sucess!'));
+		return this.db.pets.put(pet).then(a => console.log('new pet sucess!'));
 	}
 
 	addToCart(item){

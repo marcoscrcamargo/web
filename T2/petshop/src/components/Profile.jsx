@@ -104,6 +104,8 @@ export default class Profile extends React.Component {
 					<td>{service.pet}</td>
 					{/*date and time*/}
 					<td>{service.date}</td>
+					{/*service price*/}
+					<td>$ {service.price}</td>
 
 					{/*Details option*/}
 					<td>
@@ -126,6 +128,8 @@ export default class Profile extends React.Component {
 									<p>{service.pet}</p>
 									<h5>Date:</h5>
 									<p>{service.date}</p>
+									<h5>Price:</h5>
+									<p>$ {service.price}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
@@ -283,6 +287,7 @@ export default class Profile extends React.Component {
 										<th data-field="img">Service</th>
 										<th data-field="name">Pet</th>
 										<th data-field="date">Date</th>
+										<th data-field="price">Price</th>
 										<th data-field="details">Details</th>
 									</tr>
 								</thead>
@@ -367,8 +372,8 @@ export default class Profile extends React.Component {
 				picture: pic,
 				username: this.props.user.username
 			}
-			this.props.db.putPet(newPet);
-			this.setState({createdPet: 'true'});
+			this.props.db.putPet(newPet).then(
+				this.setState({createdPet: 'true'}));
 		}
 		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 	}
