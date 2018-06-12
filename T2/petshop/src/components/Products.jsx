@@ -109,5 +109,6 @@ export default class Products extends React.Component {
 		}
 		this.props.db.addToCart(newItem);
 		window.Materialize.toast("Added to cart!", 2000);
+		this.setState({quantity: 1})
 	}
 }
