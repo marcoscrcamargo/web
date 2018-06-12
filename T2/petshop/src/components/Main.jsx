@@ -14,10 +14,7 @@ import Profile from './Profile.jsx';
 
 
 export default class Main extends React.Component {
-	// componentWillMount() {
-	// 	document.title = 'Petshop'
-	// }
-
+	
 	constructor(props) {
 		super(props);
 
@@ -33,65 +30,8 @@ export default class Main extends React.Component {
 	}
 
 	render() {
+
 		var user = this.state.user;
-
-		// var user = 	{
-		// 	name: 'Marcos Camargo',
-		// 	phone: '14997189943',
-		// 	picture: require('../img/avatar.png'),
-		// 	cart: [
-		// 		{
-		// 			name: 'Ração X',
-		// 			price: '55,00',
-		// 			quantity: '3',
-		// 			picture: require('../img/prod.jpg'),
-		// 			description: 'Ração pra animal doente1'
-		// 		},
-		// 		{
-		// 			name: 'Ração X',
-		// 			price: '55,00',
-		// 			quantity: '4',
-		// 			picture: require('../img/prod.jpg'),
-		// 			description: 'Ração pra animal doente1'
-		// 		},
-		// 		{
-		// 			name: 'Ração X',
-		// 			price: '55,00',
-		// 			quantity: '5',
-		// 			picture: require('../img/prod.jpg'),
-		// 			description: 'Ração pra animal doente1'
-		// 		},
-		// 	],
-
-		// 	sales : [
-		// 		{
-		// 			name: 'Ração X',
-		// 			price: '55,00',
-		// 			quantity: '5',
-		// 			date: "October 15, 2018 13:10:00",
-		// 			picture: require('../img/prod.jpg')
-		// 		},
-		// 		{
-		// 			name: 'Ração X',
-		// 			price: '55,00',
-		// 			quantity: '6',
-		// 			date: "October 16, 2018 13:20:00",
-		// 			picture: require('../img/prod.jpg')
-		// 		},
-		// 		{
-		// 			name: 'Ração X',
-		// 			price: '55,00',
-		// 			quantity: '7',
-		// 			picture: require('../img/prod.jpg'),
-		// 			date: "October 17, 2018 13:30:00"
-		// 		},
-		// 	],
-		// 	username: 'marcoscrcamargo',
-		// 	email: 'marcoscrcamargo@gmail.com',
-		// 	password: 'admin',
-		// 	admin: 'true',
-		// 	adress: 'R. Carlos de Camargo Salles, 306 Apt. 2'
-		// };
 
 		// flag that indicates wheter the user is logged in
 		const isLoggedIn = (user !== null);
