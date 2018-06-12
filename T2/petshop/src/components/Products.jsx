@@ -22,7 +22,7 @@ export default class Products extends React.Component {
 			let productList = products.map((prod) => {
 					return (
 						<Col s={6} m={4} l={3} >
-							<Card className='medium' /*type of the card*/
+							<Card /*type of the card*/
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
