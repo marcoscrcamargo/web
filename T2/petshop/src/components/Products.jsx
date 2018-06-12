@@ -49,7 +49,7 @@ export default class Products extends React.Component {
 					return (
 						// sets the size of the card for each type of screen
 						<Col s={6} m={4} l={3} >
-							<Card className='medium' /*type of the card*/
+							<Card /*type of the card*/
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
