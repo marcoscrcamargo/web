@@ -21,7 +21,7 @@ export default class Products extends React.Component {
 		if(this.props.user === null){
 			let productList = products.map((prod) => {
 					return (
-						<Col s={6} m={4} l={2} >
+						<Col s={6} m={4} l={3} >
 							<Card className='medium' /*type of the card*/
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
@@ -48,7 +48,7 @@ export default class Products extends React.Component {
 			let productList = products.map((prod, index) => {
 					return (
 						// sets the size of the card for each type of screen
-						<Col s={6} m={4} l={2} >
+						<Col s={6} m={4} l={3} >
 							<Card className='medium' /*type of the card*/
 								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal

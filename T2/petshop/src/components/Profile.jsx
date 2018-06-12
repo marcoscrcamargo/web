@@ -10,6 +10,12 @@ import Schedule from './Schedule.jsx';
 export default class Profile extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {pets: []};
+
+		if (this.props.user !== null){
+			this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+		}
+
 	}
 
 	render(){
@@ -21,7 +27,9 @@ export default class Profile extends React.Component {
 			height: 'auto',
 		}
 
+		let pets = []
 		const isLoggedIn = (this.props.user !== null);
+		if (isLoggedIn) pets = this.state.pets;
 
 		// If the user loggs in, a welcome message is showed
 		// A new navbar appears, with the tags profile, pets, schedule and cart
@@ -68,7 +76,7 @@ export default class Profile extends React.Component {
 									<h5>Email:</h5>
 									<p>{this.props.user.email}</p>
 									<h5>Number of pets:</h5>
-									{/*<p>{pets.length}</p>*/}
+									<p>{pets.length}</p>
 								</Col>
 							</Row>
 						</Tab>
