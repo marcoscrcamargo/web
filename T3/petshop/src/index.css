@@ -1,0 +1,60 @@
+.wrap {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.content {
+	flex: 1 0 auto;
+}
+
+#nav-mobile{
+	background-color: #00acc1;
+}
+
+.btn{
+	background-color: #ffb300;
+}
+
+.btn:visited, .btn:hover, .btn:active, .btn:focus{
+	background-color: #ffc107;
+}
+
+.sleek-grey-text{
+	color: #ffb300;
+}
+
+ .input-field label, .input-field input:focus + label, .materialize-textarea:focus:not([readonly]) + label,  option {
+   color: #006064  !important;
+ }
+
+.input-field input{
+   border-bottom: 1px solid #006064 !important;
+   box-shadow: 0 1px 0 0 #006064 !important
+
+}
+
+ /* label underline focus color */
+ .input-field input:focus, .materialize-textarea:focus:not([readonly]) {
+   border-bottom: 1px solid #006064 !important;
+   box-shadow: 0 1px 0 0 #006064 !important
+ }
+
+ .tabs .tab a{
+    color:#ffb300;
+}
+
+.tabs .tab a:hover,.tabs .tab a.active {
+	background-color:transparent;
+	color:#ffb300;
+}
+
+.tabs .tab.disabled a,.tabs .tab.disabled a:hover {
+	color:#0288d1;	
+}
+
+.tabs .indicator {
+	background-color:#0288d1;
+}
+
+
