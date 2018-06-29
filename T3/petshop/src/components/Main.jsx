@@ -12,7 +12,6 @@ import ForgotPassword from './ForgotPassword.jsx';
 import Admin from './Admin.jsx';
 import Profile from './Profile.jsx';
 
-
 export default class Main extends React.Component {
 	
 	constructor(props) {
@@ -40,14 +39,14 @@ export default class Main extends React.Component {
 
 		// If the user is an Admin, there will be an Management tab in the navbar
 		const management = isAdmin ? (
-			<NavItem><NavLink to="/admin">Management</NavLink></NavItem>
+			<NavLink to="/admin"><NavItem>Management</NavItem></NavLink>
 		) : (
 			null
 		);
 
 		// If the user is logged in, there will be an Profile tab in the navbar
 		const loginProfile = isLoggedIn ? (
-			<NavItem><NavLink to="/profile">Profile</NavLink></NavItem>
+			<NavLink to="/profile"><NavItem>Profile</NavItem></NavLink>
 		) : (
 			<NavItem><NavLink className="hide-on-large-only" to="/login">Login</NavLink></NavItem>
 		);
@@ -70,9 +69,9 @@ export default class Main extends React.Component {
 							options={{closeOnClick: true, draggable: true}}
 						>
 							{/*Itens of the navbar*/}
-							<NavItem><NavLink exact to="/">Home</NavLink></NavItem>
-							<NavItem><NavLink to="/products">Products</NavLink></NavItem>
-							<NavItem><NavLink to="/services">Services</NavLink></NavItem>
+							<NavLink exact to="/"><NavItem>Home</NavItem></NavLink>
+							<NavLink to="/products"><NavItem>Products</NavItem></NavLink>
+							<NavLink to="/services"><NavItem>Services</NavItem></NavLink>
 							{/*These two attributes depends on the user, if he/she is logged in or not*/}
 							{loginProfile}
 							{management}
