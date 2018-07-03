@@ -12,46 +12,60 @@ export default class Database {
 		this.nano.db.get('petshop', function(err, body) {
 			if (!err) {
 			  console.log("Database already exists");
+			
+			// Creating database
 			} else {
 				var nano = require('nano')('http://127.0.0.1:5984');
 				nano.db.create('petshop');
-				var petshop = nano.use('petshop');
-
-				// Not working
-				userData.map(user => {
-					petshop.insert(user, function(err, body) {
-					});				
-				});
-
-				productData.map(product => {
-					petshop.insert(product, function(err, body) {
-					});				
-				});
-				
-				serviceData.map(service => {
-					petshop.insert(service, function(err, body) {
-					});				
-				});
-				
-				salesData.map(sales => {
-					petshop.insert(sales, function(err, body) {
-					});				
-				});
-				
-				petsData.map(pets => {
-					petshop.insert(pets, function(err, body) {
-					});				
-				});
-
-				scheduleData.map(schedule => {
-					petshop.insert(schedule, function(err, body) {
-					});				
-				});
-
 			}
 		});
+		
+		// Inserting data
+		setTimeout(function(){
+			var nano = require('nano')('http://127.0.0.1:5984');
+			nano.db.get('petshop', function(err, body) {
+			  if (!err) {
+			    if(body.doc_count === 0){
+					var petshop = nano.use('petshop');
+
+					userData.map(user => {
+						petshop.insert(user, function(err, body) {
+						});				
+					});
+
+					productData.map(product => {
+						petshop.insert(product, function(err, body) {
+						});				
+					});
+					
+					serviceData.map(service => {
+						petshop.insert(service, function(err, body) {
+						});				
+					});
+					
+					salesData.map(sales => {
+						petshop.insert(sales, function(err, body) {
+						});				
+					});
+					
+					petsData.map(pets => {
+						petshop.insert(pets, function(err, body) {
+						});				
+					});
+
+					scheduleData.map(schedule => {
+						petshop.insert(schedule, function(err, body) {
+						});				
+					});
+
+			    } else {
+			    	console.log("varias fita lek");
+			    }
+			  }
+			});
+		}, 2000);
 
 		this.petshop = this.nano.use('petshop');
-
 	}
+
 }
