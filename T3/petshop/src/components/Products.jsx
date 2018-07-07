@@ -1,4 +1,4 @@
-import React from 'react';
+	import React from 'react';
 import {Row, Col, Card, CardTitle, Button, Modal, MediaBox, Input} from 'react-materialize';
 
 export default class Products extends React.Component {
@@ -9,7 +9,8 @@ export default class Products extends React.Component {
 			products: [],
 			quantity: 1,
 		};
-		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
+		// this.props.db.getAllProducts().then(item => this.setState({ products: item }));
+		this.getAllProducts().then(item => this.setState({ products: item }));
 		this.prodToCard = null;
 		this.createNewItem = this.createNewItem.bind(this);
 		this.setState({quantity: 1})
@@ -17,13 +18,14 @@ export default class Products extends React.Component {
 
 	render() {
 		let products = this.state.products;
-
+		console.log(products)
 		if(this.props.user === null){
 			let productList = products.map((prod) => {
+					prod = prod.value;
 					return (
 						<Col s={6} m={4} l={3} >
 							<Card /*type of the card*/
-								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
+								header={<CardTitle image={prod._attachment}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
 									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Buy for ${prod.price} </a></p>}>
@@ -97,6 +99,12 @@ export default class Products extends React.Component {
 		}
 	}
 
+	async getAllProducts(){
+		let response = await fetch('http://localhost:4000/product');
+		let products = await response.json();
+		console.log(products)
+		return products;
+	}
 	createNewItem(){
 		let newItem = {
 			username: this.props.user.username,
