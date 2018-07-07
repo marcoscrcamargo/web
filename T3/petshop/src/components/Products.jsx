@@ -105,6 +105,7 @@ export default class Products extends React.Component {
 		console.log(products)
 		return products;
 	}
+
 	createNewItem(){
 		let newItem = {
 			username: this.props.user.username,

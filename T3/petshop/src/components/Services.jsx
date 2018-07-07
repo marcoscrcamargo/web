@@ -14,7 +14,7 @@ export default class Services extends React.Component {
 		};
 
 		this.servicetoSchedule = null
-		this.props.db.getAllServices().then(item => this.setState({ services: item }));
+		this.getAllServices().then(item => this.setState({ services: item }));
 
 		if (this.props.user !== null){
 			this.props.db.getPets("username", this.props.user.username).then(item => this.setState({ petsForUser: item }));
@@ -46,6 +46,7 @@ export default class Services extends React.Component {
 
 		if (this.props.user === null){
 			serviceList = services.map((service) => {
+				service = service.value;
 					return (
 						<Col s={6} m={4} l={3}>
 							<Card className='medium'
@@ -119,6 +120,14 @@ export default class Services extends React.Component {
 			</Row>
 		);
 	}
+
+	async getAllServices(){
+		let response = await fetch('http://localhost:4000/service');
+		let services = await response.json();
+		console.log(services)
+		return services;
+	}
+
 
 	createNewSchedule(){
 		let date = String(this.state.date);
