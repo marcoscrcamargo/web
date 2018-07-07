@@ -3,13 +3,18 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-var product = require('../model/product');
+var user = require('../model/user');
 
 router.post('/', function (req, res) {
-    product.create({
+    user.create({
             name : req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            phone : req.body.phone,
+            // picture: req.body.picture,
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            admin: req.body.admin,
+            adress: req.body.adress
         },
         function (err) {
             if (err) return res.status(500).send(err);
@@ -18,7 +23,7 @@ router.post('/', function (req, res) {
 });
 
 router.put('/', function (req, res) {
-    product.update(req.body,
+    user.update(req.body,
         function (err) {
             if (err) return res.status(500).send(err);
             res.status(200).send("ok");
@@ -27,7 +32,7 @@ router.put('/', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    product.all(function(err, result){
+    user.all(function(err, result){
         if(err){
             console.log("error");
             return;
@@ -36,12 +41,12 @@ router.get('/', function (req, res) {
     })
 });
 
-router.delete('/:product_id', function(req, res, done) {
-    console.log("deleting..." + req.params.product_id);
-    product.erase(req.params.product_id,function(err){
+router.delete('/:user_id', function(req, res, done) {
+    console.log("deleting..." + req.params.user_id);
+    user.erase(req.params.user_id,function(err){
         if(err)
             return res.status(500).send(err);
-        res.status(200).send(req.params.product_id);
+        res.status(200).send(req.params.user_id);
     });
 });
 

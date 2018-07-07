@@ -2,16 +2,20 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
-	- name
-	- description
-	- price
-	- type = 'product'
-
+	User:
+    - name
+    - phone
+    - picture
+    - username
+    - email
+    - password
+    - admin
+    - adress
+	- type
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("user", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -20,32 +24,33 @@ let all = function(callback){
 	});
 }
 
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(user, callback){
+	console.log(user)
+	if(!user.description|| !user.title || !user.price){
+		callback("user must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("user", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			title:user.title,
+			description:user.description,
+			price:user.price,
+			type:'user',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_user"
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
 			console.log(err, body, header);
 		});
 	});
+
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(user, callback){
+	console.log(user);
+	db.get(user.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -56,14 +61,14 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product)){
+		for(i in Object.keys(user)){
 			console.log(i);
-			if(Object.keys(product)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product)[i])) {
+			if(Object.keys(user)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(user)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product)[i]] = product[Object.keys(product)[i]]
+				body[Object.keys(user)[i]] = user[Object.keys(user)[i]]
 			}
 		}
 
@@ -73,9 +78,6 @@ let update = function(product, callback){
 		});
 	})
 }
-
-
-
 
 let erase = function(id, callback){
 	db.get(id, function(err, body, header) {

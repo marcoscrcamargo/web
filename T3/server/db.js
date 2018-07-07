@@ -1,6 +1,3 @@
-// SOBRE ESSA CLASSE
-// sempre rode o metodo init no comeco da execucao
-
 const dbname = 'petshopt3';
 
 var nano = require('nano')('http://localhost:5984');
@@ -29,7 +26,6 @@ createDesigns = function(){
 	//Definicao Das Pesquisas para cada modelo
 	//ADMINSTRADORES
 	// var design_administradores ={
-	// 	"_id": "_design/administrador",		
 	// 	"views":{
 	// 	    "all":{
 	// 	      	"map": "function(doc){if(doc.tipo == 'administrador')emit(doc._id, doc);}"
@@ -45,41 +41,40 @@ createDesigns = function(){
 	// });
 
 
-	// //CLIENTES
-	// var design_clientes ={
-	// 	"_id": "_design/cliente",		
-	// 	"views":{
-	// 	    "all":{
-	// 	      	"map": "function(doc){if(doc.tipo == 'cliente')emit(doc._id, doc);}"
-	// 	    }
-	// 	},
-	// 	"language": "javascript"
-	// };
-	// db.insert(design_clientes,function(err){
-	// 	if(err){
-	// 		console.log(err.message);
-	// 		return;
-	// 	}
-	// });
+	// USERS
+	var design_users ={
+		"_id": "_design/user",
+		"views":{
+		    "all":{
+		      	"map": "function(doc){if(doc.type == 'user')emit(doc._id, doc);}"
+		    }
+		},
+		"language": "javascript"
+	};
+	db.insert(design_users,function(err){
+		if(err){
+			console.log(err.message);
+			return;
+		}
+	});
 
 
-	// //ANIMAL
-
-	// var design_animais ={
-	// 	"_id": "_design/animal",		
-	// 	"views":{
-	// 	    "all":{
-	// 	      	"map": "function(doc){if(doc.tipo == 'animal')emit(doc._id, doc);}"
-	// 	    }
-	// 	},
-	// 	"language": "javascript"
-	// };
-	// db.insert(design_animais,function(err){
-	// 	if(err){
-	// 		console.log(err.message);
-	// 		return;
-	// 	}
-	// });
+	// PETS
+	var design_pet ={
+		"_id": "_design/pet",
+		"views":{
+		    "all":{
+		      	"map": "function(doc){if(doc.type == 'pet')emit(doc._id, doc);}"
+		    }
+		},
+		"language": "javascript"
+	};
+	db.insert(design_pet,function(err){
+		if(err){
+			console.log(err.message);
+			return;
+		}
+	});
 
 
 	// PRODUCTS
@@ -99,24 +94,22 @@ createDesigns = function(){
 		}
 	});
 
-
-	// //SERVICO
-
-	// var design_servico ={
-	// 	"_id": "_design/servico",
-	// 	"views":{
-	// 	    "all":{
-	// 	      	"map": "function(doc){if(doc.tipo == 'servico')emit(doc._id, doc);}"
-	// 	    }
-	// 	},
-	// 	"language": "javascript"
-	// };
-	// db.insert(design_servico,function(err){
-	// 	if(err){
-	// 		console.log(err.message);
-	// 		return;
-	// 	}
-	// });
+	//SERVICES
+	var design_service ={
+		"_id": "_design/service",
+		"views":{
+		    "all":{
+		      	"map": "function(doc){if(doc.type == 'service')emit(doc._id, doc);}"
+		    }
+		},
+		"language": "javascript"
+	};
+	db.insert(design_service, function(err){
+		if(err){
+			console.log(err.message);
+			return;
+		}
+	});
 
 }
 
@@ -178,25 +171,25 @@ createDesigns = function(){
 // 	});
 // }
 
-createProduCT = function(id, name, description, price){
-	//TODO criar verificacaos para ID NOME E Outros
-	var new_product =
-	{
-		_id: id,
-		name: name,
-		description: description,
-		price: price,
-		type: "product"
-	};
+// createProduCT = function(id, name, description, price){
+// 	//TODO criar verificacaos para ID NOME E Outros
+// 	var new_product =
+// 	{
+// 		_id: id,
+// 		name: name,
+// 		description: description,
+// 		price: price,
+// 		type: "product"
+// 	};
 
-	db.insert(new_product,function(err, body, header){
-		if(err){
-			console.log("insert new product error:", err.message);
-			return;
-		}
-		console.log("new product inserted");
-	});
-}
+// 	db.insert(new_product,function(err, body, header){
+// 		if(err){
+// 			console.log("insert new product error:", err.message);
+// 			return;
+// 		}
+// 		console.log("new product inserted");
+// 	});
+// }
 
 // createServico = function(id,nome,descricao,preco){
 // 	//TODO criar verificacaos para ID NOME E Outros
@@ -226,7 +219,7 @@ view = function(designName, viewName, callback){
 	db.view(designName, viewName, callback);
 }
 
-// init();
+init();
 createDesigns();
 
 module.exports = db;

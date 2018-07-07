@@ -12,20 +12,25 @@ server.use( bodyParser.json() );
 
 
 // const Cliente = require('./controller/Cliente_controller');
-// const Administrador = require('./controller/Administrador_controller');
-// const Animal = require('./controller/Animal_controller');
+const User = require('./controller/user_controller');
+const Pet = require('./controller/pet_controller');
 const Product = require('./controller/product_controller');
-// const Servico = require('./controller/Servico_controller');
+const Service = require('./controller/service_controller');
 
 
 
 
 
 // server.use('/cliente', Cliente);
-// server.use('/admin', Administrador);
-// server.use('/animal', Animal);
+server.use('/user', User);
+server.use('/pet', Pet);
 server.use('/product', Product);
-// server.use('/servico', Servico);
+server.use('/service', Service);
 
+server.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 server.listen(port, () => console.log(`Listening on port ${port}`))
