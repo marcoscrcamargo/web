@@ -2,16 +2,16 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
+	Pet:
 	- name
-	- description
-	- price
-	- type = 'product'
+	- picture
+	- username
+	- type = 'pet'
 
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("pet", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -20,21 +20,21 @@ let all = function(callback){
 	});
 }
 
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(pet, callback){
+	console.log(pet)
+	if(!pet.name || !pet.username){
+		callback("pet must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("pet", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			name:pet.name,
+			picture:pet.picture,
+			username:pet.username,
+			type:'pet',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_pet"
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
@@ -43,9 +43,9 @@ let create = function(product, callback){
 	});
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(pet, callback){
+	console.log(pet);
+	db.get(pet.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -56,14 +56,14 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product)){
+		for(i in Object.keys(pet)){
 			console.log(i);
-			if(Object.keys(product)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product)[i])) {
+			if(Object.keys(pet)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(pet)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product)[i]] = product[Object.keys(product)[i]]
+				body[Object.keys(pet)[i]] = pet[Object.keys(pet)[i]]
 			}
 		}
 

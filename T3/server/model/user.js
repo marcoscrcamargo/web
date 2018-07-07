@@ -26,16 +26,21 @@ let all = function(callback){
 
 let create = function(user, callback){
 	console.log(user)
-	if(!user.description|| !user.title || !user.price){
+	if(!user.name|| !user.phone || !user.username || !user.email || !user.password || !user.admin || !user.adress){
 		callback("user must have all atributtes");
 		return;
 	}
 
 	counter.get("user", function(n){
 		let tmp = {
-			title:user.title,
-			description:user.description,
-			price:user.price,
+			name:user.name,
+			picture:user.picture,
+			phone:user.phone,
+			username:user.username,
+			email:user.email,
+			password:user.password,
+			admin:user.admin,
+			adress:user.adress,
 			type:'user',
 			chave:n,
 			_id:n + "_user"

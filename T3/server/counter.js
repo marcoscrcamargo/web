@@ -8,7 +8,7 @@ var init = function(){
 		user:0,
 		pet:0,
 		product:0,
-		services:0
+		service:0
 	};
 	db.insert(counter, function(err){
 		if(err){
@@ -23,7 +23,7 @@ var inc = function(type){
 		let older = body[type];
 		body[type] = body[type] + 1;
 		db.insert(body,(err, body, header)=>{
-			if(err) console.log("nao conseguiu adicionar item ao contador")
+			if(err) console.log("Error incrementing counter")
 		});
 	});
 }
@@ -32,7 +32,6 @@ var inc = function(type){
 var get = function(type, callback){
 	db.get("counter", (err, body)=>{
 		inc(type);
-		console.log(body)
 		callback(body[type]);
 	});
 }
