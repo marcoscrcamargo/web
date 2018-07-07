@@ -8,6 +8,9 @@ var init = function(){
 		user:0,
 		pet:0,
 		product:0,
+		cart:0,
+		schedule:0,
+		sale:0,
 		service:0
 	};
 	db.insert(counter, function(err){

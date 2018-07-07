@@ -41,6 +41,57 @@ createDesigns = function(){
 	// });
 
 
+	// SCHEDULE
+	var design_schedules ={
+		"_id": "_design/schedule",
+		"views":{
+		    "all":{
+		      	"map": "function(doc){if(doc.type == 'schedule')emit(doc._id, doc);}"
+		    }
+		},
+		"language": "javascript"
+	};
+	db.insert(design_schedules,function(err){
+		if(err){
+			console.log(err.message);
+			return;
+		}
+	});
+
+	// CART
+	var design_carts ={
+		"_id": "_design/cart",
+		"views":{
+		    "all":{
+		      	"map": "function(doc){if(doc.type == 'cart')emit(doc._id, doc);}"
+		    }
+		},
+		"language": "javascript"
+	};
+	db.insert(design_carts,function(err){
+		if(err){
+			console.log(err.message);
+			return;
+		}
+	});
+
+	// SALES
+	var design_sales ={
+		"_id": "_design/sale",
+		"views":{
+		    "all":{
+		      	"map": "function(doc){if(doc.type == 'sale')emit(doc._id, doc);}"
+		    }
+		},
+		"language": "javascript"
+	};
+	db.insert(design_sales,function(err){
+		if(err){
+			console.log(err.message);
+			return;
+		}
+	});
+
 	// USERS
 	var design_users ={
 		"_id": "_design/user",
