@@ -16,9 +16,8 @@ export default class Admin extends React.Component {
 		};
 
 		// getting values from the db and assigning them to the users, products and services attributes
-		this.props.db.getAllUsers().then(item => this.setState({ users: item }));
-		this.props.db.getAllServices().then(item => this.setState({ services: item }));
-		this.props.db.getAllSales().then(item => this.setState({ sales: item }));
+		this.getAllUsers().then(item => this.setState({ users: item }));
+		this.getAllSales().then(item => this.setState({ sales: item }));
 	}
 
 	render(){
@@ -30,11 +29,11 @@ export default class Admin extends React.Component {
 			return (
 				// creates a table with colums: Name, Username and Datails
 				<tr key={index}>
-					<td>{user.name}</td>
-					<td>{user.username}</td>
+					<td>{user.value.name}</td>
+					<td>{user.value.username}</td>
 					<td>
 						<Modal
-						header={user.name}
+						header={user.value.name}
 						trigger={<Button>Details</Button>}>
 							<p>  </p>
 
@@ -127,5 +126,17 @@ export default class Admin extends React.Component {
 				</Tabs>
 			</div>
 		)
+	}
+
+	async getAllUsers(){
+		let response = await fetch('http://localhost:4000/user');
+		let users = await response.json();
+		return users;
+	}
+
+	async getAllSales(){
+		let response = await fetch('http://localhost:4000/sale');
+		let sales = await response.json();
+		return sales;
 	}
 }

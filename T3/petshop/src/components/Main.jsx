@@ -81,9 +81,9 @@ export default class Main extends React.Component {
 						<div className="content white">
 							<Container> 
 								<Route exact path="/" component={Home} />
-								<Route path="/products" render={ ()=> <Products db={this.props.db} user={user}/> } />
-								<Route path="/admin" render={ ()=><Admin db={this.props.db} user={user}/>} />
-								<Route path="/services" render={ ()=> <Services db={this.props.db} user={user} />} />
+								<Route path="/products" render={ ()=> <Products user={user}/> } />
+								<Route path="/admin" render={ ()=><Admin user={user}/>} />
+								<Route path="/services" render={ ()=> <Services user={user} />} />
 								<Route path="/login" render={ ()=> <Login
 										user={user}
 										onClickLogin={this.userLogin}
@@ -91,9 +91,9 @@ export default class Main extends React.Component {
 										handleUsernameChange={this.handleUsernameChange}
 										handlePasswordChange={this.handlePasswordChange}
 									/> } />
-								<Route path="/signup" render={ ()=> <Signup db={this.props.db} /> } />
+								<Route path="/signup" render={ ()=> <Signup /> } />
 								<Route path="/forgot_password" component={ForgotPassword} />
-								<Route path="/profile" render={ ()=> <Profile db={this.props.db} user={user}/> } />
+								<Route path="/profile" render={ ()=> <Profile user={user}/> } />
 							</Container>
 						</div>
 
