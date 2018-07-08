@@ -66,14 +66,13 @@ let update = function(service, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(service)){
-			console.log(i);
-			if(Object.keys(service)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(service)[i])) {
+		for(i in Object.keys(service.value)){
+			if(Object.keys(service.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(service.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(service)[i]] = service[Object.keys(service)[i]]
+				body[Object.keys(service.value)[i]] = service.value[Object.keys(service.value)[i]]
 			}
 		}
 

@@ -66,14 +66,13 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product)){
-			console.log(i);
-			if(Object.keys(product)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product)[i])) {
+		for(i in Object.keys(product.value)){
+			if(Object.keys(product.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(product.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product)[i]] = product[Object.keys(product)[i]]
+				body[Object.keys(product.value)[i]] = product.value[Object.keys(product.value)[i]]
 			}
 		}
 

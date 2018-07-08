@@ -69,14 +69,13 @@ let update = function(sale, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(sale)){
-			console.log(i);
-			if(Object.keys(sale)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(sale)[i])) {
+		for(i in Object.keys(sale.value)){
+			if(Object.keys(sale.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(sale.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(sale)[i]] = sale[Object.keys(sale)[i]]
+				body[Object.keys(sale.value)[i]] = sale.value[Object.keys(sale.value)[i]]
 			}
 		}
 

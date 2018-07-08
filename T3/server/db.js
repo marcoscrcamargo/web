@@ -23,24 +23,7 @@ init = function(){
 }
 
 createDesigns = function(){
-	//Definicao Das Pesquisas para cada modelo
-	//ADMINSTRADORES
-	// var design_administradores ={
-	// 	"views":{
-	// 	    "all":{
-	// 	      	"map": "function(doc){if(doc.tipo == 'administrador')emit(doc._id, doc);}"
-	// 	    }
-	// 	},
-	// 	"language": "javascript"
-	// };
-	// db.insert(design_administradores,function(err){
-	// 	if(err){
-	// 		console.log(err.message);
-	// 		return;
-	// 	}
-	// });
-
-
+	// Creating views for earch document.
 	// SCHEDULE
 	var design_schedules ={
 		"_id": "_design/schedule",
@@ -165,65 +148,9 @@ createDesigns = function(){
 }
 
 /*
-	CREATES
+	CREATES - implemented in model.
 */
-// createAdministrador = function(id,nome,telefone){
-// 	//TODO criar verificacaos para ID NOME E Outros
-// 	var novo_adm = 
-// 	{
-// 		_id: id,
-// 		nome: nome,
-// 		telefone: telefone,
-// 		tipo: "administrador"
-// 	};
-// 	db.insert(novo_adm,function(err,body,header){
-// 		if(err){
-// 			console.log("erro em inserir novo adm:", err.message);
-// 			return;
-// 		}
-// 		console.log("novo adm inserido");
-// 	});
-// }
-
-// createCliente = function(id,nome,telefone){
-// 	//TODO criar verificacaos para ID NOME E Outros
-// 	var novo_cliente = 
-// 	{
-// 		_id: id,
-// 		nome: nome,
-// 		telefone: telefone,
-// 		tipo: "cliente"
-// 	};
-// 	db.insert(novo_cliente,function(err,body,header){
-// 		if(err){
-// 			console.log("erro em inserir novo cliente:", err.message);
-// 			return;
-// 		}
-// 		console.log("novo cliente inserido");
-// 	});
-// }
-
-// createAnimal = function(id,cliente_id,nome,raca){
-// 	//TODO criar verificacaos para ID NOME E Outros
-// 	var novo_animal = 
-// 	{
-// 		_id: id,
-// 		cliente_id: cliente_id,
-// 		nome: nome,
-// 		raca: raca,
-// 		tipo: "animal"
-// 	};
-// 	db.insert(novo_animal,function(err,body,header){
-// 		if(err){
-// 			console.log("erro em inserir novo animal:", err.message);
-// 			return;
-// 		}
-// 		console.log("novo animal inserido");
-// 	});
-// }
-
-// createProduCT = function(id, name, description, price){
-// 	//TODO criar verificacaos para ID NOME E Outros
+// createProducT = function(id, name, description, price){
 // 	var new_product =
 // 	{
 // 		_id: id,
@@ -241,26 +168,6 @@ createDesigns = function(){
 // 		console.log("new product inserted");
 // 	});
 // }
-
-// createServico = function(id,nome,descricao,preco){
-// 	//TODO criar verificacaos para ID NOME E Outros
-// 	var novo_servico =
-// 	{
-// 		_id: id,
-// 		nome: nome,
-// 		descricao: descricao,
-// 		preco: preco,
-// 		tipo: "servico"
-// 	};
-// 	db.insert(novo_servico,function(err,body,header){
-// 		if(err){
-// 			console.log("erro em inserir novo Servico:", err.message);
-// 			return;
-// 		}
-// 		console.log("novo Servico inserido");
-// 	});
-// }
-
 
 /*
 	CREATES

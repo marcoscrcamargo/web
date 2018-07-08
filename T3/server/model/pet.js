@@ -70,14 +70,13 @@ let update = function(pet, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(pet)){
-			console.log(i);
-			if(Object.keys(pet)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(pet)[i])) {
+		for(i in Object.keys(pet.value)){
+			if(Object.keys(pet.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(pet.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(pet)[i]] = pet[Object.keys(pet)[i]]
+				body[Object.keys(pet.value)[i]] = pet.value[Object.keys(pet.value)[i]]
 			}
 		}
 

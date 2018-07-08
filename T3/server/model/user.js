@@ -75,14 +75,13 @@ let update = function(user, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(user)){
-			console.log(i);
-			if(Object.keys(user)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(user)[i])) {
+		for(i in Object.keys(user.value)){
+			if(Object.keys(user.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(user.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(user)[i]] = user[Object.keys(user)[i]]
+				body[Object.keys(user.value)[i]] = user.value[Object.keys(user.value)[i]]
 			}
 		}
 

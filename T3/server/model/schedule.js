@@ -72,14 +72,13 @@ let update = function(schedule, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(schedule)){
-			console.log(i);
-			if(Object.keys(schedule)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(schedule)[i])) {
+		for(i in Object.keys(schedule.value)){
+			if(Object.keys(schedule.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(schedule.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(schedule)[i]] = schedule[Object.keys(schedule)[i]]
+				body[Object.keys(schedule.value)[i]] = schedule.value[Object.keys(schedule.value)[i]]
 			}
 		}
 
