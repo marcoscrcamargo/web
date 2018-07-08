@@ -43,7 +43,6 @@ let create = function(user, callback){
 	counter.get("user", function(n){
 		let tmp = {
 			name:user.name,
-			picture:user.picture,
 			phone:user.phone,
 			username:user.username,
 			email:user.email,
@@ -52,7 +51,8 @@ let create = function(user, callback){
 			adress:user.adress,
 			type:'user',
 			chave:n,
-			_id:n + "_user"
+			_id:n + "_user",
+			img_file: user.img_file
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
