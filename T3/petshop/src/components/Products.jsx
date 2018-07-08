@@ -1,4 +1,4 @@
-	import React from 'react';
+import React from 'react';
 import {Row, Col, Card, CardTitle, Button, Modal, MediaBox, Input} from 'react-materialize';
 
 export default class Products extends React.Component {

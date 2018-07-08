@@ -31,6 +31,8 @@ export default class Header extends React.Component {
 
 		const isLoggedIn = (this.props.user !== null);
 
+		console.log(isLoggedIn);
+
 		// If the user is logged in, shows his/her basic information and the option to log out
 		// If not, then shows the options to log in or sign up
 		// This decision is made with a ternary operator

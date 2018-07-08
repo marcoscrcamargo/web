@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Input, Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
+import {Row, Col, Input, Table, Button, Modal, MediaBox} from 'react-materialize';
 
 export default class ProductsManagement extends React.Component {
 	constructor(props) {
@@ -41,13 +41,13 @@ export default class ProductsManagement extends React.Component {
 						header={prod.value.name}
 						trigger={<Button>Edit</Button>}>
 							<Row>
-								<Input id="productName" s={6} m={6} l={6} type="text" label="Product Name" defaultValue={prod.value.name} validate/>
+								<Input id={"productName"+prod.value._id} s={6} m={6} l={6} type="text" label="Product Name" defaultValue={prod.value.name} validate/>
 							</Row>
 							<Row>
-								<Input id="description" s={6} m={6} l={6} type="textarea" label="Description" defaultValue={prod.value.description} validate/>
+								<Input id={"description"+prod.value._id} s={6} m={6} l={6} type="textarea" label="Description" defaultValue={prod.value.description} validate/>
 							</Row>
 							<Row>
-								<Input id="price" s={6} m={6} l={6} type="text" label="Price" defaultValue={prod.value.price} validate/>
+								<Input id={"price"+prod.value._id} s={6} m={6} l={6} type="text" label="Price" defaultValue={prod.value.price} validate/>
 							</Row>
 							<Row className="left">
 								<Button modal="close"

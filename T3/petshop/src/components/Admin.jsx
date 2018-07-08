@@ -1,7 +1,8 @@
 import React from 'react';
-import {Row, Input, Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
+import { Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
 
 import ProductsManagement from './ProductsManagement.jsx';
+import ServicesManagement from './ServicesManagement.jsx';
 
 export default class Admin extends React.Component {
 	constructor(props) {
@@ -16,15 +17,12 @@ export default class Admin extends React.Component {
 
 		// getting values from the db and assigning them to the users, products and services attributes
 		this.props.db.getAllUsers().then(item => this.setState({ users: item }));
-		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
 		this.props.db.getAllServices().then(item => this.setState({ services: item }));
 		this.props.db.getAllSales().then(item => this.setState({ sales: item }));
 	}
 
 	render(){
 		let users = this.state.users;
-		let products = this.state.products;
-		let services = this.state.services;
 		let sales = this.state.sales;
 
 		// for each user in users, runs the function
@@ -40,44 +38,6 @@ export default class Admin extends React.Component {
 						trigger={<Button>Details</Button>}>
 							<p>  </p>
 
-						</Modal>
-					</td>
-				</tr>
-			)
-		});
-
-		// for each product in products, runs the function
-		let productsTable = products.map((prod, index) => {
-			return (
-				// creates a table with colums: Name, Description, Price and Edit
-				<tr key={index}>
-					<td>{prod.name}</td>
-					<td>{prod.description}</td>
-					<td>{prod.price}</td>
-					<td>
-						<Modal
-						header={prod.name}
-						trigger={<Button>Edit</Button>}>
-							<p>  </p>
-						</Modal>
-					</td>
-				</tr>
-			)
-		});
-
-		// for each service in services, runs the function
-		let servicesTable = services.map((service, index) => {
-			return (
-				// creates a table with colums: Name, Description, Price and Edit
-				<tr key={index}>
-					<td>{service.title}</td>
-					<td>{service.description}</td>
-					<td>{service.price}</td>
-					<td>
-						<Modal
-						header={service.title}
-						trigger={<Button>Edit</Button>}>
-							<p>  </p>
 						</Modal>
 					</td>
 				</tr>
@@ -135,36 +95,12 @@ export default class Admin extends React.Component {
 
 					{/*Products tab*/}
 					<Tab title="Products">
-						<ProductsManagement db={this.props.db} />
+						<ProductsManagement/>
 					</Tab>
 
 				{/*Services tab*/}
 					<Tab title="Services">
-						{/*Services table*/}
-						<Table>
-							<thead>
-								{/*Names of the colums*/}
-								<tr>
-									<th data-field="name">Name</th>
-									<th data-field="description">Description</th>
-									<th data-field="price">Price</th>
-									<th data-field="details">Edit</th>
-								</tr>
-							</thead>
-
-							{/*Table content*/}
-							<tbody>
-								{servicesTable}
-							</tbody>
-						</Table>
-
-						{/*New service button*/}
-						<Modal
-						header='Create new service'
-						trigger={<Button>New Service</Button>}>
-							<p>New Service</p>
-						</Modal>
-
+						<ServicesManagement/>
 					</Tab>
 
 					<Tab title="Sales">
