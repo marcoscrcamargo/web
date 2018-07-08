@@ -2,16 +2,20 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
+	Cart:
+	- username
+	- productId
 	- name
+	- picture
 	- description
 	- price
-	- type = 'product'
+	- quantity
+	- type = 'cart'
 
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("cart", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -20,42 +24,35 @@ let all = function(callback){
 	});
 }
 
-let one = function(id, callback){
-	db.get(id, function(err, body, header) {
-	    if(err) {
-	      return callback(err);
-	    }
-	    callback(null, body);
-  	});
-}
-
-
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(cart, callback){
+	console.log(cart)
+	if(!cart.username || !cart.productId || !cart.name || !cart.description || !cart.price || !cart.quantity){
+		callback("cart must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("cart", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			username:cart.username,
+			productId:cart.productId,
+			name:cart.name,
+			description:cart.description,
+			price:cart.price,
+			quantity:cart.quantity,
+			type:'cart',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_cart"
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
 			console.log(err, body, header);
 		});
 	});
+
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(cart, callback){
+	db.get(cart.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -66,13 +63,14 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product.value)){
-			if(Object.keys(product.value)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product.value)[i])) {
+		for(i in Object.keys(cart.value)){
+			if(Object.keys(cart.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(cart.value)[i])) {
 					callback("atributte not found!");
+					console.log('ehaq')
 					return;
 				}
-				body[Object.keys(product.value)[i]] = product.value[Object.keys(product.value)[i]]
+				body[Object.keys(cart.value)[i]] = cart.value[Object.keys(cart.value)[i]]
 			}
 		}
 
@@ -82,9 +80,6 @@ let update = function(product, callback){
 		});
 	})
 }
-
-
-
 
 let erase = function(id, callback){
 	db.get(id, function(err, body, header) {

@@ -14,10 +14,10 @@ export default class Services extends React.Component {
 		};
 
 		this.servicetoSchedule = null
-		this.props.db.getAllServices().then(item => this.setState({ services: item }));
+		this.getAllServices().then(item => this.setState({ services: item }));
 
 		if (this.props.user !== null){
-			this.props.db.getPets("username", this.props.user.username).then(item => this.setState({ petsForUser: item }));
+			this.getPets(this.props.user.username).then(item => this.setState({ petsForUser: item }));
 		}
 
 		this.handleChangeDate = this.handleChangeDate.bind(this);
@@ -46,6 +46,7 @@ export default class Services extends React.Component {
 
 		if (this.props.user === null){
 			serviceList = services.map((service) => {
+				service = service.value;
 					return (
 						<Col s={6} m={4} l={3}>
 							<Card className='medium'
@@ -68,9 +69,10 @@ export default class Services extends React.Component {
 				});
 		}
 		else{
-			pet_list = this.state.petsForUser.map((pet) => {return(<option>{pet.name}</option>)})
+			pet_list = this.state.petsForUser.map((pet) => {return(<option>{pet.value.name}</option>)})
 			// fills a list with cards with name, image, price and a short description about each service
 			serviceList = services.map((service) => {
+					service = service.value;
 					return (
 						<Col s={6} m={4} l={3}>
 							<Card className='medium'
@@ -100,7 +102,6 @@ export default class Services extends React.Component {
 										<Row className="left"><Button modal="close" onClick={ ()=> {
 											this.servicetoSchedule = service;
 											this.createNewSchedule();
-											window.Materialize.toast('Service scheduled!', 2000)
 										}}>Schedule</Button></Row>
 									</Modal>
 									]}>
@@ -120,6 +121,22 @@ export default class Services extends React.Component {
 		);
 	}
 
+	async getAllServices(){
+		let response = await fetch('http://localhost:4000/service');
+		let services = await response.json();
+		return services;
+	}
+
+	async getPets(username){
+		let response = await fetch('http://localhost:4000/pet');
+		let pets = await response.json();
+		let pet_from_user = pets.filter((pets) => {
+			return pets.value.username === username
+		});
+		return pet_from_user;
+	}
+
+
 	createNewSchedule(){
 		let date = String(this.state.date);
 		let time = String(this.state.time);
@@ -134,6 +151,15 @@ export default class Services extends React.Component {
 			description: this.servicetoSchedule.description,
 			price: this.servicetoSchedule.price
 		}
-		this.props.db.putSchedule(newSchedule);
+		var url = 'http://127.0.0.1:4000/schedule';
+		fetch(url, {
+			headers: {
+				'Content-type':'application/json'
+			},
+			method:'POST',
+			body: JSON.stringify(newSchedule)
+		}).then(() => {
+			window.Materialize.toast("Service scheduled!", 2000);
+		});
 	}
 }

@@ -2,16 +2,18 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
+	Sales:
 	- name
-	- description
+	- username
+	- picture
 	- price
-	- type = 'product'
-
+	- quantity
+	- id
+	- type = 'sale'
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("sale", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -29,22 +31,23 @@ let one = function(id, callback){
   	});
 }
 
-
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(sale, callback){
+	console.log(sale)
+	if(!sale.name || !sale.username || !sale.price || !sale.quantity || !sale.id){
+		callback("sale must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("sale", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			name:sale.name,
+			username:sale.username,
+			price:sale.price,
+			quantity:sale.quantity,
+			id:sale.id,
+			type:'sale',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_sale"
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
@@ -53,9 +56,9 @@ let create = function(product, callback){
 	});
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(sale, callback){
+	console.log(sale);
+	db.get(sale.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -66,13 +69,13 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product.value)){
-			if(Object.keys(product.value)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product.value)[i])) {
+		for(i in Object.keys(sale.value)){
+			if(Object.keys(sale.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(sale.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product.value)[i]] = product.value[Object.keys(product.value)[i]]
+				body[Object.keys(sale.value)[i]] = sale.value[Object.keys(sale.value)[i]]
 			}
 		}
 

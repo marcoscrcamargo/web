@@ -5,10 +5,11 @@ export default class Cart extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={cart: []};
-		
+
 		if (this.props.user !== null)
-			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
-		
+			// this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+			this.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+
 		this.deleteAllItems = this.deleteAllItems.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
 		this.itemId = '';
@@ -22,47 +23,54 @@ export default class Cart extends React.Component {
 		if (isLoggedIn) cart = this.state.cart;
 
 		let cartTable = cart.map((product) => {
-			total += parseInt(product.price, 10) * parseInt(product.quantity, 10);
-			// this.itemId = product.id;
-
+			total += parseInt(product.value.price, 10) * parseInt(product.value.quantity, 10);
 			return (
 				<tr>
 					{/*Product picture*/}
-					<td><MediaBox src={product.picture} caption="Product picture" width="150"/></td>
+					<td><MediaBox src={product.value.picture} caption="Product picture" width="150"/></td>
 					{/*Product name*/}
-					<td>{product.name}</td>
+					<td>{product.value.name}</td>
 					{/*Quantity*/}
-					<td><Input type="number" label="Quantity" min="1" max="100" defaultValue={product.quantity}
+					<td><Input type="number" label="Quantity" min="1" max="100" defaultValue={product.value.quantity}
 							onChange={(e) => {
-								this.props.db.updateCartProduct(product.id, Number(e.target.value)).then(
-									this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item})))
+								product.value.quantity = Number(e.target.value).toString();
+								var url = 'http://127.0.0.1:4000/cart/';
+								fetch(url, {
+									headers: {
+										'Content-type':'application/json'
+									},
+									method:'PUT',
+									body: JSON.stringify(product)
+								}).then(() => {
+									this.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+								});
+
 								}
 							}/></td>
 					{/*Price*/}
-					<td>$ {Number(product.price * product.quantity).toFixed(2)}</td>
-					{console.log("quantity = " + product.quantity)}
+					<td>$ {Number(product.value.price * product.value.quantity).toFixed(2)}</td>
 
 					{/*Details option*/}
 					<td>
 						<Modal
-						header={product.name}
+						header={product.value.name}
 						trigger={<Button>Delete</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
 								<Col l={4}>
-									<MediaBox src={product.picture} caption="Product picture" width="200"/>
+									<MediaBox src={product.value.picture} caption="Product picture" width="200"/>
 								</Col>
 								{/*Pet info*/}
 								<Col l={4}>
 									<h5>Product:</h5>
-									<p>{product.name}</p>
+									<p>{product.value.name}</p>
 									<h5>Description:</h5>
-									<p>{product.description}</p>
+									<p>{product.value.description}</p>
 									<h5>Quantity:</h5>
-									<p>{product.quantity}</p>
+									<p>{product.value.quantity}</p>
 									<h5>Total price:</h5>
-									<p>${Number(product.price * product.quantity).toFixed(2)}</p>
+									<p>${Number(product.value.price * product.value.quantity).toFixed(2)}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
@@ -94,9 +102,10 @@ export default class Cart extends React.Component {
 						{cartTable}
 					</tbody>
 				</Table>
+
 				<Row>
 					<Col>
-						<Button onClick={this.deleteAllItems}>Clear Cart</Button>	
+						<Button onClick={this.deleteAllItems}>Clear Cart</Button>
 					</Col>
 					<Col>
 						<Modal
@@ -106,6 +115,12 @@ export default class Cart extends React.Component {
 							<p>{cart.length}</p>
 							<h5>Total:</h5>
 							<p>${total}</p>
+							<Row>
+								<Input id="user_card_name" s={6} m={6} l={6} type="text" label="Name on the card" validate/>
+								<Input id="card_number" s={6} m={6} l={6} type="text" label="Card Number" validate/>
+								<Input id="expiration_date" s={6} m={6} l={6} type="date" label="Expiration Date" validate/>
+								<Input id="security_number" s={6} m={6} l={6} type="number" label="Security Number" validate/>
+							</Row>
 							<Button className="sleek-grey">Pay</Button>
 						</Modal>
 					</Col>
@@ -115,14 +130,31 @@ export default class Cart extends React.Component {
 
 	}
 
+	async getCart(username){
+		let response = await fetch('http://localhost:4000/cart');
+		let carts = await response.json();
+		let cart_from_user = carts.filter((carts) => {
+			return carts.value.username === username
+		});
+		return cart_from_user;
+	}
+
 	deleteAllItems(){
-		console.log("delete items and set new cart state");
+		this.getCart(this.props.user.username).then( cart => {
+			cart.forEach(item =>{
+				var url = 'http://127.0.0.1:4000/cart/'+item.id;
+				fetch(url, {method: 'delete'}).then(()=>{
+					this.getCart(this.props.user.username).then(item => this.setState({ cart: item }));
+				});
+			});
+		});
 	}
 
 	deleteItem(){
-		this.props.db.deleteFromCart(this.itemId).then(
-			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}))
-		)
+		var url = 'http://127.0.0.1:4000/cart/'+this.itemId;
+		fetch(url, {method: 'delete'}).then(()=>{
+			this.getCart(this.props.user.username).then(item => this.setState({ cart: item }));
+		});
 	}
 
 }

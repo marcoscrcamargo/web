@@ -3,13 +3,16 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-var product = require('../model/product');
+var cart = require('../model/cart');
 
 router.post('/', function (req, res) {
-    product.create({
-            name : req.body.name,
-            description: req.body.description,
-            price: req.body.price
+    cart.create({
+            username:req.body.username,
+            productId:req.body.productId,
+            name:req.body.name,
+            description:req.body.description,
+            price:req.body.price,
+            quantity:req.body.quantity
         },
         function (err) {
             if (err) return res.status(500).send(err);
@@ -18,7 +21,7 @@ router.post('/', function (req, res) {
 });
 
 router.put('/', function (req, res) {
-    product.update(req.body,
+    cart.update(req.body,
         function (err) {
             if (err) return res.status(500).send(err);
             res.status(200).send("ok");
@@ -27,7 +30,7 @@ router.put('/', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    product.all(function(err, result){
+    cart.all(function(err, result){
         if(err){
             console.log("error");
             return;
@@ -36,22 +39,12 @@ router.get('/', function (req, res) {
     })
 });
 
-router.get('/:product_id', function (req, res) {
-    user.one(req.params.product_id, function(err, result){
-        if(err){
-            console.log("error");
-            return;
-        }
-        res.status(200).send(result);
-    })
-});
-
-router.delete('/:product_id', function(req, res, done) {
-    console.log("deleting..." + req.params.product_id);
-    product.erase(req.params.product_id,function(err){
+router.delete('/:cart_id', function(req, res, done) {
+    console.log("deleting..." + req.params.cart_id);
+    cart.erase(req.params.cart_id,function(err){
         if(err)
             return res.status(500).send(err);
-        res.status(200).send(req.params.product_id);
+        res.status(200).send(req.params.cart_id);
     });
 });
 

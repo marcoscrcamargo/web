@@ -3,13 +3,15 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-var product = require('../model/product');
+var sale = require('../model/sale');
 
 router.post('/', function (req, res) {
-    product.create({
-            name : req.body.name,
-            description: req.body.description,
-            price: req.body.price
+    sale.create({
+            name:req.body.name,
+            username:req.body.username,
+            price:req.body.price,
+            quantity:req.body.quantity,
+            id:req.body.id
         },
         function (err) {
             if (err) return res.status(500).send(err);
@@ -18,7 +20,7 @@ router.post('/', function (req, res) {
 });
 
 router.put('/', function (req, res) {
-    product.update(req.body,
+    sale.update(req.body,
         function (err) {
             if (err) return res.status(500).send(err);
             res.status(200).send("ok");
@@ -27,7 +29,7 @@ router.put('/', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    product.all(function(err, result){
+    sale.all(function(err, result){
         if(err){
             console.log("error");
             return;
@@ -36,8 +38,8 @@ router.get('/', function (req, res) {
     })
 });
 
-router.get('/:product_id', function (req, res) {
-    user.one(req.params.product_id, function(err, result){
+router.get('/:sale_id', function (req, res) {
+    user.one(req.params.sale_id, function(err, result){
         if(err){
             console.log("error");
             return;
@@ -46,12 +48,12 @@ router.get('/:product_id', function (req, res) {
     })
 });
 
-router.delete('/:product_id', function(req, res, done) {
-    console.log("deleting..." + req.params.product_id);
-    product.erase(req.params.product_id,function(err){
+router.delete('/:sale_id', function(req, res, done) {
+    console.log("deleting..." + req.params.sale_id);
+    sale.erase(req.params.sale_id,function(err){
         if(err)
             return res.status(500).send(err);
-        res.status(200).send(req.params.product_id);
+        res.status(200).send(req.params.sale_id);
     });
 });
 

@@ -2,16 +2,20 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
-	- name
-	- description
-	- price
-	- type = 'product'
-
+	User:
+    - name
+    - phone
+    - picture
+    - username
+    - email
+    - password
+    - admin
+    - adress
+	- type
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("user", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -29,33 +33,38 @@ let one = function(id, callback){
   	});
 }
 
-
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(user, callback){
+	console.log(user)
+	if(!user.name|| !user.phone || !user.username || !user.email || !user.password || !user.admin || !user.adress){
+		callback("user must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("user", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			name:user.name,
+			phone:user.phone,
+			username:user.username,
+			email:user.email,
+			password:user.password,
+			admin:user.admin,
+			adress:user.adress,
+			type:'user',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_user",
+			picture: user.picture
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
 			console.log(err, body, header);
 		});
 	});
+
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(user, callback){
+	console.log(user);
+	db.get(user.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -66,13 +75,13 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product.value)){
-			if(Object.keys(product.value)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product.value)[i])) {
+		for(i in Object.keys(user.value)){
+			if(Object.keys(user.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(user.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product.value)[i]] = product.value[Object.keys(product.value)[i]]
+				body[Object.keys(user.value)[i]] = user.value[Object.keys(user.value)[i]]
 			}
 		}
 
@@ -82,9 +91,6 @@ let update = function(product, callback){
 		});
 	})
 }
-
-
-
 
 let erase = function(id, callback){
 	db.get(id, function(err, body, header) {
@@ -100,4 +106,4 @@ let erase = function(id, callback){
   	});
 }
 
-module.exports = {all, create, erase, update}
+module.exports = {all, one, create, erase, update}

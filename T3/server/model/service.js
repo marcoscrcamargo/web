@@ -2,16 +2,16 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
-	- name
+	Service:
+	- title
 	- description
 	- price
-	- type = 'product'
+	- type = 'service'
 
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("service", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -29,33 +29,33 @@ let one = function(id, callback){
   	});
 }
 
-
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(service, callback){
+	console.log(service)
+	if(!service.description|| !service.title || !service.price){
+		callback("service must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("service", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			title:service.title,
+			description:service.description,
+			price:service.price,
+			type:'service',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_service"
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
 			console.log(err, body, header);
 		});
 	});
+
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(service, callback){
+	console.log(service);
+	db.get(service.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -66,13 +66,13 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product.value)){
-			if(Object.keys(product.value)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product.value)[i])) {
+		for(i in Object.keys(service.value)){
+			if(Object.keys(service.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(service.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product.value)[i]] = product.value[Object.keys(product.value)[i]]
+				body[Object.keys(service.value)[i]] = service.value[Object.keys(service.value)[i]]
 			}
 		}
 
@@ -82,9 +82,6 @@ let update = function(product, callback){
 		});
 	})
 }
-
-
-
 
 let erase = function(id, callback){
 	db.get(id, function(err, body, header) {

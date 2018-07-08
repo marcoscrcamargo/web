@@ -88,7 +88,7 @@ export default class Signup extends React.Component {
 
 	// assigns the input value to the address
 	handleAdressChange(e) {
-		this.setState({Adress: e.target.value});
+		this.setState({adress: e.target.value});
 	}
 
 	previewFile() {
@@ -105,7 +105,7 @@ export default class Signup extends React.Component {
 		}
 	}
 
-	// Inserts the a new user into the indexedDB
+	// Inserts the a new user into the db
 	newUser(){
 		var preview = document.querySelector('#profile_pic');
 		var pic = preview.src;
@@ -120,7 +120,19 @@ export default class Signup extends React.Component {
 			admin: 'false',
 			adress: this.state.adress
 		}
-		this.props.db.putUser(new_user);
+
+		var http = new XMLHttpRequest();
+		var url = 'http://127.0.0.1:4000/user';
+		http.open('POST', url, true);
+		//Send the proper header information along with the request
+		http.setRequestHeader('Content-type', 'application/json');
+		http.onreadystatechange = function() {//Call a function when the state changes.
+		    if(http.readyState === 4 && http.status === 200) {
+		        console.log(http.responseText);
+		    }
+		}
+		http.send(JSON.stringify(new_user));
+		// this.props.db.putUser(new_user);
 		this.setState({created: 'true'});
 	}
 

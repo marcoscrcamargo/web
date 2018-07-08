@@ -1,4 +1,4 @@
-import React from 'react';
+	import React from 'react';
 import {Row, Col, Card, CardTitle, Button, Modal, MediaBox, Input} from 'react-materialize';
 
 export default class Products extends React.Component {
@@ -9,7 +9,8 @@ export default class Products extends React.Component {
 			products: [],
 			quantity: 1,
 		};
-		this.props.db.getAllProducts().then(item => this.setState({ products: item }));
+		// this.props.db.getAllProducts().then(item => this.setState({ products: item }));
+		this.getAllProducts().then(item => this.setState({ products: item }));
 		this.prodToCard = null;
 		this.createNewItem = this.createNewItem.bind(this);
 		this.setState({quantity: 1})
@@ -17,9 +18,10 @@ export default class Products extends React.Component {
 
 	render() {
 		let products = this.state.products;
-
+		console.log(products)
 		if(this.props.user === null){
 			let productList = products.map((prod) => {
+					prod = prod.value;
 					return (
 						<Col s={6} m={4} l={3} >
 							<Card /*type of the card*/
@@ -46,6 +48,7 @@ export default class Products extends React.Component {
 		else{
 			// fills a list with cards with name, image, price and a short description about each product
 			let productList = products.map((prod, index) => {
+					prod = prod.value;
 					return (
 						// sets the size of the card for each type of screen
 						<Col s={6} m={4} l={3} >
@@ -97,18 +100,32 @@ export default class Products extends React.Component {
 		}
 	}
 
+	async getAllProducts(){
+		let response = await fetch('http://localhost:4000/product');
+		let products = await response.json();
+		return products;
+	}
+
 	createNewItem(){
 		let newItem = {
 			username: this.props.user.username,
-			productId: this.prodToCart.id,
+			productId: this.prodToCart._id,
 			name: this.prodToCart.name,
 			picture: this.prodToCart.img_file,
 			description: this.prodToCart.description,
 			price: this.prodToCart.price,
 			quantity: this.state.quantity
 		}
-		this.props.db.addToCart(newItem);
-		window.Materialize.toast("Added to cart!", 2000);
-		this.setState({quantity: 1})
+		var url = 'http://127.0.0.1:4000/cart';
+		fetch(url, {
+			headers: {
+				'Content-type':'application/json'
+			},
+			method:'POST',
+			body: JSON.stringify(newItem)
+		}).then(() => {
+			window.Materialize.toast("Added to cart!", 2000);
+			this.setState({quantity: 1})
+		});
 	}
 }

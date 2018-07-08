@@ -2,16 +2,20 @@ const db = require('../db');
 const counter = require('../counter');
 
 /*
-	Product:
+	Schedule:
 	- name
-	- description
+	- username
+	- pet
+	- picture
 	- price
-	- type = 'product'
+	- description
+	- date
+	- type = 'schedule'
 
 */
 
 let all = function(callback){
-	db.view("product", "all", (err, body, header)=>{
+	db.view("schedule", "all", (err, body, header)=>{
 		if(err){
 			callback("view error", null);
 			return
@@ -29,22 +33,24 @@ let one = function(id, callback){
   	});
 }
 
-
-let create = function(product, callback){
-	console.log(product)
-	if(!product.description|| !product.name || !product.price){
-		callback("product must have all atributtes");
+let create = function(schedule, callback){
+	console.log(schedule)
+	if(!schedule.name || !schedule.username || !schedule.pet || !schedule.price || !schedule.description || !schedule.date){
+		callback("schedule must have all atributtes");
 		return;
 	}
 
-	counter.get("product", function(n){
+	counter.get("schedule", function(n){
 		let tmp = {
-			name:product.name,
-			description:product.description,
-			price:product.price,
-			type:'product',
+			name:schedule.name,
+			username:schedule.username,
+			pet:schedule.pet,
+			price:schedule.price,
+			description:schedule.description,
+			date:schedule.date,
+			type:'schedule',
 			chave:n,
-			_id:n + "_product"
+			_id:n + "_schedule"
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);
@@ -53,9 +59,9 @@ let create = function(product, callback){
 	});
 }
 
-let update = function(product, callback){
-	console.log(product);
-	db.get(product.id, (err, body)=>{
+let update = function(schedule, callback){
+	console.log(schedule);
+	db.get(schedule.id, (err, body)=>{
 		if(err){
 			callback(err);
 			return;
@@ -66,13 +72,13 @@ let update = function(product, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(product.value)){
-			if(Object.keys(product.value)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(product.value)[i])) {
+		for(i in Object.keys(schedule.value)){
+			if(Object.keys(schedule.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(schedule.value)[i])) {
 					callback("atributte not found!");
 					return;
 				}
-				body[Object.keys(product.value)[i]] = product.value[Object.keys(product.value)[i]]
+				body[Object.keys(schedule.value)[i]] = schedule.value[Object.keys(schedule.value)[i]]
 			}
 		}
 

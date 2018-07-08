@@ -16,7 +16,8 @@ export default class Pets extends React.Component{
 		this.petToDelete = null
 
 		if (this.props.user !== null){
-			this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+			// this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
 		}
 
 		this.createNewPet = this.createNewPet.bind(this);
@@ -37,29 +38,31 @@ export default class Pets extends React.Component{
 			return (
 				<tr>
 					{/*Pet picture*/}
-					<td><MediaBox src={pet.picture} caption="Pet picture" width="150"/></td>
+					<td><MediaBox src={pet.value.picture} caption="Pet picture" width="150"/></td>
 					{/*Pet name*/}
-					<td><Col>{pet.name}</Col></td>
+					<td><Col>{pet.value.name}</Col></td>
 					{/*Details option*/}
 					<td>
 						<Modal
-						id={"pet"+pet.id}
-						header={pet.name}
+						id={"pet"+pet.value._id}
+						header={pet.value.name}
 						trigger={<Button>Details</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
 								<Col l={4}>
-									<MediaBox src={pet.picture} caption="Pet picture" width="200"/>
+									<MediaBox src={pet.value.picture} caption="Pet picture" width="200"/>
 								</Col>
 								{/*Pet info*/}
 								<Col l={4}>
 									<h5>Name:</h5>
-									<p>{pet.name}</p>
+									<p>{pet.value.name}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
 							<Button modal="close" onClick={ ()=> {
+								console.log('delete')
+								console.log(pet)
 								this.petToDelete = pet;
 								this.deletePet();
 							}}> Delete </Button>
@@ -92,6 +95,8 @@ export default class Pets extends React.Component{
 				trigger={<Button>New pet</Button>}>
 					<Row>
 						<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" validate/>
+						<Input id="breed" s={6} m={6} l={6} type="text" label="Breed" validate/>
+						<Input id="Age" s={6} m={6} l={6} type="number" label="Age" min={0} validate/>
 					</Row>
 					<Row>
 					    <Input id="radio_dog" name='group1' type='radio' value='dog' label='Dog' checked="true"/>
@@ -108,8 +113,21 @@ export default class Pets extends React.Component{
 		);
 	}
 
+	async getPets(username){
+		let response = await fetch('http://localhost:4000/pet');
+		let pets = await response.json();
+		let pet_from_user = pets.filter((pets) => {
+			return pets.value.username === username
+		});
+		return pet_from_user;
+	}
+
 	createNewPet(){
-		let pic, petname, dog, cat, bird, fish;
+		let pic, petname, dog, cat, bird, fish, age, breed;
+		age = "69";
+		breed = "fixed";
+
+		var url = 'http://127.0.0.1:4000/pet/';
 
 		petname = document.getElementById("petname").value;
 
@@ -117,6 +135,8 @@ export default class Pets extends React.Component{
 		cat = document.getElementById("radio_cat");
 		bird = document.getElementById("radio_bird");
 		fish = document.getElementById("radio_fish");
+
+
 
 		if (dog.checked){
 			pic = require('../img/silhueta_cachorro.png');
@@ -134,18 +154,29 @@ export default class Pets extends React.Component{
 		if(petname !== ''){
 			let newPet = {
 				name: petname,
+				breed: breed,
+				age:age,
 				picture: pic,
 				username: this.props.user.username
 			}
-			this.props.db.putPet(newPet).then(
-				this.setState({createdPet: 'true'}));
+			fetch(url, {
+				headers: {
+					'Content-type':'application/json'
+				},
+				method:'POST',
+				body: JSON.stringify(newPet)
+			}).then(() => {
+				this.setState({createdPet: 'true'});
+				this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
+			});
 		}
-		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 	}
 
 	deletePet(){
-		this.props.db.deletePet(this.petToDelete.id);
-		this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+		var url = 'http://127.0.0.1:4000/pet/'+this.petToDelete.id;
+		fetch(url, {method: 'delete'}).then(()=>{
+			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
+		});
 	}
 
 
