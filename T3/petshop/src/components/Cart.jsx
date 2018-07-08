@@ -5,10 +5,11 @@ export default class Cart extends React.Component {
 	constructor(props){
 		super(props);
 		this.state={cart: []};
-		
+
 		if (this.props.user !== null)
-			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
-		
+			// this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+			this.getCart(this.props.user.username).then(item => this.setState({cart: item}));
+
 		this.deleteAllItems = this.deleteAllItems.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
 		this.itemId = '';
@@ -22,9 +23,9 @@ export default class Cart extends React.Component {
 		if (isLoggedIn) cart = this.state.cart;
 
 		let cartTable = cart.map((product) => {
+			product = product.value;
 			total += parseInt(product.price, 10) * parseInt(product.quantity, 10);
 			// this.itemId = product.id;
-
 			return (
 				<tr>
 					{/*Product picture*/}
@@ -97,7 +98,7 @@ export default class Cart extends React.Component {
 
 				<Row>
 					<Col>
-						<Button onClick={this.deleteAllItems}>Clear Cart</Button>	
+						<Button onClick={this.deleteAllItems}>Clear Cart</Button>
 					</Col>
 					<Col>
 						<Modal
@@ -120,6 +121,15 @@ export default class Cart extends React.Component {
 			</div>
 		);
 
+	}
+
+	async getCart(username){
+		let response = await fetch('http://localhost:4000/cart');
+		let carts = await response.json();
+		let cart_from_user = carts.filter((carts) => {
+			return carts.value.username === username
+		});
+		return cart_from_user;
 	}
 
 	deleteAllItems(){

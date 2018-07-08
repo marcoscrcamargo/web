@@ -10,7 +10,6 @@ const counter = require('../counter');
 	- description
 	- price
 	- quantity
-	- id
 	- type = 'cart'
 
 */
@@ -27,7 +26,7 @@ let all = function(callback){
 
 let create = function(cart, callback){
 	console.log(cart)
-	if(!cart.username || !cart.productId || !cart.name || !cart.description || !cart.price || !cart.quantity || !cart.id){
+	if(!cart.username || !cart.productId || !cart.name || !cart.description || !cart.price || !cart.quantity){
 		callback("cart must have all atributtes");
 		return;
 	}
@@ -40,7 +39,6 @@ let create = function(cart, callback){
 			description:cart.description,
 			price:cart.price,
 			quantity:cart.quantity,
-			id:cart.id,
 			type:'cart',
 			chave:n,
 			_id:n + "_cart"

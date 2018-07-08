@@ -12,8 +12,7 @@ router.post('/', function (req, res) {
             name:req.body.name,
             description:req.body.description,
             price:req.body.price,
-            quantity:req.body.quantity,
-            id:req.body.id
+            quantity:req.body.quantity
         },
         function (err) {
             if (err) return res.status(500).send(err);
