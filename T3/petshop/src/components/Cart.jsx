@@ -9,6 +9,7 @@ export default class Cart extends React.Component {
 		if (this.props.user !== null)
 			this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 		
+		this.deleteAllItems = this.deleteAllItems.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
 		this.itemId = '';
 	}
@@ -93,18 +94,29 @@ export default class Cart extends React.Component {
 						{cartTable}
 					</tbody>
 				</Table>
-				<Modal
-				header='Checkout'
-				trigger={<Button className="sleek-grey">Checkout</Button>}>
-					<h5>Number of items:</h5>
-					<p>{cart.length}</p>
-					<h5>Total:</h5>
-					<p>${total}</p>
-					<Button className="sleek-grey">Pay</Button>
-				</Modal>
+				<Row>
+					<Col>
+						<Button onClick={this.deleteAllItems}>Clear Cart</Button>	
+					</Col>
+					<Col>
+						<Modal
+						header='Checkout'
+						trigger={<Button className="sleek-grey">Checkout</Button>}>
+							<h5>Number of items:</h5>
+							<p>{cart.length}</p>
+							<h5>Total:</h5>
+							<p>${total}</p>
+							<Button className="sleek-grey">Pay</Button>
+						</Modal>
+					</Col>
+				</Row>
 			</div>
 		);
 
+	}
+
+	deleteAllItems(){
+		console.log("delete items and set new cart state");
 	}
 
 	deleteItem(){
