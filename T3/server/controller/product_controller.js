@@ -9,7 +9,8 @@ router.post('/', function (req, res) {
     product.create({
             name : req.body.name,
             description: req.body.description,
-            price: req.body.price
+            price: req.body.price,
+            img_file: req.body.img_file
         },
         function (err) {
             if (err) return res.status(500).send(err);

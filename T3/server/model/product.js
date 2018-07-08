@@ -42,6 +42,7 @@ let create = function(product, callback){
 			name:product.name,
 			description:product.description,
 			price:product.price,
+			img_file:product.img_file,
 			type:'product',
 			chave:n,
 			_id:n + "_product"

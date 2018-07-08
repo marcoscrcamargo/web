@@ -125,6 +125,13 @@ export default class ProductsManagement extends React.Component {
 				header='Create new product'
 				trigger={<Button>New Product</Button>}>
 					<Row>
+						<img id="profile_pic" src={require('../img/avatar.png')} height="250" alt="preview" />
+					</Row>
+					<Row>
+						<Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
+					</Row>
+
+					<Row>
 						<Input id="productName" s={6} m={6} l={6} type="text" label="Product Name" onChange={this.handleProductName} validate/>
 					</Row>
 					<Row>
@@ -160,14 +167,28 @@ export default class ProductsManagement extends React.Component {
 		return products;
 	}
 
+	previewFile() {
+		var preview = document.querySelector('#profile_pic');
+		var file	= document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+
+		reader.addEventListener("load", () => {
+			preview.src = reader.result;
+		}, false);
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
 
 	createNewProduct(){
-
 		if(this.state.productName !== ''){
+			var preview = document.querySelector('#profile_pic');
 			var newProduct = {
 				name: this.state.productName,
 				description: this.state.description,
-				price: this.state.price
+				price: this.state.price,
+				img_file: preview.src
 			}
 		
 			var url = 'http://127.0.0.1:4000/product/';

@@ -123,7 +123,6 @@ export default class Admin extends React.Component {
 							<tbody>
 								{usersTable}
 							</tbody>
-							<Button> New user </Button>
 						</Table>
 {
 						// <Modal
