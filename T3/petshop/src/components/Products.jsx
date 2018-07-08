@@ -109,15 +109,23 @@ export default class Products extends React.Component {
 	createNewItem(){
 		let newItem = {
 			username: this.props.user.username,
-			productId: this.prodToCart.id,
+			productId: this.prodToCart._id,
 			name: this.prodToCart.name,
 			picture: this.prodToCart.img_file,
 			description: this.prodToCart.description,
 			price: this.prodToCart.price,
 			quantity: this.state.quantity
 		}
-		this.props.db.addToCart(newItem);
-		window.Materialize.toast("Added to cart!", 2000);
-		this.setState({quantity: 1})
+		var url = 'http://127.0.0.1:4000/cart';
+		fetch(url, {
+			headers: {
+				'Content-type':'application/json'
+			},
+			method:'POST',
+			body: JSON.stringify(newItem)
+		}).then(() => {
+			window.Materialize.toast("Added to cart!", 2000);
+			this.setState({quantity: 1})
+		});
 	}
 }
