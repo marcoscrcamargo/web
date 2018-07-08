@@ -33,9 +33,9 @@ export default class Main extends React.Component {
 		var user = this.state.user;
 
 		// flag that indicates wheter the user is logged in
-		const isLoggedIn = (user !== null);
+		const isLoggedIn = (user !== null) ? true : false;
 		// flag that indicates wheter the user is an admin
-		const isAdmin = isLoggedIn ? (user.admin === 'true') : false;
+		const isAdmin = isLoggedIn ? (user.type === 'admin') : false;
 
 		// If the user is an Admin, there will be an Management tab in the navbar
 		const management = isAdmin ? (

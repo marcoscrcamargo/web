@@ -19,7 +19,6 @@ export default class Pets extends React.Component{
 		this.petToDelete = null
 
 		if (this.props.user !== null){
-			// this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
 			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
 		}
 
