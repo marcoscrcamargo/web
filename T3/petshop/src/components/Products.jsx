@@ -103,7 +103,6 @@ export default class Products extends React.Component {
 	async getAllProducts(){
 		let response = await fetch('http://localhost:4000/product');
 		let products = await response.json();
-		console.log(products)
 		return products;
 	}
 
