@@ -41,6 +41,16 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/:user_id', function (req, res) {
+    user.one(req.params.user_id, function(err, result){
+        if(err){
+            console.log("error");
+            return;
+        }
+        res.status(200).send(result);
+    })
+});
+
 router.delete('/:user_id', function(req, res, done) {
     console.log("deleting..." + req.params.user_id);
     user.erase(req.params.user_id,function(err){

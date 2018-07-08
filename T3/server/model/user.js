@@ -24,6 +24,15 @@ let all = function(callback){
 	});
 }
 
+let one = function(id, callback){
+	db.get(id, function(err, body, header) {
+	    if(err) {
+	      return callback(err);
+	    }
+	    callback(null, body);
+  	});
+}
+
 let create = function(user, callback){
 	console.log(user)
 	if(!user.name|| !user.phone || !user.username || !user.email || !user.password || !user.admin || !user.adress){
@@ -98,4 +107,4 @@ let erase = function(id, callback){
   	});
 }
 
-module.exports = {all, create, erase, update}
+module.exports = {all, one, create, erase, update}
