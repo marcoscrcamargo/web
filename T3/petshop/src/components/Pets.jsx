@@ -173,7 +173,6 @@ export default class Pets extends React.Component{
 	}
 
 	deletePet(){
-		console.log(this.petToDelete.id);
 		var url = 'http://127.0.0.1:4000/pet/'+this.petToDelete.id;
 		fetch(url, {method: 'delete'}).then(()=>{
 			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));

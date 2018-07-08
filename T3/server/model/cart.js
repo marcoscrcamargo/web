@@ -52,7 +52,6 @@ let create = function(cart, callback){
 }
 
 let update = function(cart, callback){
-	console.log(cart);
 	db.get(cart.id, (err, body)=>{
 		if(err){
 			callback(err);
@@ -64,14 +63,14 @@ let update = function(cart, callback){
 		}
 
 		// posiciona novos atributos
-		for(i in Object.keys(cart)){
-			console.log(i);
-			if(Object.keys(cart)[i] != "id"){
-				if(!Object.keys(body).includes(Object.keys(cart)[i])) {
+		for(i in Object.keys(cart.value)){
+			if(Object.keys(cart.value)[i] != "id"){
+				if(!Object.keys(body).includes(Object.keys(cart.value)[i])) {
 					callback("atributte not found!");
+					console.log('ehaq')
 					return;
 				}
-				body[Object.keys(cart)[i]] = cart[Object.keys(cart)[i]]
+				body[Object.keys(cart.value)[i]] = cart.value[Object.keys(cart.value)[i]]
 			}
 		}
 
