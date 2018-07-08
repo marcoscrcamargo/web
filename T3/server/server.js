@@ -3,9 +3,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const server = express();
 
-
-server.use( bodyParser.urlencoded({extended: true}) );
-server.use( bodyParser.json() );
+var cors = require('cors');
+server.use(cors());
 
 const User = require('./controller/user_controller');
 const Cart = require('./controller/cart_controller');
@@ -16,12 +15,14 @@ const Product = require('./controller/product_controller');
 const Service = require('./controller/service_controller');
 
 
-server.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    // Não estava funcionando com '*'.
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    next();
-});
+server.use( bodyParser.urlencoded({extended: true}) );
+server.use( bodyParser.json() );
+// server.use(function (req, res, next) {
+// 	// Website you wish to allow to connect
+// 	// Não estava funcionando com '*'.	
+// 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+// 	next();
+// });
 
 
 server.use('/user', User);
