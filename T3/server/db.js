@@ -80,7 +80,7 @@ createDesigns = function(){
 		"_id": "_design/user",
 		"views":{
 		    "all":{
-		      	"map": "function(doc){if(doc.type == 'user' || doc.type == 'admin')emit(doc._id, doc);}"
+		      	"map": "function(doc){if(doc.type == 'user')emit(doc._id, doc);}"
 		    }
 		},
 		"language": "javascript"
