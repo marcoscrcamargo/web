@@ -25,41 +25,40 @@ export default class Schedule extends React.Component{
 		if (isLoggedIn) schedule = this.state.schedules;
 
 		let scheduleTable = schedule.map((service) => {
-			service = service.value;
 			return (
 				<tr>
 					{/*Service name*/}
-					<td>{service.name}</td>
+					<td>{service.value.name}</td>
 					{/*pet name*/}
-					<td>{service.pet}</td>
+					<td>{service.value.pet}</td>
 					{/*date and time*/}
-					<td>{service.date}</td>
+					<td>{service.value.date}</td>
 					{/*service price*/}
-					<td>$ {service.price}</td>
+					<td>$ {service.value.price}</td>
 
 					{/*Details option*/}
 					<td>
 						<Modal
-						header={service.name}
+						header={service.value.name}
 						trigger={<Button>Details</Button>}>
 							{/*Pop-up window with more details*/}
 							<Row>
 								{/*Larger pet picture*/}
 								<Col l={4}>
-									<MediaBox src={service.picture} caption="Service picture" width="200"/>
+									<MediaBox src={service.value.picture} caption="Service picture" width="200"/>
 								</Col>
 								{/*Pet info*/}
 								<Col l={4}>
 									<h5>Service:</h5>
-									<p>{service.name}</p>
+									<p>{service.value.name}</p>
 									<h5>Description:</h5>
-									<p>{service.description}</p>
+									<p>{service.value.description}</p>
 									<h5>Pet:</h5>
-									<p>{service.pet}</p>
+									<p>{service.value.pet}</p>
 									<h5>Date:</h5>
-									<p>{service.date}</p>
+									<p>{service.value.date}</p>
 									<h5>Price:</h5>
-									<p>$ {service.price}</p>
+									<p>$ {service.value.price}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
@@ -102,8 +101,10 @@ export default class Schedule extends React.Component{
 	}
 
 	deleteSchedule(){
-		this.props.db.deleteSchedule(this.scheduleToDelete.id);
-		this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+		var url = 'http://127.0.0.1:4000/schedule/'+this.scheduleToDelete.id;
+		fetch(url, {method: 'delete'}).then(()=>{
+			this.getSchedule(this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+		});
 	}
 
 }
