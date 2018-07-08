@@ -7,7 +7,7 @@ const counter = require('../counter');
 	- username
 	- pet
 	- picture
-	- id
+	- price
 	- description
 	- date
 	- type = 'schedule'
@@ -35,7 +35,7 @@ let one = function(id, callback){
 
 let create = function(schedule, callback){
 	console.log(schedule)
-	if(!schedule.name || !schedule.username || !schedule.pet || !schedule.id || !schedule.description || !schedule.date){
+	if(!schedule.name || !schedule.username || !schedule.pet || !schedule.price || !schedule.description || !schedule.date){
 		callback("schedule must have all atributtes");
 		return;
 	}
@@ -45,7 +45,7 @@ let create = function(schedule, callback){
 			name:schedule.name,
 			username:schedule.username,
 			pet:schedule.pet,
-			id:schedule.id,
+			price:schedule.price,
 			description:schedule.description,
 			date:schedule.date,
 			type:'schedule',

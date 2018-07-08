@@ -4,14 +4,15 @@ import {Table, Button, Row, Modal, Col, MediaBox} from 'react-materialize';
 
 export default class Schedule extends React.Component{
 
-	constructor(props){		
+	constructor(props){
 		super(props);
 
 		this.state = {schedules: []}
 		this.scheduleToDelete = null
 
 		if (this.props.user !== null)
-			this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+			// this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
+			this.getSchedule(this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
 
 		this.deleteSchedule = this.deleteSchedule.bind(this);
 
@@ -24,6 +25,7 @@ export default class Schedule extends React.Component{
 		if (isLoggedIn) schedule = this.state.schedules;
 
 		let scheduleTable = schedule.map((service) => {
+			service = service.value;
 			return (
 				<tr>
 					{/*Service name*/}
@@ -70,7 +72,7 @@ export default class Schedule extends React.Component{
 				</tr>
 			)
 		});
-	
+
 		return(
 			<Table>
 				<thead>
@@ -88,7 +90,16 @@ export default class Schedule extends React.Component{
 				</tbody>
 			</Table>
 		);
-	}		
+	}
+
+	async getSchedule(username){
+		let response = await fetch('http://localhost:4000/schedule');
+		let schedules = await response.json();
+		let schedule_from_user = schedules.filter((schedules) => {
+			return schedules.value.username === username
+		});
+		return schedule_from_user;
+	}
 
 	deleteSchedule(){
 		this.props.db.deleteSchedule(this.scheduleToDelete.id);

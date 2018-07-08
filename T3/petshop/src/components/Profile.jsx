@@ -56,7 +56,7 @@ export default class Profile extends React.Component {
 
 						{/*Schedule tab*/}
 						<Tab title="My Schedule">
-							<Schedule db={this.props.db} user={this.props.user}/>							
+							<Schedule db={this.props.db} user={this.props.user}/>
 						</Tab>
 						{/*Profile tab*/}
 						<Tab title="Profile">

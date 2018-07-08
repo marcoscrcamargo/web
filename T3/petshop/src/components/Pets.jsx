@@ -16,7 +16,8 @@ export default class Pets extends React.Component{
 		this.petToDelete = null
 
 		if (this.props.user !== null){
-			this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+			// this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
 		}
 
 		this.createNewPet = this.createNewPet.bind(this);
@@ -34,6 +35,7 @@ export default class Pets extends React.Component{
 		// When the "details" button is pressed, a pop-up window appears with a larger version
 		// of the image, the name of the pet and "delete" and "close" options.
 		let petsTable = pets.map((pet, index) => {
+			pet = pet.value;
 			return (
 				<tr>
 					{/*Pet picture*/}
@@ -106,6 +108,15 @@ export default class Pets extends React.Component{
 				</Modal>
 			</div>
 		);
+	}
+
+	async getPets(username){
+		let response = await fetch('http://localhost:4000/pet');
+		let pets = await response.json();
+		let pet_from_user = pets.filter((pets) => {
+			return pets.value.username === username
+		});
+		return pet_from_user;
 	}
 
 	createNewPet(){

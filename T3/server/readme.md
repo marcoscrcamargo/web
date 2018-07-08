@@ -7,9 +7,29 @@ Para a execução do servidor.
 3. Ser feliz. :)
 
 
-Comando para post (cria um usuário administrador)
+Comando para post
+
+Cria um usuário administrador
 
 	curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "Admin", "phone": "00000000000", "username": "admin", "email": "admin@petshop.com", "password": "admin", "admin": "true", "adress": "adminlandia numero zero"}' http://127.0.0.1:4000/user
+
+Criando um pet pro admin
+
+	curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "Dereguejhonson", "breed": "XQDELE","age":"69", "username": "admin"}' http://127.0.0.1:4000/pet
+
+Criando um schedule pro pet do admin
+
+	curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "banho", "username": "admin", "pet":"Dereguejhonson", "description":"lava seu animalzinho bem top confia", "date":"12 June, 2018 05:00PM",  "price":"666.66"}' http://127.0.0.1:4000/schedule
+
+
+	- name
+	- username
+	- pet
+	- picture
+	- id
+	- description
+	- date
+	- type = 'schedule'
 
 
 Controllers implementados:

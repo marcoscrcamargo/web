@@ -4,6 +4,8 @@ const counter = require('../counter');
 /*
 	Pet:
 	- name
+	- breed
+	- age
 	- picture
 	- username
 	- type = 'pet'
@@ -32,7 +34,7 @@ let one = function(id, callback){
 
 let create = function(pet, callback){
 	console.log(pet)
-	if(!pet.name || !pet.username){
+	if(!pet.name || !pet.username|| !pet.breed || !pet.age){
 		callback("pet must have all atributtes");
 		return;
 	}
@@ -40,6 +42,8 @@ let create = function(pet, callback){
 	counter.get("pet", function(n){
 		let tmp = {
 			name:pet.name,
+			breed:pet.breed,
+			age:pet.age,
 			picture:pet.picture,
 			username:pet.username,
 			type:'pet',
