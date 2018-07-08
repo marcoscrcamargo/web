@@ -11,7 +11,6 @@ export default class Schedule extends React.Component{
 		this.scheduleToDelete = null
 
 		if (this.props.user !== null)
-			// this.props.db.getSchedule('username', this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
 			this.getSchedule(this.props.user.username).then(schedule => this.setState({ schedules: schedule }));
 
 		this.deleteSchedule = this.deleteSchedule.bind(this);

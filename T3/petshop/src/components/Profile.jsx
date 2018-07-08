@@ -44,17 +44,17 @@ export default class Profile extends React.Component {
 					<Tabs className='z-depth-1'>
 						{/*Cart tab*/}
 						<Tab title="Cart">
-							<Cart db={this.props.db} user={this.props.user}/>
+							<Cart user={this.props.user}/>
 						</Tab>
 
 						{/*Pets tab*/}
 						<Tab title="Pets">
-							<Pets db={this.props.db} user={this.props.user}/>
+							<Pets user={this.props.user}/>
 						</Tab>
 
 						{/*Schedule tab*/}
 						<Tab title="My Schedule">
-							<Schedule db={this.props.db} user={this.props.user}/>
+							<Schedule user={this.props.user}/>
 						</Tab>
 						{/*Profile tab*/}
 						<Tab title="Profile">

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "dexie": "^2.0.4",
     "nano": "^6.4.4",
     "npm": "^6.1.0",
     "react": "^16.3.2",

@@ -7,7 +7,6 @@ export default class Cart extends React.Component {
 		this.state={cart: []};
 
 		if (this.props.user !== null)
-			// this.props.db.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 			this.getCart(this.props.user.username).then(item => this.setState({cart: item}));
 
 		this.deleteAllItems = this.deleteAllItems.bind(this);

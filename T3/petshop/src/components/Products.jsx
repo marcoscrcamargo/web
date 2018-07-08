@@ -9,7 +9,7 @@ export default class Products extends React.Component {
 			products: [],
 			quantity: 1,
 		};
-		// this.props.db.getAllProducts().then(item => this.setState({ products: item }));
+
 		this.getAllProducts().then(item => this.setState({ products: item }));
 		this.prodToCard = null;
 		this.createNewItem = this.createNewItem.bind(this);

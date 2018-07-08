@@ -153,7 +153,7 @@ export default class Services extends React.Component {
 
 		var conflict = allSchedules.filter(schedule => schedule.value.date === dt && schedule.value.name === this.servicetoSchedule.title)
 
-		if(conflict.length != 0){
+		if(conflict.length !== 0){
 			window.Materialize.toast("Hour and date not available for this service, try again ", 5000);
 			return;
 		}
