@@ -25,7 +25,7 @@ export default class Products extends React.Component {
 					return (
 						<Col s={6} m={4} l={3} >
 							<Card /*type of the card*/
-								header={<CardTitle image={prod._attachment}></CardTitle>} /*adding an image*/
+								header={<CardTitle image={prod.img_file}></CardTitle>} /*adding an image*/
 								actions={<Modal
 									header={prod.name}
 									trigger={<p className="center" style={{'margin': '0 0 0 0'}}><a>Buy for ${prod.price} </a></p>}>
@@ -48,6 +48,7 @@ export default class Products extends React.Component {
 		else{
 			// fills a list with cards with name, image, price and a short description about each product
 			let productList = products.map((prod, index) => {
+					prod = prod.value;
 					return (
 						// sets the size of the card for each type of screen
 						<Col s={6} m={4} l={3} >
