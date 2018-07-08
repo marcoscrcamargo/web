@@ -24,6 +24,15 @@ let all = function(callback){
 	});
 }
 
+let one = function(id, callback){
+	db.get(id, function(err, body, header) {
+	    if(err) {
+	      return callback(err);
+	    }
+	    callback(null, body);
+  	});
+}
+
 let create = function(schedule, callback){
 	console.log(schedule)
 	if(!schedule.name || !schedule.username || !schedule.pet || !schedule.id || !schedule.description || !schedule.date){

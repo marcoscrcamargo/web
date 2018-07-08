@@ -36,6 +36,16 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/:service_id', function (req, res) {
+    user.one(req.params.service_id, function(err, result){
+        if(err){
+            console.log("error");
+            return;
+        }
+        res.status(200).send(result);
+    })
+});
+
 router.delete('/:service_id', function(req, res, done) {
     console.log("deleting..." + req.params.service_id);
     service.erase(req.params.service_id,function(err){

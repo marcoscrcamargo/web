@@ -20,6 +20,16 @@ let all = function(callback){
 	});
 }
 
+let one = function(id, callback){
+	db.get(id, function(err, body, header) {
+	    if(err) {
+	      return callback(err);
+	    }
+	    callback(null, body);
+  	});
+}
+
+
 let create = function(pet, callback){
 	console.log(pet)
 	if(!pet.name || !pet.username){

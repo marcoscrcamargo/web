@@ -36,6 +36,16 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/:pet_id', function (req, res) {
+    user.one(req.params.pet_id, function(err, result){
+        if(err){
+            console.log("error");
+            return;
+        }
+        res.status(200).send(result);
+    })
+});
+
 router.delete('/:pet_id', function(req, res, done) {
     console.log("deleting..." + req.params.pet_id);
     pet.erase(req.params.pet_id,function(err){

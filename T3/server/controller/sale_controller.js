@@ -38,6 +38,16 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/:sale_id', function (req, res) {
+    user.one(req.params.sale_id, function(err, result){
+        if(err){
+            console.log("error");
+            return;
+        }
+        res.status(200).send(result);
+    })
+});
+
 router.delete('/:sale_id', function(req, res, done) {
     console.log("deleting..." + req.params.sale_id);
     sale.erase(req.params.sale_id,function(err){

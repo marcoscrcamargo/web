@@ -36,6 +36,16 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/:product_id', function (req, res) {
+    user.one(req.params.product_id, function(err, result){
+        if(err){
+            console.log("error");
+            return;
+        }
+        res.status(200).send(result);
+    })
+});
+
 router.delete('/:product_id', function(req, res, done) {
     console.log("deleting..." + req.params.product_id);
     product.erase(req.params.product_id,function(err){
