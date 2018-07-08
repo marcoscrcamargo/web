@@ -10,6 +10,9 @@ export default class Pets extends React.Component{
 		this.state = {
 			pets: [],
 			petname: '',
+			animal: 'dog',
+			breed: '',
+			age: '',
 			createdPet: 'false',
 		}
 
@@ -21,6 +24,10 @@ export default class Pets extends React.Component{
 		}
 
 		this.createNewPet = this.createNewPet.bind(this);
+		this.handlePetnameChange = this.handlePetnameChange.bind(this);
+//		this.handleAnimalChange = this.handleAnimalChange.bind(this);
+		this.handleAgeChange = this.handleAgeChange.bind(this);
+		this.handleBreedChange = this.handleBreedChange.bind(this);
 		this.deletePet = this.deletePet.bind(this);
 	}
 
@@ -57,6 +64,10 @@ export default class Pets extends React.Component{
 								<Col l={4}>
 									<h5>Name:</h5>
 									<p>{pet.value.name}</p>
+									<h5>Breed:</h5>
+									<p>{pet.value.breed}</p>
+									<h5>Age:</h5>
+									<p>{pet.value.age}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}
@@ -94,12 +105,16 @@ export default class Pets extends React.Component{
 				header='Create new pet'
 				trigger={<Button>New pet</Button>}>
 					<Row>
-						<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" validate/>
-						<Input id="breed" s={6} m={6} l={6} type="text" label="Breed" validate/>
-						<Input id="Age" s={6} m={6} l={6} type="number" label="Age" min={0} validate/>
+						<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" onChange={this.handlePetnameChange} validate/>
 					</Row>
 					<Row>
-					    <Input id="radio_dog" name='group1' type='radio' value='dog' label='Dog' checked="true"/>
+						<Input id="breed" s={6} m={6} l={6} type="text" label="Breed" onChange={this.handleBreedChange} validate/>
+					</Row>
+					<Row>
+						<Input id="Age" s={6} m={6} l={6} type="number" label="Age" onChange={this.handleAgeChange} min={0} validate/>
+					</Row>
+					<Row onClick={this.handleAnimalChange}>
+					    <Input id="radio_dog" name='group1' type='radio' value='dog' label='Dog' checked/>
 					    <Input id="radio_cat" name='group1' type='radio' value='cat' label='Cat'/>
 					    <Input id="radio_bird" name='group1' type='radio' value='bird' label='Bird'/>
 					    <Input id="radio_fish" name='group1' type='radio' value='fish' label='Fish'/>
@@ -122,22 +137,32 @@ export default class Pets extends React.Component{
 		return pet_from_user;
 	}
 
+	handlePetnameChange(e){
+		this.setState({petname: e.target.value});
+	}
+
+/*	handleAnimalChange(e){
+		this.setState({animal: e.target.value});
+	}
+*/
+	handleBreedChange(e){
+		this.setState({breed: e.target.value});
+	}
+
+	handleAgeChange(e){
+		this.setState({age: e.target.value});
+	}
+
 	createNewPet(){
-		let pic, petname, dog, cat, bird, fish, age, breed;
-		age = "69";
-		breed = "fixed";
+		let pic, dog, cat, bird, fish;
 
 		var url = 'http://127.0.0.1:4000/pet/';
-
-		petname = document.getElementById("petname").value;
 
 		dog = document.getElementById("radio_dog");
 		cat = document.getElementById("radio_cat");
 		bird = document.getElementById("radio_bird");
 		fish = document.getElementById("radio_fish");
-
-
-
+		
 		if (dog.checked){
 			pic = require('../img/silhueta_cachorro.png');
 		}
@@ -151,11 +176,11 @@ export default class Pets extends React.Component{
 			pic = require('../img/silhueta_peixe.png');
 		}
 
-		if(petname !== ''){
+		if(this.state.petname !== ''){
 			let newPet = {
-				name: petname,
-				breed: breed,
-				age:age,
+				name: this.state.petname,
+				breed: this.state.breed,
+				age: this.state.age,
 				picture: pic,
 				username: this.props.user.username
 			}
