@@ -27,9 +27,7 @@ export default class Profile extends React.Component {
 			height: 'auto',
 		}
 
-		let pets = []
 		const isLoggedIn = (this.props.user !== null);
-		if (isLoggedIn) pets = this.state.pets;
 
 		// If the user loggs in, a welcome message is showed
 		// A new navbar appears, with the tags profile, pets, schedule and cart

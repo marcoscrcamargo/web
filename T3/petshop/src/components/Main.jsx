@@ -33,7 +33,7 @@ export default class Main extends React.Component {
 		var user = this.state.user;
 
 		// flag that indicates wheter the user is logged in
-		const isLoggedIn = (user !== null) ? true : false;
+		const isLoggedIn = (user !== null);
 		// flag that indicates wheter the user is an admin
 		const isAdmin = isLoggedIn ? (user.admin === 'true') : false;
 
