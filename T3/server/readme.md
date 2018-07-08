@@ -7,8 +7,9 @@ Para a execução do servidor.
 3. Ser feliz. :)
 
 
-Comando para post
-	curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "Marcos Camargo", "phone": "14997189943", "username": "marcoscrcamargo", "email": "marcoscrcamargo@gmail.com", "password": "admin", "admin": "true", "adress": "R. Carlos de Camargo Salles, 306 Apt. 2"}' http://127.0.0.1:4000/user
+Comando para post (cria um usuário administrador)
+
+	curl -i -X POST -H 'Content-Type: application/json' -d '{"name": "Admin", "phone": "00000000000", "username": "admin", "email": "admin@petshop.com", "password": "admin", "admin": "true", "adress": "adminlandia numero zero"}' http://127.0.0.1:4000/user
 
 
 Controllers implementados:
