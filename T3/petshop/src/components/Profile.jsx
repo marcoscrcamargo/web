@@ -11,9 +11,9 @@ export default class Profile extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {pets: []};
-
+		
 		if (this.props.user !== null){
-			this.props.db.getPets('username', this.props.user.username).then(pet => this.setState({ pets: pet }));
+			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
 		}
 
 	}
@@ -76,7 +76,7 @@ export default class Profile extends React.Component {
 									<h5>Email:</h5>
 									<p>{this.props.user.email}</p>
 									<h5>Number of pets:</h5>
-									<p>{pets.length}</p>
+									<p>{this.state.pets.length}</p>
 								</Col>
 							</Row>
 						</Tab>
@@ -92,6 +92,15 @@ export default class Profile extends React.Component {
 				</Row>
 			)
 		}
+	}
+
+	async getPets(username){
+		let response = await fetch('http://localhost:4000/pet');
+		let pets = await response.json();
+		let pet_from_user = pets.filter((pets) => {
+			return pets.value.username === username
+		});
+		return pet_from_user;
 	}
 
 }
