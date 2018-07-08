@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.urlencoded({
+    parameterLimit: 100000,
+    limit: '50mb',
+    extended: true
+}));
 
 var user = require('../model/user');
 
@@ -14,7 +18,8 @@ router.post('/', function (req, res) {
             email: req.body.email,
             password: req.body.password,
             admin: req.body.admin,
-            adress: req.body.adress
+            adress: req.body.adress,
+            img_file: req.body.img_file
         },
         function (err) {
             if (err) return res.status(500).send(err);

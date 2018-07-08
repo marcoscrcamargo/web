@@ -63,7 +63,7 @@ export default class Profile extends React.Component {
 							<Row>
 								{/*User image*/}
 								<Col l={6} className="valign-wrapper center center-align">
-									<MediaBox src={this.props.user.picture} style={responsiveImg} caption="profile_picture"/>
+									<MediaBox src={this.props.user.img_file} style={responsiveImg} caption="profile_picture"/>
 								</Col>
 								{/*User information*/}
 								<Col l={6}>

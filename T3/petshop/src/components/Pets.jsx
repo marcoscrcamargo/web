@@ -94,6 +94,8 @@ export default class Pets extends React.Component{
 				trigger={<Button>New pet</Button>}>
 					<Row>
 						<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" validate/>
+						<Input id="breed" s={6} m={6} l={6} type="text" label="Breed" validate/>
+						<Input id="Age" s={6} m={6} l={6} type="number" label="Age" min={0} validate/>
 					</Row>
 					<Row>
 					    <Input id="radio_dog" name='group1' type='radio' value='dog' label='Dog' checked="true"/>

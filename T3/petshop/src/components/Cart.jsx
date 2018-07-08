@@ -112,7 +112,7 @@ export default class Cart extends React.Component {
 								<Input id="user_card_name" s={6} m={6} l={6} type="text" label="Name on the card" validate/>
 								<Input id="card_number" s={6} m={6} l={6} type="text" label="Card Number" validate/>
 								<Input id="expiration_date" s={6} m={6} l={6} type="date" label="Expiration Date" validate/>
-								<Input id="security_number" s={6} m={6} l={6} type="text" label="Security Number" validate/>
+								<Input id="security_number" s={6} m={6} l={6} type="number" label="Security Number" validate/>
 							</Row>
 							<Button className="sleek-grey">Pay</Button>
 						</Modal>
