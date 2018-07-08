@@ -10,7 +10,7 @@ router.post('/', function (req, res) {
             name : req.body.name,
             breed : req.body.breed,
             age : req.body.age,
-            // picture: req.body.picture,
+            picture: req.body.picture,
             username: req.body.username
         },
         function (err) {
