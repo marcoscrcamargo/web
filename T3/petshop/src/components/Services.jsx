@@ -6,6 +6,7 @@ export default class Services extends React.Component {
 		super(props);
 
 		this.state = {
+			schedules: [],
 			services: [],
 			petsForUser: [],
 			petname: null,
@@ -14,6 +15,7 @@ export default class Services extends React.Component {
 		};
 
 		this.servicetoSchedule = null
+		this.getAllSchedules().then(item => this.setState({ schedules: item }));
 		this.getAllServices().then(item => this.setState({ services: item }));
 
 		if (this.props.user !== null){
@@ -136,11 +138,26 @@ export default class Services extends React.Component {
 		return pet_from_user;
 	}
 
+	async getAllSchedules(){
+		let response = await fetch('http://localhost:4000/schedule');
+		let schedules = await response.json();
+		return schedules;
+	}
 
 	createNewSchedule(){
+
 		let date = String(this.state.date);
 		let time = String(this.state.time);
 		let dt = date + " " + time;
+		var allSchedules = this.state.schedules;
+
+		var conflict = allSchedules.filter(schedule => schedule.value.date === dt && schedule.value.name === this.servicetoSchedule.title)
+
+		if(conflict.length != 0){
+			window.Materialize.toast("Hour and date not available for this service, try again ", 5000);
+			return;
+		}
+
 		let petname = String(this.state.petname);
 		let newSchedule = {
 			name: this.servicetoSchedule.title,
