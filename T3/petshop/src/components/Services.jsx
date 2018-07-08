@@ -125,7 +125,6 @@ export default class Services extends React.Component {
 	async getAllServices(){
 		let response = await fetch('http://localhost:4000/service');
 		let services = await response.json();
-		console.log(services)
 		return services;
 	}
 
