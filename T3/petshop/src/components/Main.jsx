@@ -139,8 +139,6 @@ export default class Main extends React.Component {
 				users.forEach( usr =>{
 					if(this.state.username === usr.value.username){
 						find = true;
-						console.log(usr.value.password);
-						console.log(this.state.password);
 						if(usr.value.password === this.state.password){ // if the password matches 
 							this.setState({ user: usr.value }); // sets the user attribute
 						} else { // if the password doesn't match, prints a warning message
