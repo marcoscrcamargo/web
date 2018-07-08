@@ -39,6 +39,16 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/:schedule_id', function (req, res) {
+    user.one(req.params.schedule_id, function(err, result){
+        if(err){
+            console.log("error");
+            return;
+        }
+        res.status(200).send(result);
+    })
+});
+
 router.delete('/:schedule_id', function(req, res, done) {
     console.log("deleting..." + req.params.schedule_id);
     schedule.erase(req.params.schedule_id,function(err){

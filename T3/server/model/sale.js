@@ -22,6 +22,15 @@ let all = function(callback){
 	});
 }
 
+let one = function(id, callback){
+	db.get(id, function(err, body, header) {
+	    if(err) {
+	      return callback(err);
+	    }
+	    callback(null, body);
+  	});
+}
+
 let create = function(sale, callback){
 	console.log(sale)
 	if(!sale.name || !sale.username || !sale.price || !sale.quantity || !sale.id){
