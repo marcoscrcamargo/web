@@ -13,7 +13,7 @@ import Admin from './Admin.jsx';
 import Profile from './Profile.jsx';
 
 export default class Main extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 
@@ -132,20 +132,34 @@ export default class Main extends React.Component {
 		if (this.state.username == null){  // if there is no value for the username
 			window.Materialize.toast('Usuário Invalido!', 4000);
 		} else {
-			this.props.db.getUser('username', this.state.username) // tries to get the username from the db
-				.then(usr => {
-					if (usr == null) { // if there is no result, prints a warning message
-						this.setState({ user: null });
-						window.Materialize.toast('Usuário Invalido!', 4000);
-					} else { // if there if a result
-						if(usr.password === this.state.password){ // if the password matches 
-							this.setState({ user: usr }); // sets the user attribute
+			let users = this.getAllUsers();
+			users.then(users => {
+				console.log(users);
+				let find = false;
+				users.forEach( usr =>{
+					if(this.state.username === usr.value.username){
+						find = true;
+						console.log(usr.value.password);
+						console.log(this.state.password);
+						if(usr.value.password === this.state.password){ // if the password matches 
+							this.setState({ user: usr.value }); // sets the user attribute
 						} else { // if the password doesn't match, prints a warning message
 							window.Materialize.toast('Senha incorreta!', 4000);
 						}
 					}
 				});
+				if(!find){ // if there is no result, prints a warning message
+					this.setState({ user: null });
+					window.Materialize.toast('Usuário Invalido!', 4000);
+				}
+			});
 		}
+	}
+
+	async getAllUsers(){
+		let response = await fetch('http://localhost:4000/user');
+		let users = await response.json();
+		return users;
 	}
 
 	// logs the user out
