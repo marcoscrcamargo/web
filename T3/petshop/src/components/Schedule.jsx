@@ -45,7 +45,7 @@ export default class Schedule extends React.Component{
 							<Row>
 								{/*Larger pet picture*/}
 								<Col l={4}>
-									<MediaBox src={service.value.picture} caption="Service picture" width="200"/>
+									<MediaBox src={service.value.img_file} caption="Service picture" width="200"/>
 								</Col>
 								{/*Pet info*/}
 								<Col l={4}>

@@ -12,7 +12,8 @@ router.post('/', function (req, res) {
             pet:req.body.pet,
             price:req.body.price,
             description:req.body.description,
-            date:req.body.date
+            date:req.body.date,
+            img_file:req.body.img_file
         },
         function (err) {
             if (err) return res.status(500).send(err);

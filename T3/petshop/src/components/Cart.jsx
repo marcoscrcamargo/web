@@ -27,7 +27,7 @@ export default class Cart extends React.Component {
 			return (
 				<tr>
 					{/*Product picture*/}
-					<td><MediaBox src={product.value.picture} caption="Product picture" width="150"/></td>
+					<td><MediaBox src={product.value.img_file} caption="Product picture" width="150"/></td>
 					{/*Product name*/}
 					<td>{product.value.name}</td>
 					{/*Quantity*/}
@@ -59,7 +59,7 @@ export default class Cart extends React.Component {
 							<Row>
 								{/*Larger pet picture*/}
 								<Col l={4}>
-									<MediaBox src={product.value.picture} caption="Product picture" width="200"/>
+									<MediaBox src={product.value.img_file} caption="Product picture" width="200"/>
 								</Col>
 								{/*Pet info*/}
 								<Col l={4}>

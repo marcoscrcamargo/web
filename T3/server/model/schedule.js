@@ -48,6 +48,7 @@ let create = function(schedule, callback){
 			price:schedule.price,
 			description:schedule.description,
 			date:schedule.date,
+			img_file:schedule.img_file,
 			type:'schedule',
 			chave:n,
 			_id:n + "_schedule"

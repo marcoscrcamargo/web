@@ -147,7 +147,7 @@ export default class Services extends React.Component {
 			username: this.props.user.username,
 			pet: petname,
 			date: dt,
-			picture: this.servicetoSchedule.img_file,
+			img_file: this.servicetoSchedule.img_file,
 			description: this.servicetoSchedule.description,
 			price: this.servicetoSchedule.price
 		}

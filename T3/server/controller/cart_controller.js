@@ -10,6 +10,7 @@ router.post('/', function (req, res) {
             username:req.body.username,
             productId:req.body.productId,
             name:req.body.name,
+            img_file:req.body.img_file,
             description:req.body.description,
             price:req.body.price,
             quantity:req.body.quantity

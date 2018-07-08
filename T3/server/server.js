@@ -16,7 +16,7 @@ const Service = require('./controller/service_controller');
 
 
 server.use( bodyParser.urlencoded({extended: true}) );
-server.use( bodyParser.json() );
+server.use( bodyParser.json({limit: '10mb'}) );
 // server.use(function (req, res, next) {
 // 	// Website you wish to allow to connect
 // 	// Não estava funcionando com '*'.	

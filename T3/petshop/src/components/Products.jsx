@@ -107,11 +107,12 @@ export default class Products extends React.Component {
 	}
 
 	createNewItem(){
+		console.log(this.prodToCart.img_file)
 		let newItem = {
 			username: this.props.user.username,
 			productId: this.prodToCart._id,
 			name: this.prodToCart.name,
-			picture: this.prodToCart.img_file,
+			img_file: this.prodToCart.img_file,
 			description: this.prodToCart.description,
 			price: this.prodToCart.price,
 			quantity: this.state.quantity

@@ -36,6 +36,7 @@ let create = function(cart, callback){
 			username:cart.username,
 			productId:cart.productId,
 			name:cart.name,
+			img_file:cart.img_file,
 			description:cart.description,
 			price:cart.price,
 			quantity:cart.quantity,

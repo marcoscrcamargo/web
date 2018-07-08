@@ -41,6 +41,7 @@ let create = function(service, callback){
 			title:service.title,
 			description:service.description,
 			price:service.price,
+			img_file:service.img_file,
 			type:'service',
 			chave:n,
 			_id:n + "_service"
