@@ -42,6 +42,7 @@ let create = function(pet, callback){
 	counter.get("pet", function(n){
 		let tmp = {
 			name:pet.name,
+			animal:pet.animal,
 			breed:pet.breed,
 			age:pet.age,
 			picture:pet.picture,

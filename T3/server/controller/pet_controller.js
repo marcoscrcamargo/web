@@ -8,6 +8,7 @@ var pet = require('../model/pet');
 router.post('/', function (req, res) {
     pet.create({
             name : req.body.name,
+            animal: req.body.animal,
             breed : req.body.breed,
             age : req.body.age,
             picture: req.body.picture,

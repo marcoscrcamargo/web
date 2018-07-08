@@ -63,6 +63,8 @@ export default class Pets extends React.Component{
 								<Col l={4}>
 									<h5>Name:</h5>
 									<p>{pet.value.name}</p>
+									<h5>Animal:</h5>
+									<p>{pet.value.animal}</p>
 									<h5>Breed:</h5>
 									<p>{pet.value.breed}</p>
 									<h5>Age:</h5>
@@ -106,6 +108,11 @@ export default class Pets extends React.Component{
 				header='Create new pet'
 				trigger={<Button>New pet</Button>}>
 					<Row>
+						<img id="profile_pic" src={require('../img/avatar.png')} height="250" alt="preview" />
+					</Row>
+					<Row>
+						<Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
+					</Row>					<Row>
 						<Input id="petname" s={6} m={6} l={6} type="text" label="Pet Name" onChange={this.handlePetnameChange} validate/>
 					</Row>
 					<Row>
@@ -154,10 +161,25 @@ export default class Pets extends React.Component{
 		this.setState({age: e.target.value});
 	}
 
+	previewFile() {
+		var preview = document.querySelector('#profile_pic');
+		var file	= document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+
+		reader.addEventListener("load", () => {
+			preview.src = reader.result;
+		}, false);
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
+
 	createNewPet(){
-		let pic, dog, cat, bird, fish;
+		let pic, dog, cat, bird, fish, animalType;
 
 		var url = 'http://127.0.0.1:4000/pet/';
+		var preview = document.querySelector('#profile_pic');
 
 		dog = document.getElementById("radio_dog");
 		cat = document.getElementById("radio_cat");
@@ -165,24 +187,27 @@ export default class Pets extends React.Component{
 		fish = document.getElementById("radio_fish");
 		
 		if (dog.checked){
-			pic = require('../img/silhueta_cachorro.png');
+			animalType = "Dog";
 		}
 		else if (cat.checked){
-			pic = require('../img/silhueta_gato.png');
+			animalType = "Cat";
 		}
 		else if (bird.checked){
-			pic = require('../img/silhueta_passaro.png');
+			animalType = "Bird";
 		}
 		else if (fish.checked){
-			pic = require('../img/silhueta_peixe.png');
+			animalType = "Fish";
 		}
+
+		console.log(animalType);
 
 		if(this.state.petname !== ''){
 			let newPet = {
 				name: this.state.petname,
+				animal: animalType,
 				breed: this.state.breed,
 				age: this.state.age,
-				picture: pic,
+				picture: preview.src,
 				username: this.props.user.username
 			}
 			fetch(url, {
