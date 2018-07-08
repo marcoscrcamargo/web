@@ -67,6 +67,8 @@ export default class Pets extends React.Component{
 									<p>{pet.value.breed}</p>
 									<h5>Age:</h5>
 									<p>{pet.value.age}</p>
+									<h5>ID:</h5>
+									<p>{pet.value.chave}</p>
 								</Col>
 							</Row>
 							{/*Delete option*/}

@@ -101,7 +101,7 @@ export default class ServicesManagement extends React.Component {
 						<img id="profile_pic" src={require('../img/avatar.png')} height="250" alt="preview" />
 					</Row>
 					<Row>
-							<Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
+						<Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
 					</Row>
 					<Row>
 						<Input id="serviceName" s={6} m={6} l={6} type="text" label="Service Name" onChange={this.handleServiceName} validate/>
@@ -118,21 +118,6 @@ export default class ServicesManagement extends React.Component {
 				</Modal>
 			</div>
 		)
-	}
-
-
-	previewFile() {
-		var preview = document.querySelector('#profile_pic');
-		var file	= document.querySelector('input[type=file]').files[0];
-		var reader  = new FileReader();
-
-		reader.addEventListener("load", () => {
-			preview.src = reader.result;
-		}, false);
-
-		if (file) {
-			reader.readAsDataURL(file);
-		}
 	}
 
 	handleServiceName(e){
@@ -153,16 +138,29 @@ export default class ServicesManagement extends React.Component {
 		return services;
 	}
 
+	previewFile() {
+		var preview = document.querySelector('#profile_pic');
+		var file	= document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+
+		reader.addEventListener("load", () => {
+			preview.src = reader.result;
+		}, false);
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
+
 	createNewService(){
 
 		if(this.state.serviceName !== ''){
 			var preview = document.querySelector('#profile_pic');
-			var pic = preview.src;
 			var newService = {
 				title: this.state.serviceName,
 				description: this.state.description,
 				price: this.state.price,
-				img_file: pic
+				img_file: preview.src
 			}
 		
 			var url = 'http://127.0.0.1:4000/service/';
