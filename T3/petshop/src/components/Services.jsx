@@ -72,6 +72,7 @@ export default class Services extends React.Component {
 			pet_list = this.state.petsForUser.map((pet) => {return(<option>{pet.name}</option>)})
 			// fills a list with cards with name, image, price and a short description about each service
 			serviceList = services.map((service) => {
+					service = service.value;
 					return (
 						<Col s={6} m={4} l={3}>
 							<Card className='medium'
