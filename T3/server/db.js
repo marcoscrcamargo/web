@@ -80,7 +80,7 @@ createDesigns = function(){
 		"_id": "_design/user",
 		"views":{
 		    "all":{
-		      	"map": "function(doc){if(doc.type == 'user')emit(doc._id, doc);}"
+		      	"map": "function(doc){if(doc.type == 'user' || doc.type == 'admin')emit(doc._id, doc);}"
 		    }
 		},
 		"language": "javascript"
@@ -146,32 +146,6 @@ createDesigns = function(){
 	});
 
 }
-
-/*
-	CREATES - implemented in model.
-*/
-// createProducT = function(id, name, description, price){
-// 	var new_product =
-// 	{
-// 		_id: id,
-// 		name: name,
-// 		description: description,
-// 		price: price,
-// 		type: "product"
-// 	};
-
-// 	db.insert(new_product,function(err, body, header){
-// 		if(err){
-// 			console.log("insert new product error:", err.message);
-// 			return;
-// 		}
-// 		console.log("new product inserted");
-// 	});
-// }
-
-/*
-	CREATES
-*/
 
 view = function(designName, viewName, callback){
 	db.view(designName, viewName, callback);

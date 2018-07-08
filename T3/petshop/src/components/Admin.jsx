@@ -1,6 +1,7 @@
 import React from 'react';
-import {Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
-// import Signup from './Signup.jsx';
+import {Row, Input, Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
+
+import ProductsManagement from './ProductsManagement.jsx';
 
 export default class Admin extends React.Component {
 	constructor(props) {
@@ -106,7 +107,7 @@ export default class Admin extends React.Component {
 				{/*Navbar*/}
 				<Tabs className='z-depth-1'>
 					{/*Users tab*/}
-					<Tab title="Users" active>
+					<Tab title="Users">
 						{/*Users table*/}
 						<Table>
 							<thead>
@@ -135,28 +136,7 @@ export default class Admin extends React.Component {
 
 					{/*Products tab*/}
 					<Tab title="Products">
-						{/*Products table*/}
-						<Table>
-							<thead>
-								{/*Names of the colums*/}
-								<tr>
-									<th data-field="name">Name</th>
-									<th data-field="description">Description</th>
-									<th data-field="price">Price</th>
-									<th data-field="details">Edit</th>
-								</tr>
-							</thead>
-
-							{/*Content of the products table*/}
-							<tbody>
-								{productsTable}
-							</tbody>
-						</Table>
-						<Modal
-						header='Create new product'
-						trigger={<Button>New Product</Button>}>
-							<p>New product</p>
-						</Modal>
+						<ProductsManagement db={this.props.db} />
 					</Tab>
 
 				{/*Services tab*/}
