@@ -19,7 +19,7 @@ router.post('/', function (req, res) {
             password: req.body.password,
             admin: req.body.admin,
             adress: req.body.adress,
-            img_file: req.body.img_file
+            picture: req.body.picture
         },
         function (err) {
             if (err) return res.status(500).send(err);

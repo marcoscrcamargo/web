@@ -52,7 +52,7 @@ let create = function(user, callback){
 			type:'user',
 			chave:n,
 			_id:n + "_user",
-			img_file: user.img_file
+			picture: user.picture
 		}
 		db.insert(tmp, (err, body, header)=>{
 			callback(err);

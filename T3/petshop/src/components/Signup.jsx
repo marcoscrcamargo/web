@@ -113,7 +113,7 @@ export default class Signup extends React.Component {
 		let new_user = {
 			name: this.state.name,
 			phone: this.state.phone,
-			img_file: pic,
+			picture: pic,
 			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password,
