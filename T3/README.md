@@ -1,7 +1,10 @@
-﻿Victor Forbes - 9293394
-Marcos Camargo - 9278045
-Gabriel Camargo - 9293456
-Letícia Sakurai - 9278010
+### Victor Forbes - 9293394
+
+### Marcos Camargo - 9278045
+
+### Gabriel Camargo - 9293456
+
+### Letícia Sakurai - 9278010
 
 Repositório do github: https://github.com/marcoscrcamargo/web
 
@@ -14,7 +17,7 @@ Na pasta petshop rodar os comandos:
 
 É possível também rodar a aplicação usando "serve -s build"
 
-O projeto contém os arquivos:
+## O projeto contém os arquivos:
 	- Admin.jsx: Página de adminstrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
 
 	- DB.js: Implementação das funções do banco de dados utilizando Dexie (IndexedDB).
@@ -35,7 +38,7 @@ O projeto contém os arquivos:
 
 	- Signup.jsx: Página para criar novo usuário.
 
-Roteiro para teste do site:
+## Roteiro para teste do site:
 
 	- Deslogado:
 
