@@ -53,26 +53,25 @@ O projeto contém os arquivos:
 		* manifest.json
 
 * server:
-	* counter.js
-	* db.js
-	* server.js
-	* package.json
-	* controller:
-		* cart_controller.js
-		* pet_controller.js
-		* product_controller.js
-		* sale_controller.js
-		* schedule_controller.js
-		* service_controller.js
-		* user_controller.js
+	* counter.js: conta a quantidade dos itens do banco de dados (usado para gerar os ids únicos)
+	* db.js: cria a estrutura do banco de dados usando nano e também cria as views
+	* server.js: estrutura principal do servidor back-end, onde é configurada a API REST
+	* controller
+		* cart_controller.js: redireciona os requests da url localhost:4000/cart
+		* pet_controller.js: redireciona os requests da url localhost:4000/pet
+		* product_controller.js: redireciona os requests da url localhost:4000/product
+		* sale_controller.js: redireciona os requests da url localhost:4000/sale
+		* schedule_controller.js: redireciona os requests da url localhost:4000/schedule
+		* service_controller.js: redireciona os requests da url localhost:4000/service
+		* user_controller.js: redireciona os requests da url localhost:4000/user
 	* model:
-		* cart.js
-		* pet.js
-		* product.js
-		* sale.js
-		* schedule.js
-		* service.js
-		* user.js
+		* cart.js: define a estrutura do cart no banco de dados
+		* pet.js: define a estrutura do pet no banco de dados
+		* product.js: define a estrutura do product no banco de dados
+		* sale.js: define a estrutura da sale no banco de dados
+		* schedule.js: define a estrutura do schedule no banco de dados
+		* service.js: define a estrutura do service no banco de dados
+		* user.js: define a estrutura do user no banco de dados
 
 ## Roteiro para teste do site:
 
