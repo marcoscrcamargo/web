@@ -25,55 +25,54 @@ Então você deve ir na pasta petshop e rodar os comandos:
 
 É possível também rodar a aplicação usando "serve -s build"
 
-<<<<<<< HEAD
 O projeto contém os arquivos:
-	petshop:
-	src:
-		- index.css
-		- index.js
-		- registerServiceWorker.js
-		components:
-			- Admin.jsx
-			- Cart.jsx
-			- ForgotPassword.jsx
-			- Header.jsx
-			- Home.jsx
-			- Login.jsx
-			- Main.jsx
-			- Pets.jsx
-			- Products.jsx
-			- ProductsManagement.jsx
-			- Profile.jsx
-			- SalesManagement.jsx
-			- Schedule.jsx
-			- Services.jsx
-			- ServicesManagement.jsx
-			- Signup.jsx
-	public:
-		- index.html
-		- manifest.json
+* petshop:
+	* src:
+		* index.css
+		* index.js
+		* registerServiceWorker.js
+		* components:
+			* Admin.jsx
+			* Cart.jsx
+			* ForgotPassword.jsx
+			* Header.jsx
+			* Home.jsx
+			* Login.jsx
+			* Main.jsx
+			* Pets.jsx
+			* Products.jsx
+			* ProductsManagement.jsx
+			* Profile.jsx
+			* SalesManagement.jsx
+			* Schedule.jsx
+			* Services.jsx
+			* ServicesManagement.jsx
+			* Signup.jsx
+	* public:
+		* index.html
+		* manifest.json
 
-server:
-	- counter.js
-	- db.js
-	- server.js
-	- package.json
-	controller:
-		- cart_controller.js
-		- pet_controller.js
-		- product_controller.js
-		- sale_controller.js
-		- schedule_controller.js
-		- service_controller.js
-		- user_controller.js
-	model:
-		- cart.js
-		- pet.js
-		- product.js
-		- sale.js
-		- schedule.js
-		- service.js
-		- user.js
+* server:
+	* counter.js
+	* db.js
+	* server.js
+	* package.json
+	* controller:
+		* cart_controller.js
+		* pet_controller.js
+		* product_controller.js
+		* sale_controller.js
+		* schedule_controller.js
+		* service_controller.js
+		* user_controller.js
+	* model:
+		* cart.js
+		* pet.js
+		* product.js
+		* sale.js
+		* schedule.js
+		* service.js
+		* user.js
 
 ## Roteiro para teste do site:
 
