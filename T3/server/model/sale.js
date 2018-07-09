@@ -3,12 +3,12 @@ const counter = require('../counter');
 
 /*
 	Sales:
-	- name
+	- product
 	- username
 	- picture
 	- price
 	- quantity
-	- id
+	- date
 	- type = 'sale'
 */
 
@@ -33,18 +33,18 @@ let one = function(id, callback){
 
 let create = function(sale, callback){
 	console.log(sale)
-	if(!sale.name || !sale.username || !sale.price || !sale.quantity || !sale.id){
+	if(!sale.product || !sale.username || !sale.price || !sale.quantity || !sale.date){
 		callback("sale must have all atributtes");
 		return;
 	}
 
 	counter.get("sale", function(n){
 		let tmp = {
-			name:sale.name,
+			product:sale.product,
 			username:sale.username,
-			price:sale.price,
 			quantity:sale.quantity,
-			id:sale.id,
+			price:sale.price,
+			date:sale.date,
 			type:'sale',
 			chave:n,
 			_id:n + "_sale"
@@ -85,8 +85,6 @@ let update = function(sale, callback){
 		});
 	})
 }
-
-
 
 
 let erase = function(id, callback){
