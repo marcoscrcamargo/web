@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table} from 'react-materialize';
 
-export default class ServicesManagement extends React.Component {
+export default class SalesManagement extends React.Component {
 	constructor(props) {
 		super(props);
 

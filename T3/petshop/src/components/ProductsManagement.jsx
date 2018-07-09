@@ -29,10 +29,6 @@ export default class ProductsManagement extends React.Component {
 
 		// for each product in products, runs the function
 		let productsTable = products.map((prod, index) => {
-			// this.setState({productName: prod.value.productName});
-			// this.setState({description: prod.value.description});
-			// this.setState({price: prod.value.price});
-
 			return (
 				// creates a table with colums: Name, Description, Price and Edit
 				<tr key={index}>
