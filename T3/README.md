@@ -77,5 +77,5 @@ Na pasta petshop rodar os comandos:
 		
 		- Editar e/ou deletar serviços criados.
 		
-		- Verificar as transações efetuadas (na aba Management, sub-aba Services).
+		- Verificar as transações efetuadas (na aba Management, sub-aba Sales).
 		
