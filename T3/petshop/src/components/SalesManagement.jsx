@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Input, Table, Button, Modal} from 'react-materialize';
+import {Table} from 'react-materialize';
 
 export default class ServicesManagement extends React.Component {
 	constructor(props) {
@@ -30,7 +30,7 @@ export default class ServicesManagement extends React.Component {
 					<td>{sale.value.product}</td>
 					<td>{sale.value.username}</td>
 					<td>{sale.value.quantity}</td>
-					<td>{parseInt(sale.value.price) * parseInt(sale.value.quantity)}</td>
+					<td>{Number(parseInt(sale.value.price, 10) * parseInt(sale.value.quantity, 10)).toFixed(2)}</td>
 					<td>{sale.value.date}</td>
 				</tr>
 			)
