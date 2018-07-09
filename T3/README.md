@@ -33,19 +33,19 @@ Arquivos relevantes do projeto:
 			* Main.jsx: Componente principal, realiza as chamadas para os outros componentes
 			* Home.jsx: Página inicial
 			* Header.jsx: Componente do Header da página
-			* Admin.jsx: Página Management para administradores, onde é possivel ver e editar os usuários, produtos, serviços e as vendas
-			* ForgotPassword.jsx: Página de "Esqueceu a Senha"
 			* Login.jsx: Página de Login (utilizada na navbar em mobile)
+			* Signup.jsx: Página para criar novo usuário
+			* ForgotPassword.jsx: Página de "Esqueceu a Senha"
+			* Services.jsx: Página para exibição dos serviços
+			* Products.jsx: Página para exibição dos produtos
+			* Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados
 			* Cart.jsx: Sub-aba da página Profile com o carrinho de compras
 			* Pets.jsx: Sub-aba da página Profile com os pets do usuário
 			* Schedule.jsx: Sub-aba da página Profile com a agenda do usuário
+			* Admin.jsx: Página Management para administradores, onde é possivel ver e editar os usuários, produtos, serviços e as vendas
 			* ProductsManagement.jsx: Sub-aba da página Management com os produtos
 			* SalesManagement.jsx: Sub-aba da página Management com as vendas
 			* ServicesManagement.jsx: Sub-aba da página Management com os serviços
-			* Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados
-			* Services.jsx: Página para exibição dos serviços
-			* Products.jsx: Página para exibição dos produtos
-			* Signup.jsx: Página para criar novo usuário
 
 * server:
 	* counter.js: Conta a quantidade dos itens do banco de dados (usado para gerar os ids únicos)
