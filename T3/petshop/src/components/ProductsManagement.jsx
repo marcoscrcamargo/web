@@ -21,8 +21,7 @@ export default class ProductsManagement extends React.Component {
 		this.handleDescription = this.handleDescription.bind(this);
 		this.handlePrice = this.handlePrice.bind(this);
 		this.createNewProduct = this.createNewProduct.bind(this);
-		this.editProduct = this.createNewProduct.bind(this);
-
+		this.deleteProduct = this.deleteProduct.bind(this);
 	}
 
 	render(){
@@ -41,20 +40,20 @@ export default class ProductsManagement extends React.Component {
 						header={prod.value.name}
 						trigger={<Button>Edit</Button>}>
 							<Row>
-								<Input id={"productName"+prod.value._id} s={6} m={6} l={6} type="text" label="Product Name" defaultValue={prod.value.name} validate/>
+								<Input id={"productName"+prod.value._id} s={6} m={6} l={6} type="text" label="Product Name" defaultValue={prod.value.name} onChange={this.handleProductName} validate/>
 							</Row>
 							<Row>
-								<Input id={"description"+prod.value._id} s={6} m={6} l={6} type="textarea" label="Description" defaultValue={prod.value.description} validate/>
+								<Input id={"description"+prod.value._id} s={6} m={6} l={6} type="textarea" label="Description" defaultValue={prod.value.description} onChange={this.handleDescription} validate/>
 							</Row>
 							<Row>
-								<Input id={"price"+prod.value._id} s={6} m={6} l={6} type="text" label="Price" defaultValue={prod.value.price} validate/>
+								<Input id={"price"+prod.value._id} s={6} m={6} l={6} type="text" label="Price" defaultValue={prod.value.price} onChange={this.handlePrice} validate/>
 							</Row>
 							<Row className="left">
 								<Button modal="close"
-									onChange={(e) => {
-										prod.value.name = 'editou';
-										prod.value.description = 'editou';
-										prod.value.price = '100';
+									onClick={(e) => {
+										prod.value.name = this.state.productName;
+										prod.value.description = this.state.description;
+										prod.value.price = this.state.price;
 
 										var url = 'http://127.0.0.1:4000/product/';
 										fetch(url, {
@@ -130,7 +129,6 @@ export default class ProductsManagement extends React.Component {
 					<Row>
 						<Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
 					</Row>
-
 					<Row>
 						<Input id="productName" s={6} m={6} l={6} type="text" label="Product Name" onChange={this.handleProductName} validate/>
 					</Row>
@@ -203,9 +201,7 @@ export default class ProductsManagement extends React.Component {
 				this.setState({createdProduct: 'true'});
 				this.getAllProducts().then(item => this.setState({ products: item }));
 			});
-
 		}
-
 	}
 
 	deleteProduct(){
@@ -214,5 +210,4 @@ export default class ProductsManagement extends React.Component {
 			this.getAllProducts().then(item => this.setState({ products: item }));
 		});
 	}
-
 }
