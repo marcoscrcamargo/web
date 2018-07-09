@@ -11,13 +11,17 @@ Repositório do github: https://github.com/marcoscrcamargo/web
 
 O projeto foi feito utilizando react e react-materialize. Para rodar o servidor do site é necessário utilizar o npm. O index.html está dentro da pasta "/petshop/public/" (e dentro da "/petshop/build/").
 
-Para iniciar o DB você deve ir na pasta server e rodar os comandos:
+Para iniciar o DB pela primeira vez você deve ir na pasta server/ e rodar os comandos:
 	
 	sudo service couchdb start
 	
 	node server.js
 
-Então você deve ir na pasta petshop e rodar os comandos:
+Quando o DB é iniciado pela primeira vez, são criados os arquivos de design do CouchDB, definindo as views dos documentos. Então para poder utilizar o DB é necessário rodar o server.js uma segunda vez:
+	
+	node server.js
+
+Então você deve ir na pasta petshop/ e rodar os comandos:
 
 	npm install
 
@@ -25,54 +29,48 @@ Então você deve ir na pasta petshop e rodar os comandos:
 
 É possível também rodar a aplicação usando "serve -s build"
 
-O projeto contém os arquivos:
+## Arquivos relevantes do projeto:
 
 * petshop:
 	* src:
-		* index.css
-		* index.js
-		* registerServiceWorker.js
 		* components:
-			* Main.jsx: Componente principal, realiza as chamadas para os outros componentes.
-			* Admin.jsx: Página de administrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
-			* Cart.jsx: Página com o carrinho de compras.
-			* ForgotPassword.jsx: Página de "Esqueceu a Senha".
-			* Header.jsx: Componente do Header da página.
-			* Home.jsx
-			* Login.jsx: Página de Login (utilizada na navbar em mobile).
-			* Pets.jsx: Sub-aba da página Profile com os pets do usuário.
-			* Schedule.jsx: Sub-aba da página Profile com a agenda do usuário.
-			* ProductsManagement.jsx: Sub-aba da página Management com os produtos.
-			* SalesManagement.jsx: Sub-aba da página Management com as vendas.
-			* ServicesManagement.jsx: Sub-aba da página Management com os serviços.
-			* Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados.
-			* Services.jsx: Página para exibição dos serviços.
-			* Products.jsx: Página para exibição dos produtos.
-			* Signup.jsx: Página para criar novo usuário.
-	* public:
-		* index.html
-		* manifest.json
+			* Main.jsx: Componente principal, realiza as chamadas para os outros componentes
+			* Home.jsx: Página inicial
+			* Header.jsx: Componente do Header da página
+			* Login.jsx: Página de Login (utilizada na navbar em mobile)
+			* Signup.jsx: Página para criar novo usuário
+			* ForgotPassword.jsx: Página de "Esqueceu a Senha"
+			* Services.jsx: Página para exibição dos serviços
+			* Products.jsx: Página para exibição dos produtos
+			* Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados
+			* Cart.jsx: Sub-aba da página Profile com o carrinho de compras
+			* Pets.jsx: Sub-aba da página Profile com os pets do usuário
+			* Schedule.jsx: Sub-aba da página Profile com a agenda do usuário
+			* Admin.jsx: Página Management para administradores, onde é possivel ver e editar os usuários, produtos, serviços e as vendas
+			* ProductsManagement.jsx: Sub-aba da página Management com os produtos
+			* SalesManagement.jsx: Sub-aba da página Management com as vendas
+			* ServicesManagement.jsx: Sub-aba da página Management com os serviços
 
 * server:
-	* counter.js: conta a quantidade dos itens do banco de dados (usado para gerar os ids únicos)
-	* db.js: cria a estrutura do banco de dados usando nano e também cria as views
-	* server.js: estrutura principal do servidor back-end, onde é configurada a API REST
+	* counter.js: Conta a quantidade dos itens do banco de dados (usado para gerar os ids únicos)
+	* db.js: Cria a estrutura do banco de dados usando nano e também cria as views
+	* server.js: Estrutura principal do servidor back-end, onde é configurada a API REST
 	* controller
-		* cart_controller.js: redireciona os requests da url localhost:4000/cart
-		* pet_controller.js: redireciona os requests da url localhost:4000/pet
-		* product_controller.js: redireciona os requests da url localhost:4000/product
-		* sale_controller.js: redireciona os requests da url localhost:4000/sale
-		* schedule_controller.js: redireciona os requests da url localhost:4000/schedule
-		* service_controller.js: redireciona os requests da url localhost:4000/service
-		* user_controller.js: redireciona os requests da url localhost:4000/user
+		* cart_controller.js: Redireciona os requests da url localhost:4000/cart
+		* pet_controller.js: Redireciona os requests da url localhost:4000/pet
+		* product_controller.js: Redireciona os requests da url localhost:4000/product
+		* sale_controller.js: Redireciona os requests da url localhost:4000/sale
+		* schedule_controller.js: Redireciona os requests da url localhost:4000/schedule
+		* service_controller.js: Redireciona os requests da url localhost:4000/service
+		* user_controller.js: Redireciona os requests da url localhost:4000/user
 	* model:
-		* cart.js: define a estrutura do cart no banco de dados
-		* pet.js: define a estrutura do pet no banco de dados
-		* product.js: define a estrutura do product no banco de dados
-		* sale.js: define a estrutura da sale no banco de dados
-		* schedule.js: define a estrutura do schedule no banco de dados
-		* service.js: define a estrutura do service no banco de dados
-		* user.js: define a estrutura do user no banco de dados
+		* cart.js: Define a estrutura do cart no banco de dados
+		* pet.js: Define a estrutura do pet no banco de dados
+		* product.js: Define a estrutura do product no banco de dados
+		* sale.js: Define a estrutura da sale no banco de dados
+		* schedule.js: Define a estrutura do schedule no banco de dados
+		* service.js: Define a estrutura do service no banco de dados
+		* user.js: Define a estrutura do user no banco de dados
 
 ## Roteiro para teste do site:
 
