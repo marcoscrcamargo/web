@@ -1,9 +1,6 @@
 ##### Victor Forbes - 9293394
-
 ##### Marcos Camargo - 9278045
-
 ##### Gabriel Camargo - 9293456
-
 ##### Letícia Sakurai - 9278010
 
 Repositório do github: https://github.com/marcoscrcamargo/web
