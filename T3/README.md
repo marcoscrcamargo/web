@@ -29,7 +29,7 @@ Então você deve ir na pasta petshop/ e rodar os comandos:
 
 É possível também rodar a aplicação usando "serve -s build"
 
-Arquivos relevantes do projeto:
+## Arquivos relevantes do projeto:
 
 * petshop:
 	* src:
