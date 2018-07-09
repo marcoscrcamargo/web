@@ -176,7 +176,7 @@ export default class Pets extends React.Component{
 	}
 
 	createNewPet(){
-		let pic, dog, cat, bird, fish, animalType;
+		let dog, cat, bird, fish, animalType;
 
 		var url = 'http://127.0.0.1:4000/pet/';
 		var preview = document.querySelector('#profile_pic');
@@ -185,7 +185,7 @@ export default class Pets extends React.Component{
 		cat = document.getElementById("radio_cat");
 		bird = document.getElementById("radio_bird");
 		fish = document.getElementById("radio_fish");
-		
+
 		if (dog.checked){
 			animalType = "Dog";
 		}
