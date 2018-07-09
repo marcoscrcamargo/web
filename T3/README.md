@@ -36,24 +36,42 @@ O projeto contém os arquivos:
 	- Signup.jsx - Página para criar novo usuário.
 
 Roteiro para teste do site:
-	- Deslogado:
+	* Deslogado:
 		- Tentar comprar um produto na aba Products (notar que aparecerá um aviso pedindo para logar antes).
+		
 		- Tentar agendar um serviço na aba Services (notar que aparecerá um aviso pedindo para logar antes).
+		
 		- Criar usuário (opção signup logo abaixo do campo "Username" no canto superior direito da página).
-	- Logar com o usuário criado (canto superior direito da página):
+		
+	* Logar com o usuário criado (canto superior direito da página):
 		- Adicionar produtos ao carrinho, mudando as quantidades do mesmo produto adicionadas de uma vez (ir na aba products e clicar no botão "Buy" do produto desejado e escolher a quantidade desejada).
+		
 		- Cadastrar animais (aba profile, sub-aba pets, clicar em "new pet").
+		
 		- Agendar serviços para os animais cadastrados (aba Services, clicar no botão "Schedule" do serviço desejado, escolher data e hora).
+		
 		- Ir para a aba Profile e vizualizar o carrinho de produtos e os serviços agendados.
+		
 		- Remover alguns produtos do carrinho (clicando no botão delete ao lado do produto desejado).
+		
 		- "Comprar" os produtos do carrinho (clicando em Checkout, inserindo informações de pagamento e depois clicando em Pay).
+		
 		- Remover alguns serviços da agenda (clicando no botão "Details" ao lado do serviço desejado e depois em "Delete").
+		
 		- Remover alguns animais (clicando no botão "Details" ao lado do animal desejado e depois em "Delete").
+		
 		- Deslogar (clicando no botão Logout no canto superior direito).
-	- Logar com a conta Username: admin / Password: admin.
+		
+	* Logar com a conta Username: admin / Password: admin.
 		- Ver os usuários cadastrados e transformá-los em admin/não-admin pela checkbox dentro de Details (na aba Management, sub-aba Users).
+		
 		- Adicionar novos produtos no banco de dados (na aba Management, sub-aba Products, "New Product").
+		
 		- Editar e/ou deletar produtos criados.
+		
 		- Adicionar novos serviços no banco de dados (na aba Management, sub-aba Services, "New Service").
+		
 		- Editar e/ou deletar serviços criados.
+		
 		- Verificar as transações efetuadas (na aba Management, sub-aba Services).
+		
