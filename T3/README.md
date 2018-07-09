@@ -5,9 +5,16 @@
 
 Repositório do github: https://github.com/marcoscrcamargo/web
 
-O projeto foi feito utilizando react e react-materialize. Para rodar o servidor do site é necessário utilizar o npm. O index.html está dentro da pasta "public/" (e dentro da "build/").
+O projeto foi feito utilizando react e react-materialize. Para rodar o servidor do site é necessário utilizar o npm. O index.html está dentro da pasta "/petshop/public/" (e dentro da "/petshop/build/").
 
-Na pasta petshop rodar os comandos:
+Para iniciar o DB você deve ir na pasta server e rodar os comandos:
+	
+	sudo service couchdb start
+	
+	node server.js
+
+Então você deve ir na pasta petshop e rodar os comandos:
+
 	npm install
 
 	npm start
