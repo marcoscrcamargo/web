@@ -130,10 +130,10 @@ export default class ServicesManagement extends React.Component {
 				header='Create new service'
 				trigger={<Button>New Service</Button>}>
 					<Row>
-						<img id="profile_pic" src={require('../img/avatar.png')} height="250" alt="preview" />
+						<img id="service_pic" src={require('../img/avatar.png')} height="250" alt="preview" />
 					</Row>
 					<Row>
-						<Input s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
+						<Input id="input_pic" s={6} m={6} l={6} type="file" label="Picture" validate onChange={this.previewFile}/>
 					</Row>
 					<Row>
 						<Input id="serviceName" s={6} m={6} l={6} type="text" label="Service Name" onChange={this.handleServiceName} validate/>
@@ -171,8 +171,8 @@ export default class ServicesManagement extends React.Component {
 	}
 
 	previewFile() {
-		var preview = document.querySelector('#profile_pic');
-		var file	= document.querySelector('input[type=file]').files[0];
+		var preview = document.querySelector('#service_pic');
+		var file	= document.querySelector('#input_pic').files[0];
 		var reader  = new FileReader();
 
 		reader.addEventListener("load", () => {
@@ -187,14 +187,14 @@ export default class ServicesManagement extends React.Component {
 	createNewService(){
 
 		if(this.state.serviceName !== ''){
-			var preview = document.querySelector('#profile_pic');
+			var preview = document.querySelector('#service_pic');
 			var newService = {
 				title: this.state.serviceName,
 				description: this.state.description,
 				price: this.state.price,
 				img_file: preview.src
 			}
-		
+
 			var url = 'http://127.0.0.1:4000/service/';
 
 			fetch(url, {
