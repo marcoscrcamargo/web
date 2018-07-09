@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tabs, Tab, Table, Button, Modal, MediaBox, Row, Col, Input} from 'react-materialize';
+import { Redirect } from 'react-router';
 
 import ProductsManagement from './ProductsManagement.jsx';
 import ServicesManagement from './ServicesManagement.jsx';
@@ -26,6 +27,9 @@ export default class Admin extends React.Component {
 
 	render(){
 		let users = this.state.users;
+		if(this.props.user !== null){
+			var isAdmin = (this.props.user.admin === 'true');
+		}
 		// let sales = this.state.sales;
 
 
@@ -70,58 +74,67 @@ export default class Admin extends React.Component {
 		});
 
 		// how the screen should be rendered
-		return(
-			<div>
-				{/*Title*/}
-				<h4> Management </h4>
+		if(isAdmin){
+			return(
+				<div>
+					{/*Title*/}
+					<h4> Management </h4>
 
-				{/*Navbar*/}
-				<Tabs className='z-depth-1'>
-					{/*Users tab*/}
-					<Tab title="Users">
-						{/*Users table*/}
-						<Table>
-							<thead>
-								{/*Colum names for the users table*/}
-								<tr>
-									<th data-field="name">Name</th>
-									<th data-field="username">Username</th>
-									<th data-field="details">Details</th>
-								</tr>
-							</thead>
+					{/*Navbar*/}
+					<Tabs className='z-depth-1'>
+						{/*Users tab*/}
+						<Tab title="Users">
+							{/*Users table*/}
+							<Table>
+								<thead>
+									{/*Colum names for the users table*/}
+									<tr>
+										<th data-field="name">Name</th>
+										<th data-field="username">Username</th>
+										<th data-field="details">Details</th>
+									</tr>
+								</thead>
 
-							{/*Content of the table*/}
-							<tbody>
-								{usersTable}
-							</tbody>
-						</Table>
-{
-						// <Modal
-						// header='Create new user'
-						// trigger={<Button>New User</Button>}>
-						// 	<Signup />
-						// </Modal>
-}
-					</Tab>
+								{/*Content of the table*/}
+								<tbody>
+									{usersTable}
+								</tbody>
+							</Table>
+	{
+							// <Modal
+							// header='Create new user'
+							// trigger={<Button>New User</Button>}>
+							// 	<Signup />
+							// </Modal>
+	}
+						</Tab>
 
-					{/*Products tab*/}
-					<Tab title="Products">
-						<ProductsManagement/>
-					</Tab>
+						{/*Products tab*/}
+						<Tab title="Products">
+							<ProductsManagement/>
+						</Tab>
 
-				{/*Services tab*/}
-					<Tab title="Services">
-						<ServicesManagement/>
-					</Tab>
+					{/*Services tab*/}
+						<Tab title="Services">
+							<ServicesManagement/>
+						</Tab>
 
-					<Tab title="Sales">
-						{/*Sales table*/}
-						<SalesManagement/>
+						<Tab title="Sales">
+							{/*Sales table*/}
+							<SalesManagement/>
 
-					</Tab>
-				</Tabs>
-			</div>
-		)
+						</Tab>
+					</Tabs>
+				</div>
+			)
+		} else {
+			return(
+				/*warning message*/
+				<Row className="center">
+					<Redirect to="/profile"/>
+				</Row>
+			)
+		}
 	}
 
 	async handleIsAdmin(e){

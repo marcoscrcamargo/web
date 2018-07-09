@@ -11,7 +11,7 @@ export default class Profile extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {pets: []};
-		
+
 		if (this.props.user !== null){
 			this.getPets(this.props.user.username).then(pet => this.setState({ pets: pet }));
 		}
