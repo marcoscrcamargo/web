@@ -15,28 +15,30 @@ Na pasta petshop rodar os comandos:
 É possível também rodar a aplicação usando "serve -s build"
 
 O projeto contém os arquivos:
-	- Admin.jsx - Página de adminstrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
+	- Admin.jsx: Página de adminstrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
 
-	- DB.js - Implementação das funções do banco de dados utilizando Dexie (IndexedDB).
+	- DB.js: Implementação das funções do banco de dados utilizando Dexie (IndexedDB).
 
-	- ForgotPassword.jsx - Página esqueceu a senha.
+	- ForgotPassword.jsx: Página esqueceu a senha.
 
-	- Header.jsx - Componente do Header da página.
+	- Header.jsx: Componente do Header da página.
 
-	- Login.jsx - Página de Login (utilizada na navbar em mobile).
+	- Login.jsx: Página de Login (utilizada na navbar em mobile).
 
-	- Main.jsx - Componente principal, realiza as chamadas para os outros componentes.
+	- Main.jsx: Componente principal, realiza as chamadas para os outros componentes.
 
-	- Products.jsx - Página para exibição dos produtos.
+	- Products.jsx: Página para exibição dos produtos.
 
-	- Profile.jsx - Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados.
+	- Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados.
 
-	- Services.jsx - Página para exibição dos serviços.
+	- Services.jsx: Página para exibição dos serviços.
 
-	- Signup.jsx - Página para criar novo usuário.
+	- Signup.jsx: Página para criar novo usuário.
 
 Roteiro para teste do site:
+
 	- Deslogado:
+
 		- Tentar comprar um produto na aba Products (notar que aparecerá um aviso pedindo para logar antes).
 		
 		- Tentar agendar um serviço na aba Services (notar que aparecerá um aviso pedindo para logar antes).
@@ -44,6 +46,7 @@ Roteiro para teste do site:
 		- Criar usuário (opção signup logo abaixo do campo "Username" no canto superior direito da página).
 		
 	- Logar com o usuário criado (canto superior direito da página):
+
 		- Adicionar produtos ao carrinho, mudando as quantidades do mesmo produto adicionadas de uma vez (ir na aba products e clicar no botão "Buy" do produto desejado e escolher a quantidade desejada).
 		
 		- Cadastrar animais (aba profile, sub-aba pets, clicar em "new pet").
@@ -63,6 +66,7 @@ Roteiro para teste do site:
 		- Deslogar (clicando no botão Logout no canto superior direito).
 		
 	- Logar com a conta Username: admin / Password: admin.
+	
 		- Ver os usuários cadastrados e transformá-los em admin/não-admin pela checkbox dentro de Details (na aba Management, sub-aba Users).
 		
 		- Adicionar novos produtos no banco de dados (na aba Management, sub-aba Products, "New Product").
