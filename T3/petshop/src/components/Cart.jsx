@@ -153,6 +153,7 @@ export default class Cart extends React.Component {
 		});
 		let url = 'http://127.0.0.1:4000/sale';
 		for (let i in sales){
+			console.log(sales[i])
 			await fetch(url, {
 					headers: {
 					  'Content-type':'application/json'

@@ -15,25 +15,53 @@ Na pasta petshop rodar os comandos:
 É possível também rodar a aplicação usando "serve -s build"
 
 O projeto contém os arquivos:
-	- Admin.jsx: Página de adminstrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
+	petshop:
+	src:
+		- index.css
+		- index.js
+		- registerServiceWorker.js
+		components:
+			- Admin.jsx
+			- Cart.jsx
+			- ForgotPassword.jsx
+			- Header.jsx
+			- Home.jsx
+			- Login.jsx
+			- Main.jsx
+			- Pets.jsx
+			- Products.jsx
+			- ProductsManagement.jsx
+			- Profile.jsx
+			- SalesManagement.jsx
+			- Schedule.jsx
+			- Services.jsx
+			- ServicesManagement.jsx
+			- Signup.jsx
+	public:
+		- index.html
+		- manifest.json
 
-	- DB.js: Implementação das funções do banco de dados utilizando Dexie (IndexedDB).
-
-	- ForgotPassword.jsx: Página esqueceu a senha.
-
-	- Header.jsx: Componente do Header da página.
-
-	- Login.jsx: Página de Login (utilizada na navbar em mobile).
-
-	- Main.jsx: Componente principal, realiza as chamadas para os outros componentes.
-
-	- Products.jsx: Página para exibição dos produtos.
-
-	- Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados.
-
-	- Services.jsx: Página para exibição dos serviços.
-
-	- Signup.jsx: Página para criar novo usuário.
+server:
+	- counter.js
+	- db.js
+	- server.js
+	- package.json
+	controller:
+		- cart_controller.js
+		- pet_controller.js
+		- product_controller.js
+		- sale_controller.js
+		- schedule_controller.js
+		- service_controller.js
+		- user_controller.js
+	model:
+		- cart.js
+		- pet.js
+		- product.js
+		- sale.js
+		- schedule.js
+		- service.js
+		- user.js
 
 Roteiro para teste do site:
 
