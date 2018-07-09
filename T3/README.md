@@ -1,19 +1,31 @@
-﻿Victor Forbes - 9293394
-Marcos Camargo - 9278045
-Gabriel Camargo - 9293456
-Letícia Sakurai - 9278010
+## Integrantes
+
+##### Victor Forbes - 9293394
+##### Marcos Camargo - 9278045
+##### Gabriel Camargo - 9293456
+##### Letícia Sakurai - 9278010
+
+## Instruções de uso
 
 Repositório do github: https://github.com/marcoscrcamargo/web
 
-O projeto foi feito utilizando react e react-materialize. Para rodar o servidor do site é necessário utilizar o npm. O index.html está dentro da pasta "public/" (e dentro da "build/").
+O projeto foi feito utilizando react e react-materialize. Para rodar o servidor do site é necessário utilizar o npm. O index.html está dentro da pasta "/petshop/public/" (e dentro da "/petshop/build/").
 
-Na pasta petshop rodar os comandos:
+Para iniciar o DB você deve ir na pasta server e rodar os comandos:
+	
+	sudo service couchdb start
+	
+	node server.js
+
+Então você deve ir na pasta petshop e rodar os comandos:
+
 	npm install
 
 	npm start
 
 É possível também rodar a aplicação usando "serve -s build"
 
+<<<<<<< HEAD
 O projeto contém os arquivos:
 	petshop:
 	src:
@@ -63,7 +75,7 @@ server:
 		- service.js
 		- user.js
 
-Roteiro para teste do site:
+## Roteiro para teste do site:
 
 	- Deslogado:
 
@@ -105,5 +117,5 @@ Roteiro para teste do site:
 		
 		- Editar e/ou deletar serviços criados.
 		
-		- Verificar as transações efetuadas (na aba Management, sub-aba Services).
+		- Verificar as transações efetuadas (na aba Management, sub-aba Sales).
 		
