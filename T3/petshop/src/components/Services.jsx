@@ -88,7 +88,6 @@ export default class Services extends React.Component {
 										Pet:
 										<Row>
 											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2' onChange={this.handleChangePetName}>
-												<option>-</option>
 												{pet_list}
 											</Input>
 										</Row>

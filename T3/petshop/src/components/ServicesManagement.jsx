@@ -28,10 +28,6 @@ export default class ServicesManagement extends React.Component {
 
 		// for each service in services, runs the function
 		let servicesTable = services.map((service, index) => {
-			// this.setState({serviceName: service.value.serviceName});
-			// this.setState({description: service.value.description});
-			// this.setState({price: service.value.price});
-
 			return (
 				// creates a table with colums: Name, Description, Price and Edit
 				<tr key={index}>
