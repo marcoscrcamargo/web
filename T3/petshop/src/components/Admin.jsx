@@ -3,6 +3,7 @@ import { Tabs, Tab, Table, Button, Modal, MediaBox, Row, Col, Input} from 'react
 
 import ProductsManagement from './ProductsManagement.jsx';
 import ServicesManagement from './ServicesManagement.jsx';
+import SalesManagement from './SalesManagement.jsx';
 
 export default class Admin extends React.Component {
 	constructor(props) {
@@ -25,7 +26,7 @@ export default class Admin extends React.Component {
 
 	render(){
 		let users = this.state.users;
-		let sales = this.state.sales;
+		// let sales = this.state.sales;
 
 
 		// for each user in users, runs the function
@@ -64,20 +65,6 @@ export default class Admin extends React.Component {
 							</Row>
 						</Modal>
 					</td>
-				</tr>
-			)
-		});
-
-		// for each sale in sales, runs the function
-		let salesTable = sales.map((sale, index) => {
-			return (
-				// creates a table with colums: Product, Quantity, Total Price and Date
-				<tr key={index}>
-					<td><MediaBox src={sale.picture} caption="Sale picture" width="150"/></td>
-					<td>{sale.username}</td>
-					<td>{sale.quantity}</td>
-					<td>{parseInt(sale.price, 10) * parseInt(sale.quantity, 10)}</td>
-					<td>{sale.date}</td>
 				</tr>
 			)
 		});
@@ -129,23 +116,7 @@ export default class Admin extends React.Component {
 
 					<Tab title="Sales">
 						{/*Sales table*/}
-						<Table>
-							<thead>
-								{/*Names of the colums*/}
-								<tr>
-									<th data-field="product">Product</th>
-									<th data-field="username">Username</th>
-									<th data-field="quantity">Quantity</th>
-									<th data-field="price">Total Price</th>
-									<th data-field="date">Date</th>
-								</tr>
-							</thead>
-
-							{/*Table content*/}
-							<tbody>
-								{salesTable}
-							</tbody>
-						</Table>
+						<SalesManagement/>
 
 					</Tab>
 				</Tabs>

@@ -11,6 +11,7 @@ export default class Cart extends React.Component {
 
 		this.deleteAllItems = this.deleteAllItems.bind(this);
 		this.deleteItem = this.deleteItem.bind(this);
+		this.checkoutCart = this.checkoutCart.bind(this);
 		this.itemId = '';
 	}
 
@@ -120,13 +121,46 @@ export default class Cart extends React.Component {
 								<Input id="expiration_date" s={6} m={6} l={6} type="date" label="Expiration Date" validate/>
 								<Input id="security_number" s={6} m={6} l={6} type="number" label="Security Number" validate/>
 							</Row>
-							<Button className="sleek-grey">Pay</Button>
+							<Button className="sleek-grey" modal="close" onClick={()=>{this.checkoutCart(this.props.user.username)}}>Pay</Button>
 						</Modal>
 					</Col>
 				</Row>
 			</div>
 		);
 
+	}
+
+	async checkoutCart(username){
+		let cart_for_user = await this.getCart(this.props.user.username);
+		let today = new Date();
+		let month=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		let dd = today.getDate();
+		if(dd < 10) {
+		    dd = '0'+dd
+		}
+
+		// 12 June, 2018 05:00PM
+		let date = dd + ' ' + month[today.getMonth()] + ', ' + today.getFullYear() + ' '  + today.getHours() + ":" + today.getMinutes() + 'PM';
+		cart_for_user.map((item)=>{
+			let url = 'http://127.0.0.1:4000/sale';
+			let newSale = {
+				product:item.value.name,
+				username:item.value.username,
+				quantity:item.value.quantity,
+				price:item.value.price,
+				date:date
+			}
+			fetch(url, {
+				headers: {
+				  'Content-type':'application/json'
+				},
+				method:'POST',
+				body: JSON.stringify(newSale)
+			}).then(() => {
+				window.Materialize.toast('Compra realizada com sucesso!', 4000);
+				this.deleteAllItems();
+			});
+		});
 	}
 
 	async getCart(username){

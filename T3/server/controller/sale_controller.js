@@ -7,11 +7,11 @@ var sale = require('../model/sale');
 
 router.post('/', function (req, res) {
     sale.create({
-            product:body.product,
-            username:body.username,
-            quantity:body.quantity,
-            price:body.price,
-            date:body.date,
+            product:req.body.product,
+            username:req.body.username,
+            quantity:req.body.quantity,
+            price:req.body.price,
+            date:req.body.date,
 
         },
         function (err) {
