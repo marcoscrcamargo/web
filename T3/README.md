@@ -11,9 +11,13 @@ Repositório do github: https://github.com/marcoscrcamargo/web
 
 O projeto foi feito utilizando react e react-materialize. Para rodar o servidor do site é necessário utilizar o npm. O index.html está dentro da pasta "/petshop/public/" (e dentro da "/petshop/build/").
 
-Para iniciar o DB você deve ir na pasta server/ e rodar os comandos:
+Para iniciar o DB pela primeira vez você deve ir na pasta server/ e rodar os comandos:
 	
 	sudo service couchdb start
+	
+	node server.js
+
+Quando o DB é iniciado pela primeira vez, são criados os arquivos de design do CouchDB, definindo as views dos documentos. Então para poder utilizar o DB é necessário rodar o server.js uma segunda vez:
 	
 	node server.js
 
