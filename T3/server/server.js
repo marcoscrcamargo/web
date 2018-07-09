@@ -19,7 +19,7 @@ server.use( bodyParser.urlencoded({extended: true}) );
 server.use( bodyParser.json({limit: '10mb'}) );
 // server.use(function (req, res, next) {
 // 	// Website you wish to allow to connect
-// 	// Não estava funcionando com '*'.	
+// 	// Não estava funcionando com '*'.
 // 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 // 	next();
 // });

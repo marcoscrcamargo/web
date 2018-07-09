@@ -13,7 +13,6 @@ router.post('/', function (req, res) {
     user.create({
             name : req.body.name,
             phone : req.body.phone,
-            // picture: req.body.picture,
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
