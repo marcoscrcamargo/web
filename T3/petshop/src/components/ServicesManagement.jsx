@@ -20,7 +20,7 @@ export default class ServicesManagement extends React.Component {
 		this.handleDescription = this.handleDescription.bind(this);
 		this.handlePrice = this.handlePrice.bind(this);
 		this.createNewService = this.createNewService.bind(this);
-
+		this.deleteService = this.deleteService.bind(this);
 	}
 
 	render(){
@@ -28,6 +28,10 @@ export default class ServicesManagement extends React.Component {
 
 		// for each service in services, runs the function
 		let servicesTable = services.map((service, index) => {
+			// this.setState({serviceName: service.value.serviceName});
+			// this.setState({description: service.value.description});
+			// this.setState({price: service.value.price});
+
 			return (
 				// creates a table with colums: Name, Description, Price and Edit
 				<tr key={index}>
@@ -38,7 +42,35 @@ export default class ServicesManagement extends React.Component {
 						<Modal
 						header={service.value.title}
 						trigger={<Button>Edit</Button>}>
-							<p>  </p>
+							<Row>
+								<Input id={"serviceTitle"+service.value._id} s={6} m={6} l={6} type="text" label="Service Name" defaultValue={service.value.title} onChange={this.handleServiceName} validate/>
+							</Row>
+							<Row>
+								<Input id={"description"+service.value._id} s={6} m={6} l={6} type="textarea" label="Description" defaultValue={service.value.description} onChange={this.handleDescription} validate/>
+							</Row>
+							<Row>
+								<Input id={"price"+service.value._id} s={6} m={6} l={6} type="text" label="Price" defaultValue={service.value.price} onChange={this.handlePrice} validate/>
+							</Row>
+							<Row className="left">
+								<Button modal="close"
+									onClick={(e) => {
+										service.value.title = this.state.serviceName;
+										service.value.description = this.state.description;
+										service.value.price = this.state.price;
+
+										var url = 'http://127.0.0.1:4000/product/';
+										fetch(url, {
+											headers: {
+												'Content-type':'application/json'
+											},
+											method:'PUT',
+											body: JSON.stringify(service)
+										}).then(() => {
+											this.getAllServices().then(item => this.setState({ services: item }));
+										});
+									}
+								}>Edit</Button>
+							</Row>
 						</Modal>
 					</td>
 					<td>
