@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Tab, Table, Button, Modal, MediaBox} from 'react-materialize';
+import { Tabs, Tab, Table, Button, Modal, MediaBox, Row, Col} from 'react-materialize';
 
 import ProductsManagement from './ProductsManagement.jsx';
 import ServicesManagement from './ServicesManagement.jsx';
@@ -15,6 +15,9 @@ export default class Admin extends React.Component {
 			sales: [],
 		};
 
+
+		this.handleIsAdmin = this.handleIsAdmin.bind(this);
+
 		// getting values from the db and assigning them to the users, products and services attributes
 		this.getAllUsers().then(item => this.setState({ users: item }));
 		this.getAllSales().then(item => this.setState({ sales: item }));
@@ -27,7 +30,7 @@ export default class Admin extends React.Component {
 		// for each user in users, runs the function
 		let usersTable = users.map((user, index) => {
 			return (
-				// creates a table with colums: Name, Username and Datails
+				// creates a table with colums: Name, Username and Details
 				<tr key={index}>
 					<td>{user.value.name}</td>
 					<td>{user.value.username}</td>
@@ -35,8 +38,26 @@ export default class Admin extends React.Component {
 						<Modal
 						header={user.value.name}
 						trigger={<Button>Details</Button>}>
-							<p>  </p>
-
+							{/*Pop-up window with more details*/}
+							<Row>
+								{/*Larger pet picture*/}
+								<Col l={4}>
+									<MediaBox src={user.value.picture} caption="User picture" width="200"/>
+								</Col>
+								{/*user info*/}
+								<Col l={4}>
+									<h5>Name:</h5>
+									<p>{user.value.name}</p>
+									<h5>Phone:</h5>
+									<p>{user.value.phone}</p>
+									<h5>Username:</h5>
+									<p>{user.value.username}</p>
+									<h5>Email:</h5>
+									<p>{user.value.email}</p>
+									<h5>Address:</h5>
+									<p>{user.value.adress}</p>
+								</Col>
+							</Row>
 						</Modal>
 					</td>
 				</tr>
@@ -52,7 +73,7 @@ export default class Admin extends React.Component {
 					<td>{sale.username}</td>
 					<td>{sale.quantity}</td>
 					<td>{parseInt(sale.price, 10) * parseInt(sale.quantity, 10)}</td>
-					<td>{sale.date}</td>					
+					<td>{sale.date}</td>
 				</tr>
 			)
 		});
@@ -61,7 +82,7 @@ export default class Admin extends React.Component {
 		return(
 			<div>
 				{/*Title*/}
-				<h4> Management </h4> 
+				<h4> Management </h4>
 
 				{/*Navbar*/}
 				<Tabs className='z-depth-1'>
@@ -126,6 +147,10 @@ export default class Admin extends React.Component {
 				</Tabs>
 			</div>
 		)
+	}
+
+	handleIsAdmin(e){
+		console.log(e.target.value);
 	}
 
 	async getAllUsers(){
