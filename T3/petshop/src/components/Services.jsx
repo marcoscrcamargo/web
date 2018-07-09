@@ -88,6 +88,7 @@ export default class Services extends React.Component {
 										Pet:
 										<Row>
 											<Input id="inputname" s={12} type='select' label="Pet selection" defaultValue='2' onChange={this.handleChangePetName}>
+												<option></option>
 												{pet_list}
 											</Input>
 										</Row>
@@ -144,7 +145,6 @@ export default class Services extends React.Component {
 	}
 
 	createNewSchedule(){
-
 		let date = String(this.state.date);
 		let time = String(this.state.time);
 		let dt = date + " " + time;
@@ -158,6 +158,12 @@ export default class Services extends React.Component {
 		}
 
 		let petname = String(this.state.petname);
+	
+		if(this.state.petname === null){
+			window.Materialize.toast("Please select a pet!", 5000);
+			return;
+		}
+
 		let newSchedule = {
 			name: this.servicetoSchedule.title,
 			username: this.props.user.username,
