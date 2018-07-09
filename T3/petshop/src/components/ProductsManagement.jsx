@@ -38,7 +38,13 @@ export default class ProductsManagement extends React.Component {
 					<td>
 						<Modal
 						header={prod.value.name}
-						trigger={<Button>Edit</Button>}>
+						trigger={<Button
+							onClick={(e) => {
+								this.state.productName = prod.value.name;
+								this.state.description = prod.value.description;
+								this.state.price = prod.value.price;
+							}}
+							>Edit</Button>}>
 							<Row>
 								<Input id={"productName"+prod.value._id} s={6} m={6} l={6} type="text" label="Product Name" defaultValue={prod.value.name} onChange={this.handleProductName} validate/>
 							</Row>
@@ -157,7 +163,6 @@ export default class ProductsManagement extends React.Component {
 	handlePrice(e){
 		this.setState({price: e.target.value});
 	}
-
 
 	async getAllProducts(){
 		let response = await fetch('http://localhost:4000/product');
