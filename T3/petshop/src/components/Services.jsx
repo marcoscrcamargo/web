@@ -26,6 +26,7 @@ export default class Services extends React.Component {
 		this.handleChangeTime = this.handleChangeTime.bind(this);
 		this.handleChangePetName = this.handleChangePetName.bind(this);
 		this.createNewSchedule = this.createNewSchedule.bind(this);
+		this.getAllServices = this.getAllServices.bind(this);
 
 	}
 
@@ -182,6 +183,7 @@ export default class Services extends React.Component {
 			body: JSON.stringify(newSchedule)
 		}).then(() => {
 			window.Materialize.toast("Service scheduled!", 2000);
+			this.getAllSchedules().then(item => this.setState({ schedules: item }));
 		});
 	}
 }
