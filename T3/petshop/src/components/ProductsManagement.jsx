@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Input, Table, Button, Modal, MediaBox} from 'react-materialize';
+import {Row, Col, Input, Table, Button, Modal} from 'react-materialize';
 
 export default class ProductsManagement extends React.Component {
 	constructor(props) {
@@ -55,9 +55,15 @@ export default class ProductsManagement extends React.Component {
 							<Row className="left">
 								<Button modal="close"
 									onClick={(e) => {
-										prod.value.name = this.state.productName;
-										prod.value.description = this.state.description;
-										prod.value.price = this.state.price;
+										if(this.state.productName !== ''){
+											prod.value.name = this.state.productName;
+										}
+										if(this.state.description !== ''){
+											prod.value.description = this.state.description;
+										}
+										if(this.state.price !== ''){
+											prod.value.price = this.state.price;
+										}
 
 										var url = 'http://127.0.0.1:4000/product/';
 										fetch(url, {
@@ -69,6 +75,10 @@ export default class ProductsManagement extends React.Component {
 										}).then(() => {
 											this.getAllProducts().then(item => this.setState({ products: item }));
 										});
+										this.setState({productName: ''});
+										this.setState({description: ''});
+										this.setState({price: ''});
+
 									}
 								}>Edit</Button>
 							</Row>
@@ -105,7 +115,6 @@ export default class ProductsManagement extends React.Component {
 				</tr>
 			)
 		});
-		
 		return(
 			<div>
 				<Table>
@@ -162,7 +171,6 @@ export default class ProductsManagement extends React.Component {
 		this.setState({price: e.target.value});
 	}
 
-
 	async getAllProducts(){
 		let response = await fetch('http://localhost:4000/product');
 		let products = await response.json();
@@ -192,7 +200,7 @@ export default class ProductsManagement extends React.Component {
 				price: this.state.price,
 				img_file: preview.src
 			}
-		
+
 			var url = 'http://127.0.0.1:4000/product/';
 
 			fetch(url, {

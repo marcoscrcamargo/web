@@ -1,5 +1,5 @@
 import React from 'react';
-import {Row, Col, Input, Table, Button, Modal, MediaBox} from 'react-materialize';
+import {Row, Col, Input, Table, Button, Modal} from 'react-materialize';
 
 export default class ServicesManagement extends React.Component {
 	constructor(props) {
