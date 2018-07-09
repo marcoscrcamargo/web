@@ -27,8 +27,9 @@ export default class Admin extends React.Component {
 
 	render(){
 		let users = this.state.users;
+		var isAdmin = false;
 		if(this.props.user !== null){
-			var isAdmin = (this.props.user.admin === 'true');
+			isAdmin = (this.props.user.admin === 'true');
 		}
 		// let sales = this.state.sales;
 

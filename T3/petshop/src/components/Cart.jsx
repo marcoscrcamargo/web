@@ -141,8 +141,7 @@ export default class Cart extends React.Component {
 
 		// 12 June, 2018 05:00PM
 		let date = dd + ' ' + month[today.getMonth()] + ', ' + today.getFullYear() + ' '  + today.getHours() + ":" + today.getMinutes() + 'PM';
-		cart_for_user.map((item)=>{
-			let url = 'http://127.0.0.1:4000/sale';
+		let sales = cart_for_user.map((item)=>{
 			let newSale = {
 				product:item.value.name,
 				username:item.value.username,
@@ -150,17 +149,21 @@ export default class Cart extends React.Component {
 				price:item.value.price,
 				date:date
 			}
-			fetch(url, {
-				headers: {
-				  'Content-type':'application/json'
-				},
-				method:'POST',
-				body: JSON.stringify(newSale)
-			}).then(() => {
-				window.Materialize.toast('Compra realizada com sucesso!', 4000);
-				this.deleteAllItems();
-			});
+			return newSale;
 		});
+		let url = 'http://127.0.0.1:4000/sale';
+		for (let i in sales){
+			await fetch(url, {
+					headers: {
+					  'Content-type':'application/json'
+					},
+					method:'POST',
+					body: JSON.stringify(sales[i])
+				});
+		}
+
+		window.Materialize.toast('Compra realizada com sucesso!', 4000);
+		this.deleteAllItems();
 	}
 
 	async getCart(username){
