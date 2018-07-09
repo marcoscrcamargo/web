@@ -32,29 +32,29 @@ O projeto contém os arquivos:
 		* index.js
 		* registerServiceWorker.js
 		* components:
-			* Admin.jsx
+			* Admin.jsx: Página de administrador, onde é possivel ver e editar os usuários, produtos, serviços e as vendas.
 			* Cart.jsx
-			* ForgotPassword.jsx
-			* Header.jsx
+			* ForgotPassword.jsx: Página de "Esqueceu a Senha".
+			* Header.jsx: Componente do Header da página.
 			* Home.jsx
-			* Login.jsx
-			* Main.jsx
+			* Login.jsx: Página de Login (utilizada na navbar em mobile).
+			* Main.jsx: Componente principal, realiza as chamadas para os outros componentes.
 			* Pets.jsx
-			* Products.jsx
+			* Products.jsx: Página para exibição dos produtos.
 			* ProductsManagement.jsx
-			* Profile.jsx
+			* Profile.jsx: Página principal do usuário, onde é possivel ver o profile, editar os pets, ver o carrinho e os horários agendados.
 			* SalesManagement.jsx
 			* Schedule.jsx
-			* Services.jsx
+			* Services.jsx: Página para exibição dos serviços.
 			* ServicesManagement.jsx
-			* Signup.jsx
+			* Signup.jsx: Página para criar novo usuário.
 	* public:
 		* index.html
 		* manifest.json
 
 * server:
 	* counter.js
-	* db.js
+	* db.js: Implementação das funções do banco de dados
 	* server.js
 	* package.json
 	* controller:
